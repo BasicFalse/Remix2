@@ -1,0 +1,585 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3fcf3ec350dceeba1416b1520593b7, type: 3}
+  m_Name: CosmeticsHash
+  m_EditorClassIdentifier: Assembly-CSharp::CosmeticsHash
+  allCosmetics:
+  - itemName: null
+    itemSlot: null
+    itemPicture: {fileID: 21300000, guid: b3ef9b059cba89e4387206f941e988d9, type: 2}
+    displayName: NOTHING
+  - itemName: BANANA HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 766d54df7ebaf5740a04100161cee873, type: 2}
+    displayName: BANANA HAT
+  - itemName: CAT EARS
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 8255c605e88be474eaea6899d87395af, type: 2}
+    displayName: CAT EARS
+  - itemName: PARTY HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: b587fcbef72e64b49b72058dfb86d79f, type: 2}
+    displayName: PARTY HAT
+  - itemName: USHANKA
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 4ebc3318b9902604dba59f23d7f3f0ec, type: 2}
+    displayName: USHANKA
+  - itemName: SWEATBAND
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 1ad7be2844b1bba4597aea9feaf4ef70, type: 2}
+    displayName: SWEATBAND
+  - itemName: BASEBALL CAP
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 435b6d6a1238e6543ae529b4f2e9cad2, type: 2}
+    displayName: BASEBALL CAP
+  - itemName: FOREHEAD MIRROR
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 2749fa977a3573b459e4108dbe6231a8, type: 2}
+    displayName: FOREHEAD MIRROR
+  - itemName: PINEAPPLE HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 8d338d9801d6bc34b81e4f9147b72a15, type: 2}
+    displayName: PINEAPPLE HAT
+  - itemName: WITCH HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 233b3bc1170aa3147a8c5d08ff5c4e54, type: 2}
+    displayName: WITCH HAT
+  - itemName: COCONUT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: ef5523ec8a216434ab67b4e2674de619, type: 2}
+    displayName: COCONUT
+  - itemName: SUNHAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 70d0fe5cb19c4084ba04bb281d6f1c3f, type: 2}
+    displayName: SUNHAT
+  - itemName: CLOCHE
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 46bdc765c678a3a4aaf57dd52337f894, type: 2}
+    displayName: CLOCHE
+  - itemName: COWBOY HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 36317f56f38ef2e4f823be3e429141c4, type: 2}
+    displayName: COWBOY HAT
+  - itemName: FEZ
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: e60f5044928c160499cd0b759c8bc446, type: 2}
+    displayName: FEZ
+  - itemName: TOP HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 0ab3ed032e48e9945b7010488c1a8d40, type: 2}
+    displayName: TOP HAT
+  - itemName: BASIC BEANIE
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 095162d1c201e7448bd513cd70e5a49d, type: 2}
+    displayName: BASIC BEANIE
+  - itemName: WHITE FEDORA
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 7cce4af24e98ff94b9afa10594c435a4, type: 2}
+    displayName: WHITE FEDORA
+  - itemName: FLOWER CROWN
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 1599fef61de467b4383d12572e9e67d4, type: 2}
+    displayName: FLOWER CROWN
+  - itemName: BIG EYEBROWS
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 0159bc54f6e5a0649a096d9a0dcf811c, type: 2}
+    displayName: BIG EYEBROWS
+  - itemName: NOSE RING
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: d162334b361fc3b4c88c6c4b8175f249, type: 2}
+    displayName: NOSE RING
+  - itemName: BASIC EARRINGS
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 9a28ca7ab2bf9dd4a88de829fcee01fe, type: 2}
+    displayName: BASIC EARRINGS
+  - itemName: TRIPLE EARRINGS
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: cb2dfb7acdb4cc94d84f9b0b5dd5e932, type: 2}
+    displayName: TRIPLE EARRINGS
+  - itemName: EYEBROW STUD
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: d0f1f6ea3dcb21b47bbd518f86353d1a, type: 2}
+    displayName: EYEBROW STUD
+  - itemName: TRIANGLE SUNGLASSES
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 132d56a65c7d7964080d0cdd22d93bbd, type: 2}
+    displayName: TRIANGLE SUNGLASSES
+  - itemName: SKULL MASK
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: b23f9ca8822a4e248a2c34a3950484df, type: 2}
+    displayName: SKULL MASK
+  - itemName: RIGHT EYEPATCH
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: bf3eb25602e20194e93b268a11f28c07, type: 2}
+    displayName: RIGHT EYEPATCH
+  - itemName: LEFT EYEPATCH
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 778a557084999b5459557dc8f69bfb09, type: 2}
+    displayName: LEFT EYEPATCH
+  - itemName: DOUBLE EYEPATCH
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 871fb5864d257ed44a9678382f7cd090, type: 2}
+    displayName: DOUBLE EYEPATCH
+  - itemName: GOGGLES
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 278deb73c21c53c4d8ca172f831679a7, type: 2}
+    displayName: GOGGLES
+  - itemName: SURGICAL MASK
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 36edb74bc29a7ce4eb0b0051110cf787, type: 2}
+    displayName: SURGICAL MASK
+  - itemName: TORTOISESHELL SUNGLASSES
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 611722a2ed3ca9a40aa32876a370d9e2, type: 2}
+    displayName: TORTOISESHELL SUNGLASSES
+  - itemName: AVIATORS
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 22acf1a91a6213f4bae0ee3f91e593ae, type: 2}
+    displayName: AVIATORS
+  - itemName: ROUND SUNGLASSES
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: b96d00c2bf5f30744b8c26923f9fb0bd, type: 2}
+    displayName: ROUND SUNGLASSES
+  - itemName: TREE PIN
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: dd0313e06b0dd1d449d058761a763498, type: 2}
+    displayName: TREE PIN
+  - itemName: BOWTIE
+    itemSlot: chest
+    itemPicture: {fileID: 21300000, guid: 15f9b1ab1acb0274881aea32df1e261a, type: 2}
+    displayName: BOWTIE
+  - itemName: BASIC SCARF
+    itemSlot: chest
+    itemPicture: {fileID: 21300000, guid: 8be15fe110493c545b52bb610aaaf07c, type: 2}
+    displayName: BASIC SCARF
+  - itemName: ADMINISTRATOR BADGE
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: 18c948333b25f76479eaf6a5aff36a6a, type: 2}
+    displayName: ADMINISTRATOR BADGE
+  - itemName: EARLY ACCESS
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: f7f5f00901046d04196cc0b00a21916c, type: 2}
+    displayName: EARLY ACCESS
+  - itemName: CRYSTALS PIN
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: 4cfdcd4ec3d79df44ae56f9c8a29e926, type: 2}
+    displayName: CRYSTALS PIN
+  - itemName: CANYON PIN
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: 21f09d2fd8d79d741816afe0ae8ee7e5, type: 2}
+    displayName: CANYON PIN
+  - itemName: CITY PIN
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: 91c6a9c17343f6742b7929126cba1564, type: 2}
+    displayName: CITY PIN
+  - itemName: GORILLA PIN
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: bec8171fc0f79d346aab8c75f11119f6, type: 2}
+    displayName: GORILLA PIN
+  - itemName: NECK SCARF
+    itemSlot: chest
+    itemPicture: {fileID: 21300000, guid: e51f1d7bf766410458fd517c92fd44cf, type: 2}
+    displayName: NECK SCARF
+  - itemName: GOLDEN HEAD
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 572f170bb97e18a478f4485d67ee0761, type: 2}
+    displayName: GOLDEN HEAD
+  - itemName: MOD STICK
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: f9af1dbb04c98ab4788f8ef6218118c7, type: 2}
+    displayName: MOD STICK
+  - itemName: MUMMY WRAP
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: eb0f138f95795dc4a8a83d0ef3d5c7cf, type: 2}
+    displayName: MUMMY WRAP
+  - itemName: WITCH NOSE
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: c3f481512e730ce48b6242ae35cb8059, type: 2}
+    displayName: WITCH NOSE
+  - itemName: PAPERBAG HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 3e44b5e95fd3ecc4a8a3a29376f63a28, type: 2}
+    displayName: PAPERBAG HAT
+  - itemName: PUMPKIN HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: eeb321071be1ebe43876fdd0d8da875a, type: 2}
+    displayName: PUMPKIN HAT
+  - itemName: CLOWN WIG
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: c366bb4164c28f54a882aee1dec69b6d, type: 2}
+    displayName: CLOWN WIG
+  - itemName: CLOWN NOSE
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: b012a0b678717c54a9504f39cb913448, type: 2}
+    displayName: CLOWN NOSE
+  - itemName: CLOWN FRILL
+    itemSlot: chest
+    itemPicture: {fileID: 21300000, guid: 5de3974378931f24fadc9664460f4bd1, type: 2}
+    displayName: CLOWN FRILL
+  - itemName: VAMPIRE WIG
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 894d7a4ed9568c949a5db430355d3c62, type: 2}
+    displayName: VAMPIRE WIG
+  - itemName: VAMPIRE FANGS
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: c685e08c021683740b21aacc45627472, type: 2}
+    displayName: VAMPIRE FANGS
+  - itemName: VAMPIRE COLLAR
+    itemSlot: chest
+    itemPicture: {fileID: 21300000, guid: 2e5694a6926be554dae05c4f1f96fa05, type: 2}
+    displayName: VAMPIRE COLLAR
+  - itemName: WEREWOLF EARS
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 531f399080242fa4b9224b768f440c27, type: 2}
+    displayName: WEREWOLF EARS
+  - itemName: WEREWOLF FACE
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 0e77b60569ba20a4db54e11fff4fca4d, type: 2}
+    displayName: WEREWOLF FACE
+  - itemName: WEREWOLF CLAWS
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: e421de6640b44284daecaa4709157e69, type: 2}
+    displayName: WEREWOLF CLAWS
+  - itemName: PIRATE BANDANA
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 436caa18d34ef0846810e5a3f1f17d5e, type: 2}
+    displayName: PIRATE BANDANA
+  - itemName: STAR PRINCESS TIARA
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: a79d1f0d0c9186242ad735883c934c4b, type: 2}
+    displayName: STAR PRINCESS TIARA
+  - itemName: STAR PRINCESS GLASSES
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 6283dc0f034045d4caffd6cac4d7c33a, type: 2}
+    displayName: STAR PRINCESS GLASSES
+  - itemName: STAR PRINCESS WAND
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: b8516ee6634339544884aec58f299cd5, type: 2}
+    displayName: STAR PRINCESS WAND
+  - itemName: SUNNY SUNHAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 3e2ca79d80cd89a48b0133bcb7eb181f, type: 2}
+    displayName: SUNNY SUNHAT
+  - itemName: CHROME COWBOY HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: f83cb213332bf754198e16fbde2465ee, type: 2}
+    displayName: CHROME COWBOY HAT
+  - itemName: TURKEY FINGER PUPPET
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: 6b0250f579c8f674985c8d9433e22b2d, type: 2}
+    displayName: TURKEY FINGER PUPPET
+  - itemName: FACE SCARF
+    itemSlot: chest
+    itemPicture: {fileID: 21300000, guid: 0187769542a78f447a347d8e8c71e517, type: 2}
+    displayName: FACE SCARF
+  - itemName: MAPLE LEAF
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 4cb2447bfed494d4d9737590e7ab29ca, type: 2}
+    displayName: MAPLE LEAF
+  - itemName: TURKEY LEG
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: 93d685b6895b62640933166883146e01, type: 2}
+    displayName: TURKEY LEG
+  - itemName: CHEFS HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: d979f4b561d2f474f845ff7cb3e15e5e, type: 2}
+    displayName: CHEFS HAT
+  - itemName: CANDY CANE
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: a5ca6834938eeb34e8c590f516dcfe47, type: 2}
+    displayName: CANDY CANE
+  - itemName: SNOWMAN HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: f22af5f774f1c12499aba44beec52023, type: 2}
+    displayName: SNOWMAN HAT
+  - itemName: GIFT HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: f16b4d07e1c6230448cdaf30575113ed, type: 2}
+    displayName: GIFT HAT
+  - itemName: ELF HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: e1cf57d8ce9e8b24da02ca23f9a47093, type: 2}
+    displayName: ELF HAT
+  - itemName: ORNAMENT EARRINGS
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 1c62aa8d712a6ae449e00649c7fd5cfa, type: 2}
+    displayName: ORNAMENT EARRINGS
+  - itemName: 2022 GLASSES
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 7d8b60af6b478ff4299bda8dc878d27f, type: 2}
+    displayName: 2022 GLASSES
+  - itemName: SPARKLER
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: 8e02c524a2be17c40987f06fd028f232, type: 2}
+    displayName: SPARKLER
+  - itemName: NOSE SNOWFLAKE
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 9c07b10b7d0c11942b207e57c516a2e3, type: 2}
+    displayName: NOSE SNOWFLAKE
+  - itemName: SANTA BEARD
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 40d546b8c6e6a28499257c0e0be6f766, type: 2}
+    displayName: SANTA BEARD
+  - itemName: SANTA HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: e9b94c20effdc724a8278868e0f926d0, type: 2}
+    displayName: SANTA HAT
+  - itemName: HEADPHONES1
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 6fcea678d91bf294380b83a5d60250f0, type: 2}
+    displayName: HEADPHONES1
+  - itemName: BOXY SUNGLASSES
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 68ec594921cda534eabdfe37d4cf5360, type: 2}
+    displayName: BOXY SUNGLASSES
+  - itemName: ORANGE POMPOM HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 5f49476f99f12904eaac0d5916e7837f, type: 2}
+    displayName: ORANGE POMPOM HAT
+  - itemName: BLUE POMPOM HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: cc7d3883f7ca8d241b13096a315218fe, type: 2}
+    displayName: BLUE POMPOM HAT
+  - itemName: STRIPE POMPOM HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 812629bdc9cd47a45ae26fb4b8c3a235, type: 2}
+    displayName: STRIPE POMPOM HAT
+  - itemName: PATTERN POMPOM HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 6ab571a5583f6dd45b64cbf36693ab13, type: 2}
+    displayName: PATTERN POMPOM HAT
+  - itemName: ROSY CHEEKS
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 877c1208915ecad46865c14a8b223f70, type: 2}
+    displayName: ROSY CHEEKS
+  - itemName: ICICLE
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: a7b3e450f61313148ae8686d5c812ed8, type: 2}
+    displayName: ICICLE
+  - itemName: WHITE EARMUFFS
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 404e0a62e26c71e4db8ccdd172e1a49e, type: 2}
+    displayName: WHITE EARMUFFS
+  - itemName: PINK EARMUFFS
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: c84903b71e95353438d847e4a60e21b2, type: 2}
+    displayName: PINK EARMUFFS
+  - itemName: GREEN EARMUFFS
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 30d026f832bb3eb428ec193e2f00c716, type: 2}
+    displayName: GREEN EARMUFFS
+  - itemName: BLACK EARMUFFS
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 04ef88ea145ee7340bc7fcd61b97c8e5, type: 2}
+    displayName: BLACK EARMUFFS
+  - itemName: RED ROSE
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: 73faf4d389806a94cb587d03e1508a1c, type: 2}
+    displayName: RED ROSE
+  - itemName: BLACK ROSE
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: 45750436b90ee814bb7e9ec3c2bba7df, type: 2}
+    displayName: BLACK ROSE
+  - itemName: PINK ROSE
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: 568ac90f096053747b7ecfddd1d5af89, type: 2}
+    displayName: PINK ROSE
+  - itemName: GOLD ROSE
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: 6c8b2a582d159f34fa80c30c0bb9bfb9, type: 2}
+    displayName: GOLD ROSE
+  - itemName: CHEST HEART
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: ef52594a5daef1746b012562c184b5c2, type: 2}
+    displayName: CHEST HEART
+  - itemName: BOX OF CHOCOLATES HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 3891fa49e3798654c85cc3d4724d550e, type: 2}
+    displayName: BOX OF CHOCOLATES HAT
+  - itemName: HEART POMPOM HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 983c7621565116247bd8240ef09749ea, type: 2}
+    displayName: HEART POMPOM HAT
+  - itemName: HEART GLASSES
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 584f70b26e728204baf332b1a647c1bc, type: 2}
+    displayName: HEART GLASSES
+  - itemName: THUMB PARTYHATS
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: 9931403f239a267428788e8760d81f90, type: 2}
+    displayName: THUMB PARTYHATS
+  - itemName: GT1 BADGE
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: de2347d746cb5b34e99e8a3174bd64e2, type: 2}
+    displayName: GT1 BADGE
+  - itemName: PLUNGER HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 88f0ef1236c6d9847bda1b7f3df907ec, type: 2}
+    displayName: PLUNGER HAT
+  - itemName: SAUCEPAN HAT
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 61e126741f347204e9948386141c7f3d, type: 2}
+    displayName: SAUCEPAN HAT
+  - itemName: COOKIE JAR
+    itemSlot: face
+    itemPicture: {fileID: 21300000, guid: 6e912fd0d4a2441448666d4e49925746, type: 2}
+    displayName: COOKIE JAR
+  - itemName: REGULAR WRENCH
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: 9897a03eb47aa4d4ca7683368ebc0793, type: 2}
+    displayName: REGULAR WRENCH
+  - itemName: GOLD WRENCH
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: 9fa7fb846cd3a0e4782051e5b2320f93, type: 2}
+    displayName: GOLD WRENCH
+  - itemName: REGULAR FORK AND KNIFE
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: a642091be25ea354a85445249878bea9, type: 2}
+    displayName: REGULAR FORK AND KNIFE
+  - itemName: GOLD FORK AND KNIFE
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: df927d0779aab92419327d42ffdba25f, type: 2}
+    displayName: GOLD FORK AND KNIFE
+  - itemName: HIGH TECH SLINGSHOT
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: d4d0803414d359541a17676a1fda2d4a, type: 2}
+    displayName: HIGH TECH SLINGSHOT
+  - itemName: STICKABLE TARGET
+    itemSlot: badge
+    itemPicture: {fileID: 21300000, guid: fbd92d4562a3c304583a6eb0adc6ed65, type: 2}
+    displayName: STICKABLE TARGET
+  - itemName: WATERMELON
+    itemSlot: hat
+    itemPicture: {fileID: 21300000, guid: 0d89bcdff3ad7e441a8a9ede54d3e9a6, type: 2}
+    displayName: WATERMELON
+  - itemName: GLOW STICK
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: a3997b8733d774040b0dd15a9b6ff593, type: 3}
+    displayName: GLOW STICK
+  - itemName: GLOW RINGS
+    itemSlot: holdable
+    itemPicture: {fileID: 21300000, guid: 10346cba1fd586142ab686813ffb1a53, type: 3}
+    displayName: GLOW RINGS
+  freeCosmetics:
+  - BANANA HAT
+  - CAT EARS
+  - PARTY HAT
+  - USHANKA
+  - SWEATBAND
+  - BASEBALL CAP
+  - FOREHEAD MIRROR
+  - PINEAPPLE HAT
+  - WITCH HAT
+  - COCONUT
+  - SUNHAT
+  - CLOCHE
+  - COWBOY HAT
+  - FEZ
+  - TOP HAT
+  - BASIC BEANIE
+  - WHITE FEDORA
+  - FLOWER CROWN
+  - BIG EYEBROWS
+  - NOSE RING
+  - BASIC EARRINGS
+  - TRIPLE EARRINGS
+  - EYEBROW STUD
+  - TRIANGLE SUNGLASSES
+  - SKULL MASK
+  - RIGHT EYEPATCH
+  - LEFT EYEPATCH
+  - DOUBLE EYEPATCH
+  - GOGGLES
+  - SURGICAL MASK
+  - TORTOISESHELL SUNGLASSES
+  - AVIATORS
+  - ROUND SUNGLASSES
+  - TREE PIN
+  - BOWTIE
+  - BASIC SCARF
+  - CRYSTALS PIN
+  - CANYON PIN
+  - CITY PIN
+  - GORILLA PIN
+  - NECK SCARF
+  - GOLDEN HEAD
+  - MUMMY WRAP
+  - WITCH NOSE
+  - PAPERBAG HAT
+  - PUMPKIN HAT
+  - CLOWN WIG
+  - CLOWN NOSE
+  - CLOWN FRILL
+  - VAMPIRE WIG
+  - VAMPIRE FANGS
+  - VAMPIRE COLLAR
+  - WEREWOLF EARS
+  - WEREWOLF FACE
+  - WEREWOLF CLAWS
+  - PIRATE BANDANA
+  - STAR PRINCESS TIARA
+  - STAR PRINCESS GLASSES
+  - STAR PRINCESS WAND
+  - SUNNY SUNHAT
+  - CHROME COWBOY HAT
+  - TURKEY FINGER PUPPET
+  - FACE SCARF
+  - MAPLE LEAF
+  - TURKEY LEG
+  - CHEFS HAT
+  - CANDY CANE
+  - SNOWMAN HAT
+  - GIFT HAT
+  - ELF HAT
+  - ORNAMENT EARRINGS
+  - 2022 GLASSES
+  - SPARKLER
+  - NOSE SNOWFLAKE
+  - SANTA BEARD
+  - SANTA HAT
+  - HEADPHONES1
+  - BOXY SUNGLASSES
+  - ORANGE POMPOM HAT
+  - BLUE POMPOM HAT
+  - STRIPE POMPOM HAT
+  - PATTERN POMPOM HAT
+  - ROSY CHEEKS
+  - ICICLE
+  - WHITE EARMUFFS
+  - PINK EARMUFFS
+  - GREEN EARMUFFS
+  - BLACK EARMUFFS
+  - RED ROSE
+  - BLACK ROSE
+  - PINK ROSE
+  - GOLD ROSE
+  - CHEST HEART
+  - BOX OF CHOCOLATES HAT
+  - HEART POMPOM HAT
+  - HEART GLASSES
+  - THUMB PARTYHATS
+  - GT1 BADGE
+  - PLUNGER HAT
+  - SAUCEPAN HAT
+  - COOKIE JAR
+  - REGULAR WRENCH
+  - GOLD WRENCH
+  - REGULAR FORK AND KNIFE
+  - GOLD FORK AND KNIFE
+  - WATERMELON
+  - GLOW STICK
+  - GLOW RINGS
+  nullItem:
+    itemName: null
+    itemSlot: null
+    itemPicture: {fileID: 21300000, guid: b3ef9b059cba89e4387206f941e988d9, type: 2}
+    displayName: null

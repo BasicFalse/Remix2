@@ -1,0 +1,680 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96a952740c8891f488e0cdb83d8e0604, type: 3}
+  m_Name: MaterialCodex
+  m_EditorClassIdentifier: 
+  materialData:
+  - matName: default
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: 73afe8d901c11904db627aa03d008c05, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: rockwall2
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 0}
+    overrideSlidePercent: 1
+    slidePercent: 0.55
+  - matName: canyon5
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 0}
+    overrideSlidePercent: 1
+    slidePercent: 0.55
+  - matName: pillowwhite
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 8bb76ae6e94ca854c92164a58f79c571, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: pillowblue
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 8bb76ae6e94ca854c92164a58f79c571, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: pillowyellow
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 8bb76ae6e94ca854c92164a58f79c571, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: pillowpink
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 8bb76ae6e94ca854c92164a58f79c571, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: pitground
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 29b6cd6514d77bb439957f0d34ee9d49, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: bark
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 9dce1c40fb6b6c64e82154f4928bd65e, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: loglowres
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: b259e4f02db3a754f9c361b18effb539, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: table
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: b259e4f02db3a754f9c361b18effb539, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: woodenpanel
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: b259e4f02db3a754f9c361b18effb539, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: logsupport
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: b259e4f02db3a754f9c361b18effb539, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: woodensupport
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: b259e4f02db3a754f9c361b18effb539, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: minewall
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 808bfaf63ec9b8045931f83d0babd7c9, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: picnictable
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: b259e4f02db3a754f9c361b18effb539, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crate
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: b259e4f02db3a754f9c361b18effb539, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: carttexture
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: b259e4f02db3a754f9c361b18effb539, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: metalbare
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: metalpattern
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystallrpink
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystallrpurple
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystallrteal
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystallryellow
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: bronze
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: redpanel
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: b259e4f02db3a754f9c361b18effb539, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: rusty
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: cactus
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 808bfaf63ec9b8045931f83d0babd7c9, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: Light
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: window
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: MirrorCenter
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: pitgroundfall
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: a20de81e820ffa8478c50532a1e52ecb, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: pitgroundwinter
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 2b8b7d3dd2e7dff419a89f7d55fd5c83, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: holidaywhite
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: holidaywhiteoff
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: holidayred
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: holidaygreen
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: holidayyellow
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: holidayblue
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: christmastree
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 808bfaf63ec9b8045931f83d0babd7c9, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: first2down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 5495de14506c631459efe94aba3c8182, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: second2down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: eb00cf4fdd07a444ab88e1e1bed16fb8, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: third2down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 117f2fe2382ceca41a092491483beb37, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: fifth2down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: a6ba3427d0165e54fba1f840cac0a417, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: sixth2down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 2b68d0e367ee4564c86011d933780975, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: first1down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: ba84f047393f38e418faea6bae245c4f, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: second1down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 891845445b82a9b4ebc5b980eaa34c43, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: third1down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 9a1f4fe3674aa2742b9aca776d27219a, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: fifth1down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 8eacb350edc7c7d47ae786236c287eb8, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: sixth1down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: bfbf920b04cfe3a4a901852eb9bc00a0, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: first
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: e8e8b6854e12f7d4e87d463fcf7f76b0, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: second
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: f3ff6f21f81de9646b6aef68ae4d7b39, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: third
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 5cabd27e7a9a03249aaa38336e72e523, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: fifth
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: aa0c74d93e9ac4c43ab93321f0bb66d9, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: sixth
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 65e2ac957c8c4f347a097456a13a433b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: shinyhatlas2
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: whee
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.95
+  - matName: bronzeslide
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.985
+  - matName: metalslide
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.75
+  - matName: iceground
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.995
+  - matName: purpleplasticinside
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.995
+  - matName: mountainice
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.995
+  - matName: blackindustpaint
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: orangeindustpaint
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: hay
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 6fbd150b6f2a1b14ba22626e0a363c18, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: HugeCrystalHit
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 8e2689b3b1407204f8146e360c733dc4, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: mountainsideslip
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: 8e2689b3b1407204f8146e360c733dc4, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.995
+  - matName: GiantSkull
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 40ae6b64b31e2d2489f2ee69fd6c6028, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: metalpatterndark
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: chain
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 7d6c33f95af893944ad570feef7d55ed, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: SquareCarpet
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: c3061633d05c2f148ac9286fdc1d895e, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: window_0
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: StoreCarpet
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: c3061633d05c2f148ac9286fdc1d895e, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystal_green_fourth_2down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: e7371bf520c6b6541a390b3a95edc7b7, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystal_purple_seventh_2down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: c3dee8c8f0cf3be4880699081a9de7f8, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystal_green_fourth_1down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 93cc46a1a2849e24aa8102140086caac, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystal_purple_seventh_1up
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: cff7fb3774a662048a4df2010d5d3577, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystal_purple_seventh_1down
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 1ada9b71f40a8a3499c4bea23409726a, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystal_green_fourth
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 901e5dde9ce31b74090a197ce76f2bcb, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: crystal_purple_seventh
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 0e6ed89805001474589645782a7e1331, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: metalscaffolding
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: solar
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 79b2e97bf5168da469fb933644cd64d5, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: corrugatedmetal
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: rockywall1slip
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 1
+  - matName: valleyfloor1
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: 6fbd150b6f2a1b14ba22626e0a363c18, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: ReinforcedDoor
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0
+  - matName: CaveWallNewSlip
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.995
+  - matName: ToolRack
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0.995
+  - matName: IceCube
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.995
+  - matName: SodaAtlas
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0.995
+  - matName: CaveWallNewSlipIce
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: df89bd0f68802bf4db30552eb973976b, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.995
+  - matName: Rope01
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 1
+    audio: {fileID: 8300000, guid: a20de81e820ffa8478c50532a1e52ecb, type: 3}
+    overrideSlidePercent: 0
+    slidePercent: 0.995
+  - matName: riverbedslip
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: a20de81e820ffa8478c50532a1e52ecb, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.995
+  - matName: TunnelWallsSlip
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: a20de81e820ffa8478c50532a1e52ecb, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.995
+  - matName: icegroundTransparent
+    canGrab: 0
+    grabbableObject: 
+    overrideAudio: 0
+    audio: {fileID: 8300000, guid: a20de81e820ffa8478c50532a1e52ecb, type: 3}
+    overrideSlidePercent: 1
+    slidePercent: 0.995

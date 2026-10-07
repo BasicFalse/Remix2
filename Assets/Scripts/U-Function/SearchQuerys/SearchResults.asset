@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4729651707da9a0478be3815b896bc5d, type: 3}
+  m_Name: SearchResults
+  m_EditorClassIdentifier: 
+  Results:
+  - Querys:
+    - GorillaTag
+    - GORILLATAG
+    - U-P-S-571
+    Result: {fileID: 4900000, guid: d22ea7f53aef1aa4899d3373c9604041, type: 3}
+  - Querys:
+    - Hello
+    - Hi
+    - Helo
+    - henlo
+    - HELLO
+    - HI
+    - HELO
+    - HENLO
+    Result: {fileID: 4900000, guid: 08e863fbd841dff4f88723ae8fe67c29, type: 3}
+  - Querys:
+    - Test
+    - TEST
+    Result: {fileID: 4900000, guid: 5d64b55dbddc11f4cb6ad79728fab47b, type: 3}
+  - Querys:
+    - LAPSLABS
+    Result: {fileID: 4900000, guid: 5c25ba5ecec6eb64882ecf0d5efc82e8, type: 3}
+  - Querys:
+    - LAPS
+    Result: {fileID: 4900000, guid: 6f2ad2dc1099caf4c999245f7a95d39e, type: 3}
+  - Querys:
+    - TRACK
+    Result: {fileID: 4900000, guid: 06938179f73235c4983342c176e3e7bb, type: 3}
+  - Querys:
+    - SOCIALEXP
+    - SOCIALEXPERIMENT
+    Result: {fileID: 4900000, guid: 41ad32cd74da6ba4588ec787e65d84b0, type: 3}
+  - Querys:
+    - SOCIALEXP
+    - SOCIALEXPERIMENT
+    Result: {fileID: 4900000, guid: 41ad32cd74da6ba4588ec787e65d84b0, type: 3}
+  - Querys:
+    - SPOOL
+    Result: {fileID: 4900000, guid: 4498da5f4d2bb894bb70397d6b4bf87c, type: 3}
+  - Querys:
+    - LEMMON
+    Result: {fileID: 4900000, guid: 17568965c98527b42a32dac037ae4e4b, type: 3}
+  - Querys:
+    - KULT
+    - KULTDEV
+    - C1UE
+    - TIDAL
+    - STALEWAY
+    Result: {fileID: 4900000, guid: ebbce56d4c7c8234cb23f518dd864a16, type: 3}

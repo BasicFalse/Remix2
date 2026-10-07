@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HornsSlingshotElastic
+  m_Shader: {fileID: 4800000, guid: 362a4bf296146cd4daeec71572c08190, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _FADE_START_EDGE
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties:
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+      _Masks:
+        m_Texture: {fileID: 2800000, guid: d23814b1f2c762249b3ae729edd1c1d4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: {}
+    m_Floats:
+      _AlphaCutoff: 0.5
+      _FADE_END_EDGE: 0
+      _FADE_START_EDGE: 1
+      _GradientStop1: 0.98
+      _GradientStop2: 0.9
+      _GradientStop3: 0.6
+      _InvFade: 1
+      _QueueControl: 0
+      _QueueOffset: 0
+      _TimeScale: 2
+      __dirty: 1
+    m_Colors:
+      _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+      _Influences: {r: 1, g: 1, b: 4.26, a: 1}
+      _ScaleOffsetA: {r: 0.5, g: 1, b: 0, a: 0}
+      _ScaleOffsetB: {r: 3, g: 1, b: 0, a: 0}
+      _ScaleOffsetG: {r: 3, g: 1, b: 0, a: 0}
+      _ScaleOffsetR: {r: 4, g: 1, b: 0, a: 0}
+      _SpeedA: {r: -2, g: 0, b: 0, a: 0}
+      _SpeedB: {r: -0.2, g: -0.1, b: 0, a: 0}
+      _SpeedG: {r: -0.5, g: -0.2, b: 0, a: 0}
+      _SpeedR: {r: -0.1, g: -0.1, b: 0, a: 0}
+      _TintColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

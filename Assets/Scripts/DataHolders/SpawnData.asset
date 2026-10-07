@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bf50812f3eb3f345bb5514b5a72f92e, type: 3}
+  m_Name: SpawnData
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
+  SpawnMode: v2.3t
+  InitialCheck: 
+  ErrorRoom:
+    position: {x: 31.352356, y: -0.69280815, z: -204.77231}
+    eulerAngles: {x: -0, y: 0, z: 0}
+    disableFlashlight: 0
+    changeMaps: 0
+    maps: []
+  BasicSpawn:
+    position: {x: -90, y: 15, z: -137}
+    eulerAngles: {x: 0, y: 0, z: 0}
+    disableFlashlight: 0
+    changeMaps: 0
+    maps: []
+  TutorialSpawns:
+  - position: {x: -27.3, y: -75.5, z: -158}
+    eulerAngles: {x: 0, y: -160, z: 0}
+    disableFlashlight: 0
+    changeMaps: 0
+    maps: []
+  TutorialMatches:
+  - link: resonator
+    sd:
+      position: {x: -27.3, y: -75.5, z: -158}
+      eulerAngles: {x: 0, y: -160, z: 0}
+      disableFlashlight: 0
+      changeMaps: 1
+      maps:
+      - Tutorial
+  - link: didtutorial
+    sd:
+      position: {x: -90, y: 15, z: -137}
+      eulerAngles: {x: 0, y: 0, z: 0}
+      disableFlashlight: 0
+      changeMaps: 0
+      maps: []
+  - link: huthut
+    sd:
+      position: {x: -144, y: 37, z: 51}
+      eulerAngles: {x: 0, y: 0, z: 0}
+      disableFlashlight: 0
+      changeMaps: 1
+      maps:
+      - Forest
+  SpawnMatch:
+  - link: A2
+    sd:
+      position: {x: -90, y: 15, z: -137}
+      eulerAngles: {x: 0, y: -90, z: 0}
+      disableFlashlight: 0
+      changeMaps: 1
+      maps: []
+  - link: UGT
+    sd:
+      position: {x: 35, y: 16, z: -20}
+      eulerAngles: {x: 0, y: 0, z: 0}
+      disableFlashlight: 0
+      changeMaps: 1
+      maps: []
+  - link: v2.3t
+    sd:
+      position: {x: -82, y: -18, z: -157}
+      eulerAngles: {x: 0, y: 0, z: 0}
+      disableFlashlight: 0
+      changeMaps: 0
+      maps: []

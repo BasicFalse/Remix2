@@ -1,0 +1,44 @@
+{
+  "actions": [
+    {
+      "name": "/actions/RemixControl/in/A",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/RemixControl/in/B",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/RemixControl/in/X",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/RemixControl/in/Y",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/RemixControl/in/TriggerL",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/RemixControl/in/TriggerR",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/RemixControl/in/GripL",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/RemixControl/in/GripR",
+      "type": "vector1"
+    }
+  ],
+  "action_sets": [
+    {
+      "name": "/actions/RemixControl",
+      "usage": "leftright"
+    }
+  ],
+  "default_bindings": [],
+  "localization": []
+}

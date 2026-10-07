@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden_CameraGlitch
+  m_Shader: {fileID: 4800000, guid: 196e130d90fdde844a47c9add3a5724d, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BleedRadius: 0.00284
+    - _BleedStrength: 0.141
+    - _BlockSize: 0.021908596
+    - _ColorBleed: 0
+    - _ColorBleedX: 0
+    - _ColorBleedY: 0
+    - _Intensity: 0.022
+    - _Jitter: 0.1
+    - _JumpChance: 0.2260426
+    - _JumpStrength: 0.3173657
+    - _MoveMask: 1
+    - _Seed: 0
+    - _TimeSeed: 271.8153
+    m_Colors:
+    - _RandomOffset: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

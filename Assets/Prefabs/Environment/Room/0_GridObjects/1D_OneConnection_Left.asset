@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84a9da71d9f0aa4ab07445e2834a9c8, type: 3}
+  m_Name: 1D_OneConnection_Left
+  m_EditorClassIdentifier: 
+  yRotation: 270
+  roomType: 1
+  roomConnections: 1
+  possibleUpConnections: []
+  possibleRightConnections: []
+  possibleDownConnections: []
+  possibleLeftConnections:
+  - {fileID: 11400000, guid: 6981da390579cc04992186e44d2e7179, type: 2}
+  - {fileID: 11400000, guid: 6a28825534a50ad4aab53e2588fe9469, type: 2}
+  - {fileID: 11400000, guid: 2f31a797ce7b74a41baf8e9495fb25f9, type: 2}
+  - {fileID: 11400000, guid: 9c6c17e4f1a5d5d4f8cfb6b55057918c, type: 2}
+  - {fileID: 11400000, guid: 7e2147f0a4559614fa7cd1b1ba56cb76, type: 2}
+  - {fileID: 11400000, guid: 61d3f97312039c846ac9ebde2aaa219e, type: 2}
+  - {fileID: 11400000, guid: fb71c639043c4bb44b59e22ddc3c23ad, type: 2}
+  - {fileID: 11400000, guid: 5d51da1f9d2bcca4e9a42e0cd6f98d1e, type: 2}
+  - {fileID: 11400000, guid: cfabd51e804b35c4aadd57e91c3a0b67, type: 2}
+  - {fileID: 11400000, guid: 35df648d01bf61a45b5d1c47c558a5b5, type: 2}
+  - {fileID: 11400000, guid: 1b5faacb95016c44ea5164737cfa31b8, type: 2}
+  generationCoordinate: {x: 0, y: 0}
+  roomGenerationDataReference: {fileID: 0}
