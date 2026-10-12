@@ -269,10 +269,10 @@ public class GorillaClimb : MonoBehaviour
             }
         }
 
-        vibration.StartVibration(
+        PlayerBase.i.GorillaVibration.StartVibration(
             hand == EasyHand.LeftHand,
-            vibration.tapHapticStrength,
-            vibration.tapHapticDuration
+            GorillaVibration.tapHapticStrength,
+            GorillaVibration.tapHapticDuration
         );
 
         if (GatheredData.dograbsound)

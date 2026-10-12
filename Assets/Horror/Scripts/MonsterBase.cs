@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using System.Collections.Generic;
+using GorillaNetworking;
 
 public class MonsterBase : MonoBehaviourPunCallbacks
 {
@@ -199,10 +200,10 @@ public class MonsterBase : MonoBehaviourPunCallbacks
     /// <returns></returns>
     public virtual Vector3 ClosestPlayer()
     {
-        if (MiscGrabs.grab == null || MiscGrabs.grab.PlayerCameras.Count == 0)
-            return new Vector3();
+        if (!GorillaComputer.instance.isInRoom)
+            return MiscGrabs.grab.GetPlayerPosition();
 
-        float closestDistance = Mathf.Infinity;
+        float closestDistance = Vector3.Distance(transform.position, MiscGrabs.grab.GetPlayerPosition());
         Transform closest = null;
 
         foreach (Transform p in MiscGrabs.grab.PlayerCameras)
@@ -268,6 +269,17 @@ public class MonsterBase : MonoBehaviourPunCallbacks
         return closest;
     }
 
+    public virtual Vector3 GetPlayerPosition()
+    {
+        if(MiscGrabs.grab.DoesPlayerExist())
+        {
+            return MiscGrabs.grab.GetPlayerPosition();
+        }
+        else
+        {
+            return new Vector3();
+        }
+    }
 
     public virtual void ToggleLight(bool t)
     {

@@ -8,11 +8,8 @@ using System.IO;
 public class SceneLoader : RemixScript
 {
     private static readonly WaitForSeconds _waitForSeconds5 = new(5f);
-    public bool startLoading;
     public bool isLoading;
     public bool canDo;
-    public bool willDo;
-    public bool doneDid;
     public Slider loadBar;
     public Text loadText;
     public float dotDotDot;
@@ -35,28 +32,11 @@ public class SceneLoader : RemixScript
             canDo = true;
         }
 
-        if (Application.platform != RuntimePlatform.Android)
-        {
-            willDo = false;
-        }
-        else
-        {
-            willDo = true;
-        }
-
-        if (startLoading && !isLoading && canDo && willDo)
+        if (!isLoading && canDo)
         {
             StartCoroutine(LoadSceneAsync(sceneToLoad));
         }
 
-        if(canDo && willDo && !isLoading)
-        {
-            startLoading = true;
-        }
-        else
-        {
-            startLoading = false;
-        }
             dotDotDot -= Time.deltaTime * 3f;
         if (dotDotDot <= 0)
             dotDotDot = 10;
@@ -90,5 +70,6 @@ public class SceneLoader : RemixScript
         }
 
         isLoading = false;
+        canDo = false;
     }
 }

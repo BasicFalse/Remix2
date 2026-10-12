@@ -4,8 +4,14 @@ using UnityEngine.UI;
 
 public class OverlayBuilder : MonoBehaviour
 {
+    public static volatile OverlayBuilder instance;
 
     public GameObject[] BetaObjects;
+
+    public MeshRenderer ScreenColorOverlay;
+
+    public GameObject MainCanvas;
+    public GameObject DebugCanvas;
 
     public Text BetaName;
     public Text BetaVersion;
@@ -15,13 +21,20 @@ public class OverlayBuilder : MonoBehaviour
 
     public void Start()
     {
-        foreach(GameObject go in BetaObjects)
+        if (instance == null)
         {
-            go.SetActive(beta);
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(base.gameObject);
         }
 
         versionCache = MiscGrabs.grab.Version.strung;
-        nameCache = GorillaComputer.instance.offlineVRRigNametagText.text;
+        nameCache = PlayerPrefs.GetString("playerName", "gorilla");
+
+        MainCanvas.SetActive(GorillaComputer.instance.showCameraOverlay);
+        DebugCanvas.SetActive(GorillaComputer.instance.showDeveloperVisuals);
 
         switch (nameCache)
         {

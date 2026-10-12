@@ -101,6 +101,13 @@ public class CosmeticsController : MonoBehaviour
             
         }
         UpdateWardrobeModelsAndButtons();
+        if(MiscGrabs.grab.DoesPlayerExist())
+        RigController.Instance.LocalUpdateCosmetics(currentWornSet);
+    }
+
+    public void RefreshRigCosmetics()
+    {
+        if(MiscGrabs.grab.DoesPlayerExist())
         RigController.Instance.LocalUpdateCosmetics(currentWornSet);
     }
 

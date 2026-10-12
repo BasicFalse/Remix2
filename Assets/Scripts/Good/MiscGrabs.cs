@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GorillaNetworking;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -8,13 +9,12 @@ public class MiscGrabs : RemixScript
 
     public HitOverrideSettings HOS;
     public SpawnManager SM;
-    public Transform PlayerPosition;
     public DataHolder Version;
 
     public Material MatTemp;
     public RenderTexture RendTexTemp;
-
-    public MapGeoController MGC;
+    
+    public OverlayBuilder Overlay;
 
     public List<MonsterBase> monsters;
 
@@ -30,6 +30,23 @@ public class MiscGrabs : RemixScript
     public void Awake()
     {
         if (grab == null) { grab = this; } else if (grab != this) { DestroyImmediate(this.gameObject); }
+    }
+
+    public bool DoesPlayerExist()
+    {
+        return GorillaComputer.instance.PlayerObjectCache != null;
+    }
+
+    public Vector3 GetPlayerPosition()
+    {
+        if (DoesPlayerExist())
+        {
+            return PlayerBase.i.transforms.Camera.position;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
     }
 
     public int2 GetOverrideRange(GorillaSurfaceOverride.HitType HitNom, out int2 range)

@@ -27,7 +27,6 @@ namespace GorillaNetworking
             public GorillaLevelScreen[] joinScreens;
             public GorillaLevelScreen[] leaveScreens;
         }
-        
 
         public ComputerState currentState;
 
@@ -36,6 +35,9 @@ namespace GorillaNetworking
         public static volatile GorillaComputer instance;
 
         public StartupManager StartupManager;
+
+        public GameObject PlayerPrefab;
+        public GameObject PlayerObjectCache;
 
         public long dateNTimeRawer;
 
@@ -144,14 +146,9 @@ namespace GorillaNetworking
 
         private bool fetchedMOTD = false;
 
-        public Camera playerCam;
+        public Camera playerCam => PlayerBase.i.resources.playerCam;
 
         public DateTime dateNTimeRaw;
-
-        public GameObject Overlay;
-        public GameObject DebugObjectParent;
-
-        public Text offlineVRRigNametagText;
 
         public Material unpressedMaterial;
 
@@ -170,17 +167,15 @@ namespace GorillaNetworking
 
         public ContinuousTurnProvider turnProviderSmooth;
 
-        public SmoothedCameraLight flashlightSmoothingControl;
+        public SmoothedCameraLight flashlightSmoothingControl => PlayerBase.i.resources.FlashlightSmoothing;
 
         public PhotonNetworkController networkController;
 
         public CosmeticsController cosmeticsController;
 
-        public GorillaVibration playerGV;
-
         public NameTagManagers nametagManager;
 
-        public LightCuller lightCuller;
+        public LightCuller lightCuller => PlayerBase.i.resources.lightCulling;
 
         public TimeFetcher TFs;
 
@@ -212,7 +207,7 @@ namespace GorillaNetworking
         }
         private void Start()
         {
-            
+            PlayerExistanceCheck();
             //foreach (GorillaTerminal gt in terminals)
             {
                 //gt.Image.gameObject.SetActive(false);
@@ -249,6 +244,7 @@ namespace GorillaNetworking
         }
         private void Update()
         {
+            PlayerExistanceCheck();
             if(!PhotonNetwork.InLobby && !PhotonNetwork.InRoom)
             {
                 //currentRoomMod = currentGameMod;
@@ -271,6 +267,23 @@ namespace GorillaNetworking
                 currentState = ComputerState.Name;
             }
             UpdateScreen();
+        }
+
+        public void PlayerExistanceCheck()
+        {
+            if(PlayerBase.i == null)
+            {
+                if(PlayerObjectCache != null)
+                {
+                    Destroy(PlayerObjectCache);
+                }
+                PlayerObjectCache = Instantiate(PlayerPrefab, Vector3.zero, Quaternion.identity);
+                PlayerObjectCache.GetComponent<PlayerInit>().WakeNewPlayer();
+            }
+            if(PlayerObjectCache == null)
+            {
+                PlayerObjectCache = PlayerBase.i.transforms.PlayerRoot.gameObject;
+            }
         }
 
         public void PressButton(GorillaKeyboardButton buttonPressed)
@@ -338,7 +351,10 @@ namespace GorillaNetworking
                     swd.colorSliderController.SetSliderValues(redValue, greenValue, blueValue);
                 }
             }
-            playerGV.UpdateColor(redValue, greenValue, blueValue);
+            if(MiscGrabs.grab.DoesPlayerExist())
+            {
+                PlayerBase.i.GorillaVibration.UpdateColor(redValue, greenValue, blueValue);
+            }
         }
         private void InitializeNameState()
         {
@@ -352,6 +368,8 @@ namespace GorillaNetworking
         private void InitializeTurnState()
         {
             turnType = PlayerPrefs.GetString("Turning", "NONE");
+
+            return;
 
             if (turnType == "SNAP")
             {
@@ -435,10 +453,12 @@ namespace GorillaNetworking
             flashlightSmoothingControl.SetSmoothing(smoothFlashlightMotion);
             nametagManager.visible = showNametags;
             lightCuller.Initialize(LightCullDistance);
-            Overlay.SetActive(showCameraOverlay);
+            if(OverlayBuilder.instance)
+                OverlayBuilder.instance.MainCanvas.SetActive(showCameraOverlay);
             if(showDeveloperVisuals){playerCam.cullingMask |= 1 << LayerMask.NameToLayer("DEV");}
             else{playerCam.cullingMask &= ~(1 << LayerMask.NameToLayer("DEV"));}
-            DebugObjectParent.SetActive(showDeveloperVisuals);
+            if(OverlayBuilder.instance)
+                OverlayBuilder.instance.DebugCanvas.SetActive(showDeveloperVisuals);
             foreach (MirrorInstance mi in mirrorInstances)
             {
                 mi.UpdateMirror(MirrorQualityLevel);
@@ -528,7 +548,7 @@ namespace GorillaNetworking
                 PlayerPrefs.SetFloat("redValue", redValue);
                 PlayerPrefs.SetFloat("greenValue", greenValue);
                 PlayerPrefs.SetFloat("blueValue", blueValue);
-                playerGV.UpdateColor(redValue, greenValue, blueValue);
+                PlayerBase.i.GorillaVibration.UpdateColor(redValue, greenValue, blueValue);
                 PlayerPrefs.Save();
                 if (debug) {
                     Debug.Log("GORILLA COMPUTER : CURRENT COLORS ARE NOW ; " + redValue + ", " + greenValue + ", " + blueValue);
@@ -547,7 +567,7 @@ namespace GorillaNetworking
                 }
                 if (PhotonNetwork.InRoom)
                 {
-                    playerGV.myVRRig.photonView.RPC("SyncMaterial", RpcTarget.All, redValue, greenValue, blueValue);
+                    PlayerBase.i.GorillaVibration.myVRRig.photonView.RPC("SyncMaterial", RpcTarget.All, redValue, greenValue, blueValue);
                 }
             }
             else
@@ -595,13 +615,13 @@ namespace GorillaNetworking
                             PhotonNetwork.LocalPlayer.NickName = "gorilla";
                             currentName = "gorilla";
                         }
-                        offlineVRRigNametagText.text = currentName;
+                        PlayerBase.i.resources.playerNametag.text = currentName;
                         savedName = currentName;
                         PlayerPrefs.SetString("playerName", currentName);
                         PlayerPrefs.Save();
                         if (PhotonNetwork.InRoom)
                         {
-                            playerGV.myVRRig.photonView.RPC("SyncMaterial", RpcTarget.All, redValue, greenValue, blueValue);
+                            PlayerBase.i.GorillaVibration.myVRRig.photonView.RPC("SyncMaterial", RpcTarget.All, redValue, greenValue, blueValue);
                         }
                     }
                     break;
@@ -759,14 +779,16 @@ namespace GorillaNetworking
                                 case 0:
                                     showCameraOverlay = !showCameraOverlay;
                                     PlayerPrefs.SetString("ShowCameraOverlay", showCameraOverlay ? "TRUE" : "FALSE");
-                                    Overlay.SetActive(showCameraOverlay);
+                                    if(OverlayBuilder.instance)
+                                        OverlayBuilder.instance.MainCanvas.SetActive(showCameraOverlay);
                                     break;
                                 case 1:
                                     showDeveloperVisuals = !showDeveloperVisuals;
                                     PlayerPrefs.SetString("showDeveloperVisuals", showDeveloperVisuals ? "TRUE" : "FALSE");
                                     if(showDeveloperVisuals){playerCam.cullingMask |= 1 << LayerMask.NameToLayer("DEV");}
                                     else{playerCam.cullingMask &= ~(1 << LayerMask.NameToLayer("DEV"));}
-                                    DebugObjectParent.SetActive(showDeveloperVisuals);
+                                    if(OverlayBuilder.instance)
+                                        OverlayBuilder.instance.DebugCanvas.SetActive(showDeveloperVisuals);
                                     break;
                             }
                             break;
@@ -1273,6 +1295,15 @@ namespace GorillaNetworking
             networkController.WrongVersion();
             UpdateScreen();
         }
+
+        public void RefreshRigColor()
+        {
+            if(MiscGrabs.grab.DoesPlayerExist())
+            {
+                PlayerBase.i.GorillaVibration.UpdateColor(redValue, greenValue, blueValue);
+            }
+        }
+
         public void UpdateConectivityStatus(ConectivityState State)
         {
             conectivityState = State;
@@ -1344,7 +1375,7 @@ namespace GorillaNetworking
             PlayerPrefs.SetFloat("redValue", redValue);
             PlayerPrefs.SetFloat("greenValue", greenValue);
             PlayerPrefs.SetFloat("blueValue", blueValue);
-            playerGV.UpdateColor(redValue, greenValue, blueValue);
+            PlayerBase.i.GorillaVibration.UpdateColor(redValue, greenValue, blueValue);
             PlayerPrefs.Save();
 
             Debug.Log("GORILLA COMPUTER : SETTING WARDROBE COLOR SLIDERS AS; " + RedNew + ", " + GreenNew + ", " + BlueNew);
@@ -1352,7 +1383,7 @@ namespace GorillaNetworking
 
             if (PhotonNetwork.InRoom)
             {
-                playerGV.myVRRig.photonView.RPC("SyncMaterial", RpcTarget.All, redValue/9, greenValue/9, blueValue/9);
+                PlayerBase.i.GorillaVibration.myVRRig.photonView.RPC("SyncMaterial", RpcTarget.All, redValue/9, greenValue/9, blueValue/9);
             }
 
             if (currentState == ComputerState.Color)

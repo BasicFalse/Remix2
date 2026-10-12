@@ -88,7 +88,7 @@ namespace Photon.Voice.PUN
                     }
                     if (!instantiated)
                     {
-                        PhotonVoiceNetwork[] objects = FindObjectsByType<PhotonVoiceNetwork>();
+                        PhotonVoiceNetwork[] objects = FindObjectsOfType<PhotonVoiceNetwork>();
                         if (objects == null || objects.Length < 1)
                         {
                             GameObject singleton = new GameObject();

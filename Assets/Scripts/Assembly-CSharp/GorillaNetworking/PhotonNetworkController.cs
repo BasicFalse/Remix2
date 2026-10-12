@@ -70,8 +70,6 @@ namespace GorillaNetworking
 		public GameObject roomManager;
 		public PhotonRoomManagerMain roomManagerMain;
 
-		public GameObject playerOffset;
-
 		public bool attemptingToConnect;
 
 		private int currentRegionIndex;
@@ -196,40 +194,7 @@ namespace GorillaNetworking
 
 		public void FixedUpdate()
 		{
-			if (currentState != ConnectionState.Initialization)
-			{
-				currentStateVisible = currentState;
-				headRightHandDistance = (PlayerBase.@i.colliders.headCollider.transform.position - PlayerBase.@i.RPhysical.rightHandTransform.position).magnitude;
-				headLeftHandDistance = (PlayerBase.@i.colliders.headCollider.transform.position - PlayerBase.@i.RPhysical.leftHandTransform.position).magnitude;
-				headQuat = PlayerBase.@i.colliders.headCollider.transform.rotation;
-				if (!debug && Quaternion.Angle(headQuat, lastHeadQuat) <= 0.01f && Mathf.Abs(headRightHandDistance - lastHeadRightHandDistance) < 0.001f && Mathf.Abs(headLeftHandDistance - lastHeadLeftHandDistance) < 0.001f && pauseTime + disconnectTime < Time.realtimeSinceStartup)
-				{
-					pauseTime = Time.realtimeSinceStartup;
-					SetPlayerPosition(MiscGrabs.grab.SM.CurrentSpawnDat().position);
-					//PlayerBase.@i.RPhysical.InitializeValues();
-					GameObject[] array = disableOnStartup;
-					if (!debug)
-					{
-						for (int i = 0; i < array.Length; i++)
-						{
-							array[i].SetActive(value: false);
-						}
-						array = enableOnStartup;
-						for (int j = 0; j < array.Length; j++)
-						{
-							array[j].SetActive(value: true);
-						}
-					}
-					ProcessState(ConnectionEvent.Disconnect);
-				}
-				else if (Quaternion.Angle(headQuat, lastHeadQuat) > 0.01f || Mathf.Abs(headRightHandDistance - lastHeadRightHandDistance) >= 0.001f || Mathf.Abs(headLeftHandDistance - lastHeadLeftHandDistance) >= 0.001f)
-				{
-					pauseTime = Time.realtimeSinceStartup;
-				}
-				lastHeadRightHandDistance = headRightHandDistance;
-				lastHeadLeftHandDistance = headLeftHandDistance;
-				lastHeadQuat = headQuat;
-			}
+			currentStateVisible = currentState;
 		}
 
 		public void SetPlayerPosition(Vector3 Position)
@@ -823,7 +788,7 @@ namespace GorillaNetworking
 			}
 			if (PhotonNetwork.IsMasterClient)
 			{
-				roomManager = PhotonNetwork.InstantiateRoomObject("GorillaPrefabs/PhotonRoomManagerMain", playerOffset.transform.position, playerOffset.transform.rotation, 0);
+				roomManager = PhotonNetwork.InstantiateRoomObject("GorillaPrefabs/PhotonRoomManagerMain", new(), new(), 0);
 				roomManagerMain = roomManager.GetComponent<PhotonRoomManagerMain>();
 				/*if (value.ToString().Contains("CASUAL") || value.ToString().Contains("INFECTION"))
 				{
@@ -846,7 +811,7 @@ namespace GorillaNetworking
             };
 			PhotonNetwork.LocalPlayer.SetCustomProperties(hashtable);
 			
-			GameObject go = PhotonNetwork.Instantiate("GorillaPrefabs/GorillaPlayerRigOnline", playerOffset.transform.position, playerOffset.transform.rotation, 0);
+			GameObject go = PhotonNetwork.Instantiate("GorillaPrefabs/GorillaPlayerRigOnline", PlayerBase.i.transform.position, PlayerBase.i.transform.rotation, 0);
 			if(roomManagerMain){
 			roomManagerMain.rigs.Add(go.GetComponent<RigController>());}
 			PhotonNetwork.NickName = PlayerPrefs.GetString("playerName", "gorilla" + Random.Range(0, 9999).ToString().PadLeft(4, '0'));

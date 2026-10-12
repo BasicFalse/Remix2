@@ -476,13 +476,13 @@ public class HalloweenGhostChaser : MonoBehaviourPunCallbacks, IInRoomCallbacks,
 		if (Time.time > grabTime + minGrabCooldown)
 		{
 			grabTime = Time.time;
-			GorillaVibration.Instance.ApplyStatusEffect(GorillaVibration.StatusEffect.Frozen, 5);
-			GorillaVibration.Instance.StartVibration(forLeftController: true, GorillaVibration.Instance.taggedHapticStrength, GorillaVibration.Instance.taggedHapticDuration);
-			GorillaVibration.Instance.StartVibration(forLeftController: false, GorillaVibration.Instance.taggedHapticStrength, GorillaVibration.Instance.taggedHapticDuration);
+			PlayerBase.i.GorillaVibration.ApplyStatusEffect(GorillaVibration.StatusEffect.Frozen, 5);
+			PlayerBase.i.GorillaVibration.StartVibration(forLeftController: true, GorillaVibration.taggedHapticStrength, GorillaVibration.taggedHapticDuration);
+			PlayerBase.i.GorillaVibration.StartVibration(forLeftController: false, GorillaVibration.taggedHapticStrength, GorillaVibration.taggedHapticDuration);
 		}
 		if (Time.time < grabTime + grabDuration)
 		{
-			GorillaVibration.Instance.GetComponent<Rigidbody>().linearVelocity = Vector3.up * grabSpeed;
+			PlayerBase.i.GorillaVibration.GetComponent<Rigidbody>().linearVelocity = Vector3.up * grabSpeed;
 		}
 	}
 

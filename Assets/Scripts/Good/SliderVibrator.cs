@@ -10,7 +10,7 @@ public class SliderVibrator : MonoBehaviour
             Debug.Log("slidar slid");
             if (component != null)
             {
-                GorillaVibration.Instance.StartVibration(component.isLeftHand, GorillaVibration.Instance.tapHapticStrength / 2f, GorillaVibration.Instance.tapHapticDuration);
+                PlayerBase.i.GorillaVibration.StartVibration(component.isLeftHand, GorillaVibration.tapHapticStrength / 2f, GorillaVibration.tapHapticDuration);
             }
         }
     }

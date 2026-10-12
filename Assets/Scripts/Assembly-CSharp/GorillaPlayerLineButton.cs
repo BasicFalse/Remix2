@@ -86,10 +86,10 @@ public class GorillaPlayerLineButton : MonoBehaviour
             // Trigger haptic feedback
             if (component != null)
             {
-                GorillaVibration.Instance.StartVibration(
+                PlayerBase.i.GorillaVibration.StartVibration(
                     component.isLeftHand,
-                    GorillaVibration.Instance.tapHapticStrength / 2f,
-                    GorillaVibration.Instance.tapHapticDuration
+                    GorillaVibration.tapHapticStrength / 2f,
+                    GorillaVibration.tapHapticDuration
                 );
             }
         }

@@ -5,12 +5,10 @@ namespace GravNew
     [RequireComponent(typeof(Collider))]
     public class GravitySector : MonoBehaviour
     {
-        public GravSetting gravityType;
-        public bool active;
-        public bool reorient;
-        public float mass;
-        public Transform parGravity;
-        public Vector3 V3;
+        public GravitySectorController controller;
+        public bool active = true;
+        public bool reorient = true;
+        public float mass = 9.8f;
         public int priority;
 
         private void Awake()
@@ -25,17 +23,6 @@ namespace GravNew
             {
                 passer.EnterSector(this);
             }
-            /*
-            var grav = other.GetComponent<NormalisedGravity>();
-            if (grav != null && active)
-            {
-                grav.target = parGravity;
-                grav.gravityStrength = mass;
-                grav.V3 = V3;
-                grav.isInSector = true;
-                grav.gravType = gravityType;
-            }
-            */
         }
 
         private void OnTriggerExit(Collider other)
@@ -44,14 +31,21 @@ namespace GravNew
             {
                 passer.ExitSector(this);
             }
-            /*
-            var grav = other.GetComponent<NormalisedGravity>();
-            if (grav != null && active && grav.target == parGravity)
+        }
+
+        public Vector3 GetGravityDirection(Vector3 Position)
+        {
+            if (controller)
             {
-                grav.target = null;
-                grav.isInSector = false;
+                return controller.CalculateGravityDirection(Position).normalized;
             }
-            */
+            else
+                return Vector3.one;
+        }
+
+        public Vector3 GetGravityVector(Vector3 Position)
+        {
+            return GetGravityDirection(Position) * mass;
         }
     }
 }

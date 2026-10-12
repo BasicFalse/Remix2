@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GorillaSurfaceOverride : MonoBehaviour
 {
-	public enum HitType{Set, Crystal}
+	public enum HitType{Set, Crystal, Pumpkin, Soft}
 	public HitType SoundSet;
 	public int overrideIndex;
 
@@ -19,6 +19,12 @@ public class GorillaSurfaceOverride : MonoBehaviour
 				int2 w;
 				MiscGrabs.grab.GetOverrideRange(SoundSet, out w);
 				overrideIndex = UnityEngine.Random.Range(w.x,w.y);
+				break;
+			case HitType.Pumpkin:
+				overrideIndex = 95;
+				break;
+			case HitType.Soft:
+				overrideIndex = 5;
 				break;
 		}
     }

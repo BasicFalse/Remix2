@@ -1,54 +1,58 @@
 fileFormatVersion: 2
 guid: 786588473c28a4b4fa3496fa2fcd5a5b
+timeCreated: 1432894402
+licenseType: Store
 PluginImporter:
-  externalObjects: {}
-  serializedVersion: 3
+  serializedVersion: 1
   iconMap: {}
   executionOrder: {}
-  defineConstraints: []
   isPreloaded: 0
-  isOverridable: 0
-  isExplicitlyReferenced: 0
-  validateReferences: 1
   platformData:
     Android:
       enabled: 1
       settings:
-        AndroidLibraryDependee: UnityLibrary
-        AndroidSharedLibraryType: Executable
-        CPU: ARMv7
-        Is16KbAligned: false
+        CPU: x86
     Any:
       enabled: 0
-      settings:
-        Exclude Android: 0
-        Exclude Editor: 1
-        Exclude Linux64: 1
-        Exclude OSXUniversal: 1
-        Exclude Win: 1
-        Exclude Win64: 1
+      settings: {}
     Editor:
       enabled: 0
       settings:
         CPU: AnyCPU
         DefaultValueInitialized: true
         OS: AnyOS
+    Linux:
+      enabled: 0
+      settings:
+        CPU: x86
     Linux64:
       enabled: 0
       settings:
+        CPU: x86_64
+    OSXIntel:
+      enabled: 0
+      settings:
         CPU: AnyCPU
-    OSXUniversal:
+    OSXIntel64:
       enabled: 0
       settings:
         CPU: AnyCPU
     Win:
       enabled: 0
       settings:
-        CPU: x86
+        CPU: AnyCPU
     Win64:
       enabled: 0
       settings:
         CPU: AnyCPU
+    WindowsStoreApps:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+        DontProcess: False
+        PlaceholderPath: 
+        SDK: AnySDK
+        ScriptingBackend: AnyScriptingBackend
   userData: 
   assetBundleName: 
   assetBundleVariant: 

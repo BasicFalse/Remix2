@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1479541540527138751}
   - component: {fileID: 2361365460174571419}
   - component: {fileID: 2977832166278158361}
-  - component: {fileID: 9041169803230304739}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -42,7 +41,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481887861756021776}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
@@ -94,7 +93,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -128,41 +127,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!114 &9041169803230304739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1481887861756021776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57f24a4aaa0761b45ba25e7e5108e2c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UID: 71855695
-  color: {r: 1, g: 1, b: 1, a: 1}
-  intensity: 2
-  shadowSpread: 0.05
-  cutoff: 20
-  realisticFalloff: 1
-  legacySampling: 1
-  samples: 8
-  projMode: 0
-  cookie: {fileID: 0}
-  angle: 30
-  innerAngle: 0
-  cubemap: {fileID: 0}
-  iesFile: {fileID: 0}
-  bitmask: 1
-  bakeToIndirect: 0
-  shadowmask: 0
-  shadowmaskFalloff: 0
-  indirectIntensity: 1
-  falloffMinRadius: 0.01
-  shadowmaskGroupID: 0
-  directionMode: 0
-  maskChannel: 0
 --- !u!1 &1617382123339922529
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eba182776d0aa9e4082209ace9aada77, type: 2}
+  - {fileID: 2100000, guid: 99cf5ea31e6822545813965b3407a5b0, type: 2}
   - {fileID: 2100000, guid: 645ffeebb3c37014e971b4f3d4cb0c67, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -290,7 +254,6 @@ GameObject:
   - component: {fileID: 4059457571156363535}
   - component: {fileID: 2881266806476299184}
   - component: {fileID: 2288700920414939226}
-  - component: {fileID: 3156783686490755483}
   m_Layer: 0
   m_Name: Point Light (1)
   m_TagString: Untagged
@@ -321,7 +284,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869682116025257933}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
@@ -373,7 +336,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -407,41 +370,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!114 &3156783686490755483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869682116025257933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57f24a4aaa0761b45ba25e7e5108e2c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UID: -1322489548
-  color: {r: 1, g: 1, b: 1, a: 1}
-  intensity: 2
-  shadowSpread: 0.05
-  cutoff: 20
-  realisticFalloff: 1
-  legacySampling: 1
-  samples: 8
-  projMode: 0
-  cookie: {fileID: 0}
-  angle: 30
-  innerAngle: 0
-  cubemap: {fileID: 0}
-  iesFile: {fileID: 0}
-  bitmask: 1
-  bakeToIndirect: 0
-  shadowmask: 0
-  shadowmaskFalloff: 0
-  indirectIntensity: 1
-  falloffMinRadius: 0.01
-  shadowmaskGroupID: 0
-  directionMode: 0
-  maskChannel: 0
 --- !u!1 &6834874656639292658
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +439,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d18847cbd1ce452439b5a918e35eff11, type: 2}
+  - {fileID: 2100000, guid: 11b8fc1f7d35fc44ca42e2504bfb3393, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -1130,6 +1130,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1440079386722169501
 GameObject:
@@ -1206,7 +1207,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1440079386722156514}
   - component: {fileID: 3038886946172593255}
-  - component: {fileID: 8347339677785593058}
   - component: {fileID: 1440079386722107791}
   - component: {fileID: 1440079386722105344}
   - component: {fileID: 1440079386722105998}
@@ -1215,6 +1215,7 @@ GameObject:
   - component: {fileID: 1440079386722107079}
   - component: {fileID: 9093865429627549053}
   - component: {fileID: 2462518544533422198}
+  - component: {fileID: 6402490889910524232}
   m_Layer: 28
   m_Name: TimmyFull
   m_TagString: Enemy
@@ -1251,30 +1252,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae9323062e067f49bdd241ac862ff47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addedToMisc: 0
+  init: 0
+  resetPosition: 1
+  initialPosition: {x: 0, y: 0, z: 0}
+  MonLight: {fileID: 4506372829146707658}
   moveSpeed: 8
   chaseRange: 10
   stoppingDistance: 1
   timeToShowGameObject: 2
   rotationSensitivity: 2
-  MonLight: {fileID: 4506372829146707658}
-  targetPlayer: {fileID: 0}
-  initialPosition: {x: 0, y: 0, z: 0}
+  targetPlayer: {x: 0, y: 0, z: 0}
   isCollided: 0
-  addedToMisc: 0
---- !u!114 &8347339677785593058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440079386722170968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc20699523c8d243b7bd12812c0865a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JST: 0
-  jumpscareDuration: 1.5
 --- !u!54 &1440079386722107791
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1595,6 +1584,19 @@ AudioLowPassFilter:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6402490889910524232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440079386722170968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d86b2a710b106f4cbe26da664866039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpscareCaller
+  jumpscareID: Timmy
 --- !u!1 &1440079386722171059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,6 +1807,7 @@ SkinnedMeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -2034,6 +2037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5640573740366781474}
   - component: {fileID: 4506372829146707658}
+  - component: {fileID: 3753426716474968954}
   m_Layer: 28
   m_Name: Point Light
   m_TagString: Untagged
@@ -2064,14 +2068,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7384727109295130481}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 13
   m_Type: 2
   m_Color: {r: 1, g: 0.04171858, b: 0, a: 1}
   m_Intensity: 0.76
   m_Range: 6.04
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 1
     m_Resolution: -1
@@ -2116,11 +2120,40 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &3753426716474968954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7384727109295130481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &8603448741636282436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,6 +2209,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

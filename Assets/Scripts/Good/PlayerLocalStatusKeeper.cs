@@ -5,6 +5,7 @@ using System.Collections;
 using Photon.Pun;
 using GorillaNetworking;
 using GorillaRigging;
+using UFunction;
 
 public enum FlashEffect
 {
@@ -32,7 +33,7 @@ public class PlayerLocalStatusKeeper : MonoBehaviourPun
     private bool LHClimb;
     private bool RHClimb;
 
-    public MeshRenderer ScreenColorOverlay;
+    public OverlayBuilder Overlay;
 
     public Gradient FlashbangGradient;
     public Gradient BlackbangGradient;
@@ -48,11 +49,15 @@ public class PlayerLocalStatusKeeper : MonoBehaviourPun
         {
             Instance = this;
         }
+    }
+
+    void Start()
+    {
         NG.reorient = reorient;
         RB.freezeRotation = lockRotation;
         Color final = new(){r = 0,g=0,b=0,a=0};
-        ScreenColorOverlay.sharedMaterial.SetColor("_EmissionColor", final);
-        ScreenColorOverlay.sharedMaterial.SetColor("_BaseColor", final);
+        Overlay.ScreenColorOverlay.sharedMaterial.SetColor("_EmissionColor", final);
+        Overlay.ScreenColorOverlay.sharedMaterial.SetColor("_BaseColor", final);
     }
 
     void Update()
@@ -89,6 +94,7 @@ public class PlayerLocalStatusKeeper : MonoBehaviourPun
 
         if (networked && GorillaComputer.instance.isInRoom)
         {
+            Startup.CallIt();
             photonView.RPC("SendFlashEffectCall", RpcTarget.Others, FlashEffectToInt(type), duration, position);
         }
     }
@@ -96,12 +102,14 @@ public class PlayerLocalStatusKeeper : MonoBehaviourPun
     [PunRPC]
     void SendFlashEffectCall(int type, float duration, Vector3 position)
     {
+        //if(duration > 3f) return;
+        return;
         RequestEffect(IntToFlashEffect(type), duration, position, false);
     }
 
     void FlashLikeEffect(Gradient gradient, float duration, Vector3 position)
     {
-        StartCoroutine(GradientFlash(gradient, ScreenColorOverlay, duration, ++CurrentScreenEffectIndex));
+        StartCoroutine(GradientFlash(gradient, Overlay.ScreenColorOverlay, duration, ++CurrentScreenEffectIndex));
     }
 
 

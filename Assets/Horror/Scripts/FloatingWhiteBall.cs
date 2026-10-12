@@ -72,7 +72,7 @@ public class FloatingWhiteBall : MonsterBase
 
     public override void OfflineMovement()
     {
-        targetPlayer = MiscGrabs.grab.PlayerPosition.position;
+        targetPlayer = GetPlayerPosition();
         
         List<Vector3> newpoints = new();
         foreach(Transform t in Points)

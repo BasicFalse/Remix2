@@ -52,9 +52,7 @@ public class MapGeoController : MonoBehaviour
     public bool playerIsUnderground;
     public bool playerIsAboveground;
     public Material TriggerMaterial;
-    public Mesh cubeMesh;
     public List<Map> Maps;
-    public List<Map> BGRegisteredMaps;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void InitializeOnLoad()
@@ -338,21 +336,21 @@ public class MapGeoController : MonoBehaviour
             {
                 errorSpawnCoords.position = m.Objects[1].transform.position;
                 errorSpawnCoords.eulerAngles = m.Objects[1].transform.eulerAngles;
-                GorillaVibration.Instance.GetComponent<Rigidbody>().transform.parent.SetPositionAndRotation
+                PlayerBase.i.resources.RB.transform.parent.SetPositionAndRotation
                 (m.Objects[1].transform.position, m.Objects[1].transform.rotation);
-                GorillaVibration.Instance.transform.localPosition = Vector3.zero;
+                PlayerBase.i.GorillaVibration.transform.localPosition = Vector3.zero;
             }
         }
 
         MiscGrabs.grab.SkyManager.DisableSkybox();
 
-        GorillaVibration.Instance.transform.localPosition = Vector3.zero;
+        PlayerBase.i.GorillaVibration.transform.localPosition = Vector3.zero;
         
         currentMaps.Clear();
         currentMaps.Add("ErrorRoom");
         RedoGeo();
 
-        GorillaVibration.Instance.transform.localPosition = Vector3.zero;
+        PlayerBase.i.GorillaVibration.transform.localPosition = Vector3.zero;
 
         return errorSpawnCoords;
     }

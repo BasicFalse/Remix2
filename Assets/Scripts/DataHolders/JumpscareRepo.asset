@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978e8f7bed5a31404be50daed95f6633, type: 3}
+  m_Name: JumpscareRepo
+  m_EditorClassIdentifier: Assembly-CSharp::JumpscareRepo
+  jumpscareVisuals:
+  - jumpscareID: Timmy
+    jumpscarePrefab: {fileID: 4344193552691641741, guid: 07031153d14196d4094a3ea0b24b0c1a, type: 3}

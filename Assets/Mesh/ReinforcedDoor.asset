@@ -2,12 +2,12 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!43 &4300000
 Mesh:
-  serializedVersion: 12
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ReinforcedDoor
+  serializedVersion: 12
   m_SubMeshes:
   - serializedVersion: 2
     firstByte: 0
@@ -17,7 +17,7 @@ Mesh:
     firstVertex: 0
     vertexCount: 24
     localAABB:
-      m_Center: {x: 2.5773421E-05, y: 0.014474094, z: -0.5253028}
+      m_Center: {x: 0.000025773421, y: 0.014474094, z: -0.5253028}
       m_Extent: {x: 0.050008148, y: 0.8079372, z: 0.5533796}
   m_Shapes:
     vertices: []
@@ -25,17 +25,17 @@ Mesh:
     channels: []
     fullWeights: []
   m_BindPose: []
-  m_BoneNameHashes:
+  m_BoneNameHashes: 
   m_RootBoneNameHash: 0
   m_BonesAABB: []
   m_VariableBoneCountWeights:
-    m_Data:
+    m_Data: 
   m_MeshCompression: 0
   m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
+  m_KeepVertices: 0
+  m_KeepIndices: 0
   m_IndexFormat: 0
-  m_IndexBuffer: 000001000200010003000200040005000600050007000600080009000a0009000b000a000c000d000e000d000f000e00100011001200110013001200140015001600150017001600
+  m_IndexBuffer: 000001000200010003000200040005000600050007000600080009000a0009000b000a000c000d000e000d000f000e00100011001200110013001200140015001600150017001600y
   m_VertexData:
     serializedVersion: 3
     m_VertexCount: 24
@@ -103,76 +103,79 @@ Mesh:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_UV:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Normals:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Tangents:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Weights:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_NormalSigns:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_TangentSigns:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_FloatColors:
       m_NumItems: 0
       m_Range: 0
       m_Start: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_BoneIndices:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_Triangles:
       m_NumItems: 0
-      m_Data:
+      m_Data: 
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: 2.5773421E-05, y: 0.014474094, z: -0.5253028}
+    m_Center: {x: 0.000025773421, y: 0.014474094, z: -0.5253028}
     m_Extent: {x: 0.050008148, y: 0.8079372, z: 0.5533796}
-  m_MeshUsageFlags: 16
   m_CookingOptions: 30
-  m_BakedConvexCollisionMesh:
-  m_BakedTriangleCollisionMesh: 4e5853014d4553480f0000000100000006000000080000000c00000052ba4cbd66204bbf60f6e53ceed94c3d66204bbf40f1e53c49ab4cbd8c89523f4001e63cf7e84c3d8c89523f20fce53c56e14c3d66204bbf44128abf5ff04c3d8c89523f18128abfe9b24cbd66204bbf2f128abfe0a34cbd8c89523f03128abf0203070305070002070001020103020607050104030405030406050600070604000401000b000000080907000105020304060a0b42563420030000000034d837c0246d3c3f7a06bfcb057b3f02000000a48dcd35167ed237e6190a38b2c3cd354c98d2376fa6673501000000080000000a80ff7f0180fb7f0180ff7f00000000ff7fff7f7284ff7f7284ff7f000000000180ff7f0180ff7f0180fd7f00000000050000004700000050250000ffffffff0580ff7f0180f67f00000000000000007284ff7f7284ff7f00000000000000000180fd7f0180fa7f0000000000000000a900000027010000ffffffffffffffff44128a3452ba4cbd66204bbf44128abf5ff04c3d8c89523f4001e63c0c000000281818281818281828282818
-  m_MeshMetrics[0]: 7.542496
-  m_MeshMetrics[1]: 1
+  m_PreBakeConvexCollisionMesh: 0
+  m_PreBakeTriangleCollisionMesh: 1
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  'm_MeshMetrics[0]': 7.542496
+  'm_MeshMetrics[1]': 1
   m_MeshOptimizationFlags: -1
   m_StreamData:
     serializedVersion: 2
     offset: 0
     size: 0
-    path:
+    path: 
   m_MeshLodInfo:
     serializedVersion: 2
     m_LodSelectionCurve:
+      serializedVersion: 1
       m_LodSlope: 0
       m_LodBias: 0
     m_NumLevels: 1
     m_SubMeshes:
     - serializedVersion: 2
       m_Levels:
-      - m_IndexStart: 0
+      - serializedVersion: 1
+        m_IndexStart: 0
         m_IndexCount: 0

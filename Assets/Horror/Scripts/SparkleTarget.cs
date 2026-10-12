@@ -1,8 +1,10 @@
 using UnityEngine;
 using GorillaRigging;
+using System;
 
 public class SparkleTarget : MonoBehaviour
 {
+    [Serializable]
     public class SparkleKillStage
     {
         public GameObject[] objects;

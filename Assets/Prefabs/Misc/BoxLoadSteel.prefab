@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a43e385058a55a14e8c3f7ce0a3ba192, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &4182594880319158704
 MeshFilter:
@@ -90,7 +91,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7578835980546376463}
-  m_Mesh: {fileID: 4300000, guid: 51cd3074cf8f0924b9decb354b8bb3bc, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b4e8816e31abf72429f5aefe75147eb8, type: 2}
 --- !u!64 &799926911921039841
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -112,7 +113,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51cd3074cf8f0924b9decb354b8bb3bc, type: 2}
+  m_Mesh: {fileID: 4300000, guid: b4e8816e31abf72429f5aefe75147eb8, type: 2}
 --- !u!114 &1596587758315957784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,4 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33098fa401ed6f067429db21df3c28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GorillaSurfaceOverride
+  SoundSet: 0
   overrideIndex: 26

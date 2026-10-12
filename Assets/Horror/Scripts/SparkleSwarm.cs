@@ -4,8 +4,6 @@ using GorillaRigging;
 [RequireComponent(typeof(SparkleDirector))]
 public class SparkleSwarm : MonoBehaviour
 {
-    public float RigDistance;
-    public RigController localRigController;
     public Vector3 averagePosition;
 
     [Header("Rendering")]
@@ -59,7 +57,6 @@ public class SparkleSwarm : MonoBehaviour
         matrices = new Matrix4x4[BATCH_SIZE];
         hueOffsets = new float[BATCH_SIZE];
         mpb = new MaterialPropertyBlock();
-        localRigController = RigController.Instance;
 
         for (int i = 0; i < boidCount; i++)
         {
@@ -176,9 +173,10 @@ public class SparkleSwarm : MonoBehaviour
     {
         float minDistance = 888;
         float lastboidDistance;
+        if(MiscGrabs.grab.DoesPlayerExist() == false)
         for(int i =0; i < boids.Length; i++)
         {
-            lastboidDistance = Vector3.Distance(boids[i].position, localRigController.transform.position);
+            lastboidDistance = Vector3.Distance(boids[i].position, MiscGrabs.grab.GetPlayerPosition());
             if(lastboidDistance < minDistance)
             {
                 minDistance = lastboidDistance;

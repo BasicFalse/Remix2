@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum PlayerType
 {
@@ -12,6 +13,10 @@ public class ResourcesContainer
     [SerializeField]
     public MaterialDatas materialData;
     public Rigidbody RB;
+    public SmoothedCameraLight FlashlightSmoothing;
+    public LightCuller lightCulling;
+    public Camera playerCam;
+    public Text playerNametag;
 }
 
 [Serializable]

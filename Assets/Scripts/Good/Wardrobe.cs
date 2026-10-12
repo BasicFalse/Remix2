@@ -31,6 +31,7 @@ public class Wardrobe : RemixScript
 
     void Update()
     {
+        if(!MiscGrabs.grab.DoesPlayerExist()) return;
         if (gorillaPlayer == null) { gorillaPlayer = PlayerBase.@i.gameObject; }
 
         currentDistance = Vector3.Distance(transform.position, gorillaPlayer.transform.position);

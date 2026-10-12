@@ -60,10 +60,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a450bc3893d3a264c97c04fa44134d34, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,9 +86,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64004777337472406
 MeshCollider:
@@ -119,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33098fa401ed6f067429db21df3c28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundSet: 0
   overrideIndex: 26
 --- !u!1 &1396143366868235
 GameObject:
@@ -217,10 +225,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a450bc3893d3a264c97c04fa44134d34, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,9 +251,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64000007660179306
 MeshCollider:
@@ -276,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33098fa401ed6f067429db21df3c28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundSet: 0
   overrideIndex: 26
 --- !u!1 &1644316988174166
 GameObject:
@@ -337,10 +353,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a450bc3893d3a264c97c04fa44134d34, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -358,9 +379,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64630614938081878
 MeshCollider:
@@ -396,6 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33098fa401ed6f067429db21df3c28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundSet: 0
   overrideIndex: 26
 --- !u!1 &1660442017760629
 GameObject:
@@ -457,10 +481,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a450bc3893d3a264c97c04fa44134d34, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -478,9 +507,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64955417768505865
 MeshCollider:
@@ -516,6 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33098fa401ed6f067429db21df3c28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundSet: 0
   overrideIndex: 26
 --- !u!1 &1679051227846362
 GameObject:
@@ -577,10 +609,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a450bc3893d3a264c97c04fa44134d34, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -598,9 +635,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64192355224375679
 MeshCollider:
@@ -636,6 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33098fa401ed6f067429db21df3c28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundSet: 0
   overrideIndex: 26
 --- !u!1 &1865500486007026
 GameObject:
@@ -697,10 +737,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a450bc3893d3a264c97c04fa44134d34, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -718,9 +763,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &64456658961003122
 MeshCollider:
@@ -756,4 +803,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33098fa401ed6f067429db21df3c28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundSet: 0
   overrideIndex: 26

@@ -18,12 +18,6 @@ public class GorillaVibration : MonoBehaviour
 		It
 	}
 
-#pragma warning disable UDR0001 // Domain Reload Analyzer
-    private static GorillaVibration _instance;
-#pragma warning restore UDR0001 // Domain Reload Analyzer
-
-    public MiscGrabs MG;
-
     private StatusEffect currentStatus;
 
 	public SphereCollider headCollider;
@@ -42,23 +36,23 @@ public class GorillaVibration : MonoBehaviour
 
 	public Transform leftHandTransform;
 
-	public float hapticWaitSeconds = 0.05f;
+	public const float hapticWaitSeconds = 0.05f;
 
-	public float handTapVolume = 0.1f;
+	public const float handTapVolume = 0.1f;
 
-	public float tapCoolDown = 0.15f;
+	public const float tapCoolDown = 0.15f;
 
 	public float lastLeftTap;
 
 	public float lastRightTap;
 
-	public float tapHapticDuration = 0.05f;
+	public const float tapHapticDuration = 0.05f;
 
-	public float tapHapticStrength = 0.5f;
+	public const float tapHapticStrength = 0.5f;
 
-	public float taggedHapticDuration = 0.35f;
+	public const float taggedHapticDuration = 0.35f;
 
-	public float taggedHapticStrength = 1f;
+	public const float taggedHapticStrength = 1f;
 
 	public float statusEndTime;
 
@@ -92,25 +86,17 @@ public class GorillaVibration : MonoBehaviour
 
 	private int tempInt;
 
-    public static GorillaVibration Instance => _instance;
+	private bool initialized;
 
-	private void Awake()
+	public void Initialize()
 	{
-		if (_instance != null && _instance != this)
-		{
-			Destroy(base.gameObject);
-		}
-		else
-		{
-			_instance = this;
-		}
-
-		SpawnManager.SpawnDat sd = MG.SM.CurrentSpawnDat();
+		if(initialized) return;
+		SpawnManager.SpawnDat sd = MiscGrabs.grab.SM.CurrentSpawnDat();
 		Rigidbody rb2 = GetComponent<Rigidbody>();
 		rb2.transform.parent.position = sd.position;
 		rb2.transform.position = sd.position;
 		rb2.position = sd.position;
-		Debug.Log("GORILLA VIBRATION : SETTING PLAYER POSITION ; " + MG.SM.CurrentSpawnDat().position);
+		Debug.Log("GORILLA VIBRATION : SETTING PLAYER POSITION ; " + MiscGrabs.grab.SM.CurrentSpawnDat().position);
 		transform.localPosition = Vector3.zero;
 
 		transform.eulerAngles = sd.eulerAngles;
@@ -120,17 +106,16 @@ public class GorillaVibration : MonoBehaviour
 		FLT.forceOff = sd.disableFlashlight;
 		
 
-		if (!MG.SM.DidDoTutorial())
+		if (!MiscGrabs.grab.SM.DidDoTutorial())
 		{
 			UpdateColor(PlayerPrefs.GetFloat("redValue", Random.value), PlayerPrefs.GetFloat("greenValue", Random.value), PlayerPrefs.GetFloat("blueValue", Random.value));
 		}
-	}
 
-	private void Start()
-	{
+
 		PlayerBase.@i.RPhysical.leftHandOffset = new Vector3(-0.02f, 0f, -0.07f);
 		PlayerBase.@i.RPhysical.rightHandOffset = new Vector3(0.02f, 0f, -0.07f);
 		bodyVector = new Vector3(0f, bodyCollider.height / 2f - bodyCollider.radius, 0f);
+		initialized = true;
 	}
 
 	private void LateUpdate()
@@ -172,8 +157,9 @@ public class GorillaVibration : MonoBehaviour
 		bottomVector = lastBodyPositionForTag - bodyVector;
 		if (myVRRig == null && PhotonNetwork.InRoom)
 		{
-			foreach (RigController vrrig in PhotonRoomManagerMain.instance.rigs)
+			for (int i = 0; i < PhotonRoomManagerMain.instance.rigs.Count; i++)
 			{
+				RigController vrrig = PhotonRoomManagerMain.instance.rigs[i];
 				if (vrrig != null && vrrig.RigStatus != RigController.RigType.Offline && vrrig.photonView != null && vrrig.photonView.IsMine)
 				{
 					myVRRig = vrrig;

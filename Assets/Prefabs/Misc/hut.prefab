@@ -197,6 +197,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &2637722018136982173
 CapsuleCollider:
@@ -342,6 +343,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6812777721093895989
 BoxCollider:
@@ -478,6 +480,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &7023533947977790752
 MeshCollider:
@@ -598,6 +601,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &8391399069111565674
 MeshCollider:
@@ -724,7 +728,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eca946d714d024f4093d1378504b8172, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -746,6 +750,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &4904175307666957504
 MeshCollider:
@@ -880,6 +885,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &9120238400292830125
 BoxCollider:
@@ -991,6 +997,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &1824958399981541675
 MeshCollider:
@@ -1105,6 +1112,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &96195992748398844
 MeshCollider:
@@ -1191,7 +1199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eca946d714d024f4093d1378504b8172, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1213,6 +1221,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &6872469735213745172
 MeshCollider:
@@ -1347,6 +1356,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &291018897869047752
 BoxCollider:
@@ -1460,6 +1470,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &1763916710595520441
 MeshCollider:
@@ -1508,8 +1519,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012090500348035456}
-  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442,
-    w: -1}
+  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0.043390207}
   m_LocalScale: {x: -0.0015000004, y: 0.0014999994, z: 0.00042000026}
   m_ConstrainProportionsScale: 0
@@ -1588,8 +1598,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2260436935617540174}
-  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442,
-    w: -1}
+  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0.043395944}
   m_LocalScale: {x: -0.0015000004, y: 0.0014999994, z: 0.00042000026}
   m_ConstrainProportionsScale: 0
@@ -1732,6 +1741,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7742359729411604339
 BoxCollider:
@@ -1876,6 +1886,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7769812837226659757
 BoxCollider:
@@ -1987,6 +1998,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7432930508945534447
 BoxCollider:
@@ -2098,6 +2110,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &4112540568337914008
 CapsuleCollider:
@@ -2244,7 +2257,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eca946d714d024f4093d1378504b8172, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2266,6 +2279,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &3725271601167521632
 MeshCollider:
@@ -2467,6 +2481,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &1125571825346716834
 MeshCollider:
@@ -2582,6 +2597,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &986701691696251012
 MeshCollider:
@@ -2730,6 +2746,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &6548593016572164837
 MeshCollider:
@@ -2895,8 +2912,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4017518401719665886}
-  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442,
-    w: -1}
+  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0.043390207}
   m_LocalScale: {x: -0.0015000004, y: 0.0014999994, z: 0.00042000026}
   m_ConstrainProportionsScale: 0
@@ -3073,6 +3089,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &513920547258628059
 MeshCollider:
@@ -3185,6 +3202,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &186367758055116103
 CapsuleCollider:
@@ -3323,6 +3341,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &8593744633934396454
 MeshCollider:
@@ -3537,6 +3556,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &2554450394801511514
 BoxCollider:
@@ -3650,6 +3670,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &170224752159451015
 MeshCollider:
@@ -3797,6 +3818,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &4762397302713778920
 MeshCollider:
@@ -3903,6 +3925,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &6240684250524195330
 MeshCollider:
@@ -3994,7 +4017,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eca946d714d024f4093d1378504b8172, type: 2}
+  - {fileID: 2100000, guid: c4d9b72acd2599242bedf672d6764d8e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4016,6 +4039,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &6311825498306959639
 MeshCollider:
@@ -4086,8 +4110,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6855651231365433203}
-  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442,
-    w: -1}
+  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0.043395944}
   m_LocalScale: {x: -0.0015000004, y: 0.0014999994, z: 0.00042000026}
   m_ConstrainProportionsScale: 0
@@ -4166,8 +4189,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6897003537499672039}
-  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442,
-    w: -1}
+  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0.043390207}
   m_LocalScale: {x: -0.0015000004, y: 0.0014999994, z: 0.00042000026}
   m_ConstrainProportionsScale: 0
@@ -4375,6 +4397,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &3930397431620132727
 BoxCollider:
@@ -4637,6 +4660,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &4986156499148081161
 BoxCollider:
@@ -4750,6 +4774,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &6177030749033937646
 MeshCollider:
@@ -4798,8 +4823,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8429090635105787280}
-  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442,
-    w: -1}
+  m_LocalRotation: {x: 0.00000016391276, y: -0.00000022401898, z: -0.00000009304442, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0.043395944}
   m_LocalScale: {x: -0.0015000004, y: 0.0014999994, z: 0.00042000026}
   m_ConstrainProportionsScale: 0
@@ -5016,6 +5040,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &8271119201446305937
 MeshCollider:

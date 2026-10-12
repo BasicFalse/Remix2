@@ -54,8 +54,9 @@ public class SynchedMusicController : MonoBehaviour
 		}
 		audioSource.mute = PlayerPrefs.GetInt(locationName + "Muted", 0) != 0;
 		if(muteButton){
-		muteButton.isOn = audioSource.mute;}
+		muteButton.isOn = audioSource.mute;
 		muteButton.UpdateColor();
+		}
 		randomNumberGenerator = new System.Random(mySeed);
 		GenerateSongStartRandomTimes();
 	}
@@ -170,11 +171,17 @@ public class SynchedMusicController : MonoBehaviour
 		}
 		if (usingMultipleSongs)
 		{
-			totalLoopTime = songStartTimes[songStartTimes.Length - 1] + (long)(songsArray[audioClipsForPlaying[audioClipsForPlaying.Length - 1]].length * 1000f);
+			if (songStartTimes.Length - 1 != -1)
+			{
+				totalLoopTime = songStartTimes[songStartTimes.Length - 1] + (long)(songsArray[audioClipsForPlaying[audioClipsForPlaying.Length - 1]].length * 1000f);
+			}
 		}
 		else
 		{
-			totalLoopTime = songStartTimes[songStartTimes.Length - 1] + (long)(audioSource.clip.length * 1000f);
+			if (songStartTimes.Length - 1 != -1)
+			{
+				totalLoopTime = songStartTimes[songStartTimes.Length - 1] + (long)(audioSource.clip.length * 1000f);
+			}
 		}
 	}
 

@@ -17,11 +17,16 @@ TagManager:
   - LeftHand
   - RightHand
   - Water
+  - LAGCLOSE
+  - Enemy
+  - LAG
+  - LAG MID
+  - Jumpscare
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - CorectionLighting
+  - 
   - Water
   - UI
   - GorillaInteractor
@@ -30,12 +35,12 @@ TagManager:
   - Gorilla Object
   - Gorilla Hand
   - DEV
-  - Portal
+  - 
   - Gorilla Head
-  - GravitySectorBoundary
+  - 
   - Gorilla Boundary
   - GorillaMovement
-  - Mirror
+  - 
   - GorillaInteractable
   - GorillaFriend
   - GorillaParticle
@@ -48,9 +53,12 @@ TagManager:
   - GorillaMovementNoCollide
   - monster
   - monbarrier
-  - interactable
-  - ext
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []

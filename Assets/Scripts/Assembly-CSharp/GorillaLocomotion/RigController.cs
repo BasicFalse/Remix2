@@ -26,6 +26,7 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
 #pragma warning restore UDR0001 // Domain Reload Analyzer
         public RigOffsets Offsets;
 
+    public bool initializedRig;
     public bool initializedCosmetics;
     public bool inTryOnRoom;
 
@@ -111,11 +112,11 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
         }
     }
 
-    private void Start()
+    private void InitializeRig()
     {
         if (RigStatus == RigType.Extern)
         {
-            return; // nah
+            
         }
 
         color = new float[3];
@@ -124,6 +125,8 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
 
         if (RigStatus == RigType.Offline)
         {
+            CosmeticsController.instance.RefreshRigCosmetics();
+            GorillaComputer.instance.RefreshRigColor();
 
             OfflineCamera = PlayerBase.@i.transforms.Camera.transform;
             OfflineBody = PlayerBase.@i.transforms.Body.transform;
@@ -134,7 +137,7 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
             handLeft?.InitializeFromCurrent();
             handRight?.InitializeFromCurrent();
 
-            return; // no longer needed
+
         }
 
         if (RigStatus == RigType.Online)
@@ -147,7 +150,7 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
                 OfflineBody = PlayerBase.@i.transforms.Body.transform;
                 MidwayHandL = PlayerBase.@i.transforms.LeftController;
                 MidwayHandR = PlayerBase.@i.transforms.RightController;
-                GorillaVibration.Instance.myVRRig = this;
+                PlayerBase.@i.GorillaVibration.myVRRig = this;
                 if ((bool)GetComponent<VoiceConnection>() && (bool)GetComponent<Recorder>())
 			    {
 			    	GetComponent<VoiceConnection>().InitRecorder(GetComponent<Recorder>());
@@ -184,15 +187,17 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
             handLeft?.InitializeFromCurrent();
             handRight?.InitializeFromCurrent();
 
-            return;
+
         }
+        initializedRig = true;
     }
 
     private void Update()
     {
-        //#if UNITY_EDITOR
-        //SteamInput.RunFrame(); // no worky on linux
-        //#endif
+            if (!initializedRig)
+            {
+                InitializeRig();
+            }
 
         if (RigStatus == RigType.Extern) return; // nah
 

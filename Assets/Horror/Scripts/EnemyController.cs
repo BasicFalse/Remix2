@@ -25,7 +25,11 @@ public class EnemyController : MonsterBase
 
     public override void OfflineMovement()
     {
-        targetPlayer = MiscGrabs.grab.PlayerPosition.position;
+        if(!MiscGrabs.grab.DoesPlayerExist()){
+            MoveAndRotateToward(initialPosition);
+            return;
+        }
+        targetPlayer = GetPlayerPosition();
 
         float currentDistance = Vector3.Distance(transform.position, targetPlayer);
         if (currentDistance < chaseRange)

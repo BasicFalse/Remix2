@@ -106,7 +106,7 @@ public class SpawnManager : ScriptableObject
     {
         //ErrorRoom = MapGeoController.instance.ErrorRoomSequence();
         MapGeoController.instance.ErrorRoomSequence();
-        GorillaVibration.Instance.transform.localPosition = Vector3.zero;
+        PlayerBase.i.GorillaVibration.transform.localPosition = Vector3.zero;
         //Debug.Log("SPAWNMANAGER : INITIAL CHECK FAULT ; PLAYERPREF NOT ACCOUNTED FOR (" + InitialCheck + "), ERROR ROOM ACTIVE");
         //Debug.Log(ErrorRoom.position);
         return ErrorRoom;

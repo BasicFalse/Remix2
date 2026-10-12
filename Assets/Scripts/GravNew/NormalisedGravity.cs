@@ -1,3 +1,4 @@
+using System;
 using GorillaLocomotion;
 using GorillaLocomotion.Swimming;
 using UnityEngine;
@@ -7,40 +8,120 @@ namespace GravNew
     [RequireComponent(typeof(Rigidbody))]
     public class NormalisedGravity : MonoBehaviour
     {
-        public static volatile NormalisedGravity instance;
-        public bool useV3;
-        public GravSetting gravType;
-        public Vector3 V3;
-        public Vector3 Rot3;
-        public Transform target;
-        public Transform rotTarget;
-        public float gravityStrength = 20f;
-        public float uprightTorque = 5f;
-        public Vector3 forwardReference = Vector3.forward;
-        public Vector3 CurrentGravityVelocity => Vector3.Project(rb.linearVelocity, gravityDirection);
-        public Vector3 gravityVelocity => Vector3.Project(rb.linearVelocity, gravityDirection);
-        public Vector3 gravityDirection;
+        public Vector3 cam => PlayerBase.i.resources.playerCam.transform.position;
         public bool isInSector;
-        public bool negate;
-        public bool isPlayer;
         public bool zeroG;
+        public GravitySector BestGravity;
+        public GravitySector BestRotation;
         public VRSwimming swimmer;
         public PlayerBase locomotion;
         public Rigidbody rb;
         public bool reorient;
-        public float rbDragLock;
-        public float rbDragUnlock;
+        public float uprightTorque;
 
-        void Start()
+        public void UpdateAlignment(bool instant = false)
         {
-            if (isPlayer)
-            {
-                if (instance == null) { instance = this; }
-                else if (instance != this) { UnityEngine.Object.Destroy(base.gameObject); }
+            if(isInSector){
+                if (instant)
+                {
+                    Vector3 RotUp = BestRotation.GetGravityDirection(cam);
+                    Vector3 localForward = transform.forward;
+                    Vector3 surfaceForward = Vector3.ProjectOnPlane(localForward, RotUp).normalized;
+
+                    if (surfaceForward.sqrMagnitude < 0.01f)
+                    {
+                        surfaceForward = Vector3.ProjectOnPlane(transform.forward, RotUp).normalized;
+                    }
+
+                    rb.rotation = Quaternion.LookRotation(surfaceForward, RotUp);
+                }
+                else
+                {
+                    Vector3 RotUp = BestRotation.GetGravityDirection(cam);
+                    Vector3 localForward = transform.forward;
+                    Vector3 surfaceForward = Vector3.ProjectOnPlane(localForward, RotUp).normalized;
+
+                    if (surfaceForward.sqrMagnitude < 0.01f)
+                    {
+                        surfaceForward = Vector3.ProjectOnPlane(transform.forward, RotUp).normalized;
+                    }
+
+                    if (reorient)
+                    {
+                        Quaternion targetRotation = Quaternion.LookRotation(surfaceForward, RotUp);
+                        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * uprightTorque));
+                    }
+                }
             }
-            if (rb == null) { rb = GetComponent<Rigidbody>(); }
+            else
+            {
+                if (!zeroG)
+                {
+                    Vector3 worldUp = Vector3.up;
+                    Vector3 flatForward = Vector3.ProjectOnPlane(transform.forward, worldUp).normalized;
+
+                    if (flatForward.sqrMagnitude < 0.01f)
+                        flatForward = Vector3.forward;
+
+                    if (reorient)
+                    {
+                        Quaternion uprightRotation = Quaternion.LookRotation(flatForward, worldUp);
+                        rb.MoveRotation(Quaternion.Slerp(rb.rotation, uprightRotation, Time.fixedDeltaTime * uprightTorque));
+                    }
+                }
+            }
         }
 
+        public void UpdateGravity()
+        {
+            if (isInSector)
+            {
+                if(!swimmer.bodyWater.InWater)
+                rb.AddForce(BestGravity.GetGravityVector(cam) * locomotion.getSizeRatio, ForceMode.Acceleration);
+                else
+                rb.AddForce(BestGravity.GetGravityVector(cam)/2 * locomotion.getSizeRatio, ForceMode.Acceleration);
+
+                Vector3 localForward = transform.forward;
+                Vector3 surfaceForward = Vector3.ProjectOnPlane(localForward, BestGravity.GetGravityDirection(cam)).normalized;
+
+                if (surfaceForward.sqrMagnitude < 0.01f)
+                {
+                    surfaceForward = Vector3.ProjectOnPlane(transform.forward, BestGravity.GetGravityDirection(cam)).normalized;
+                }
+
+                if (reorient)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(surfaceForward, -BestGravity.GetGravityDirection(cam));
+                    rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * uprightTorque));
+                }
+            }
+            else
+            {
+                if (!zeroG)
+                {
+                    if(!swimmer.bodyWater.InWater)
+                    rb.AddForce(Vector3.down * 9.8f * locomotion.getSizeRatio, ForceMode.Acceleration);
+                    else
+                    rb.AddForce(Vector3.down * 4.5f * locomotion.getSizeRatio, ForceMode.Acceleration);
+
+                    // Rotate upright in world space (Y+ up, Z+ forward projected onto XZ plane)
+                    Vector3 worldUp = Vector3.up;
+                    Vector3 flatForward = Vector3.ProjectOnPlane(transform.forward, worldUp).normalized;
+
+                    if (flatForward.sqrMagnitude < 0.01f)
+                        flatForward = Vector3.forward;
+
+                    if (reorient)
+                    {
+                        Quaternion uprightRotation = Quaternion.LookRotation(flatForward, worldUp);
+                        rb.MoveRotation(Quaternion.Slerp(rb.rotation, uprightRotation, Time.fixedDeltaTime * uprightTorque));
+                    }
+                    
+                }
+            }
+        }
+
+        /*[Obsolete("")]
         public void UpdateAlignment(bool instant = false)
         {
             switch (gravType)
@@ -103,8 +184,9 @@ namespace GravNew
                     rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * uprightTorque));
                 }
             }
-        }
+        }*/
 
+        /*[Obsolete("")]
         public void UpdateGravity()
         {
             switch (gravType)
@@ -170,7 +252,7 @@ namespace GravNew
                 if (!zeroG)
                 {
                     if(!swimmer.bodyWater.InWater)
-                    rb.AddForce(Vector3.down * 9f * locomotion.getSizeRatio, ForceMode.Acceleration);
+                    rb.AddForce(Vector3.down * 9.8f * locomotion.getSizeRatio, ForceMode.Acceleration);
                     else
                     rb.AddForce(Vector3.down * 4.5f * locomotion.getSizeRatio, ForceMode.Acceleration);
 
@@ -189,18 +271,6 @@ namespace GravNew
                     
                 }
             }
-        }
-
-        void OnDrawGizmosSelected()
-        {
-            if (target == null) return;
-
-            Gizmos.color = Color.red;
-            Vector3 origin = transform.position;
-            Vector3 toTarget = (target.position - origin).normalized;
-
-            Gizmos.DrawLine(origin, origin + toTarget);
-            Gizmos.DrawSphere(origin + toTarget, 0.1f);
-        }
+        }*/
     }
 }

@@ -9,7 +9,7 @@ public class PlayerBase : MonoBehaviour
     public PlayerTeleport RTeleport;
     public PlayerJoystick RJoystick;
     public PlayerPhysical RPhysical;
-
+    public GorillaVibration GorillaVibration;
     public NormalisedGravity gravity;
 
     [SerializeField]
@@ -42,7 +42,7 @@ public class PlayerBase : MonoBehaviour
             Debug.Log("DUPLICATE PLAYERBASE");
     }
 
-    void Start()
+    public void Initialize()
     {
         SwitchPlayerType(StringToPlayerType(PlayerPrefs.GetString("PlayerTypePrefrence", "Physical")));
     }
