@@ -18,7 +18,6 @@ public class MapTrigger : MonoBehaviour
 
     public List<MapTriggerSegment> maps;
 
-    public Collider coll;
     public MapGeoController MGC;
 
     public void Awake()
@@ -34,7 +33,8 @@ public class MapTrigger : MonoBehaviour
             return;
         }
 
-        GetComponent<MeshRenderer>().enabled = !MGC.removeTriggerRenderers;
+        Collider coll = GetComponent<Collider>();
+        GetComponent<MeshRenderer>().enabled = !MGC.disableTriggerRenderers;
 
         GameObject visible = new();
         visible.transform.parent = gameObject.transform;

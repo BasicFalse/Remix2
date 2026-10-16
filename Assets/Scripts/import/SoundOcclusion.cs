@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class SoundOcclusion : MonoBehaviour
 {
-    public GameObject listener; // Assign the listener (e.g., the player's camera or player object)
-    public string listenerTag = "GorillaPlayer"; // Tag to find the listener object automatically
-    public bool autoAssignListener = false; // Automatically find the listener using the tag
+    public Vector3 listener => PlayerBase.i.transforms.Camera.transform.position;
     public float interpolationSpeed = 1.0f;
     public bool visualizeRays = false;
     public LayerMask occludingLayers;
@@ -24,20 +22,6 @@ public class SoundOcclusion : MonoBehaviour
 
     void Start()
     {
-        // Automatically assign listener if flag is set and the listener is not already assigned
-        if (autoAssignListener && listener == null)
-        {
-            GameObject taggedObject = GameObject.FindWithTag(listenerTag);
-            if (taggedObject != null)
-            {
-                listener = taggedObject;
-            }
-            else
-            {
-                Debug.LogWarning($"SoundOcclusion: No GameObject found with tag '{listenerTag}'. Please assign a valid listener.");
-            }
-        }
-
         // Find all AudioSources in children and their children
         foreach (var audioSource in GetComponentsInChildren<AudioSource>())
         {
@@ -61,8 +45,6 @@ public class SoundOcclusion : MonoBehaviour
 
     void Update()
     {
-        if (!listener) return;
-
         for (int i = audioSources.Count - 1; i >= 0; i--) // Iterate backward to safely remove items
         {
             var audioSource = audioSources[i];
@@ -74,7 +56,7 @@ public class SoundOcclusion : MonoBehaviour
                 continue;
             }
 
-            Vector3 direction = audioSource.transform.position - listener.transform.position;
+            Vector3 direction = audioSource.transform.position - listener;
             float distance = direction.magnitude;
 
             if (distance > audioSource.maxDistance)
@@ -87,7 +69,7 @@ public class SoundOcclusion : MonoBehaviour
                 float angle = ((float)j / rayCount) * 360f;
                 Vector3 offset = Quaternion.Euler(0, angle, 0) * Vector3.forward * Mathf.Tan(coneAngle * Mathf.Deg2Rad);
 
-                Ray ray = new Ray(listener.transform.position, direction + offset);
+                Ray ray = new Ray(listener, direction + offset);
                 if (Physics.Raycast(ray, distance, occludingLayers))
                 {
                     hitCount++;

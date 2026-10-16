@@ -21,11 +21,7 @@ public class GorillaScoreBoard : MonoBehaviourPunCallbacks, IInRoomCallbacks, IO
 
 	public PhotonRoomManagerMain gameManager;
 
-	public string gameType;
-
 	public bool includeMMR;
-
-	public bool isActive;
 
 	public List<GorillaPlayerScoreboardLine> lines;
 
@@ -94,7 +90,6 @@ public class GorillaScoreBoard : MonoBehaviourPunCallbacks, IInRoomCallbacks, IO
 				lineComponent.linePlayer = player;
 				lineComponent.playerVRRig = Rig;
 				lineComponent.playerNameValue = player.NickName;
-				// NEW: initialize the line (creates unique material for the swatch & sets initial color)
 				lineComponent.InitializeLine();
 				RedrawPlayerLines();
 			}

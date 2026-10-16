@@ -48,7 +48,7 @@ public class MapGeoController : MonoBehaviour
     public List<string> currentMaps;
     public List<string> lastMaps;
     public bool freeze;
-    public bool removeTriggerRenderers;
+    public bool disableTriggerRenderers;
     public bool playerIsUnderground;
     public bool playerIsAboveground;
     public Material TriggerMaterial;

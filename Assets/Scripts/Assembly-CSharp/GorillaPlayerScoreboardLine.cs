@@ -38,13 +38,11 @@ public class GorillaPlayerScoreboardLine : MonoBehaviourPunCallbacks, IInRoomCal
 	public Image[] images;
 	public bool eventMuteSet;
 
-	// internal cached material for this Image to avoid shared-material bleed
 	private Material _instancedSwatchMaterial;
 	private Color _lastAppliedSwatch = Color.clear;
 
 	public void InitializeLine()
 	{
-		// Ensure we have a unique material for this UI Image so changes do not affect other rows
 		if (playerSwatch != null)
 		{
 			try
@@ -61,7 +59,6 @@ public class GorillaPlayerScoreboardLine : MonoBehaviourPunCallbacks, IInRoomCal
 			}
 		}
 
-        // instance the UI material (you already have this)
         if (playerSwatch != null && _instancedSwatchMaterial == null)
         {
             if (playerSwatch.material != null)
@@ -71,30 +68,25 @@ public class GorillaPlayerScoreboardLine : MonoBehaviourPunCallbacks, IInRoomCal
             }
         }
 
-        // Subscribe to rig event if rig is already assigned
         if (playerVRRig != null)
         {
-            // avoid double-subscription
             playerVRRig.OnColorChanged -= HandleColorChanged;
             playerVRRig.OnColorChanged += HandleColorChanged;
 
-            // Set initial color immediately from renderer or cached material
             Color initColor = Color.white;
             if (playerVRRig.thisGuysSkin != null && playerVRRig.thisGuysSkin.material != null)
                 initColor = playerVRRig.thisGuysSkin.material.color;
             else if (playerVRRig.playerMaterial != null)
                 initColor = playerVRRig.playerMaterial.color;
 
-            HandleColorChanged(initColor); // apply right away
+            HandleColorChanged(initColor);
         }
 
-		// Try to immediately set an initial color from the rig if available
 		UpdateSwatchFromRig(force: true);
 	}
 
 	public void CleanupLine()
 	{
-		// Unregister any listeners in future if you add them; clean up instantiated material
 		if (_instancedSwatchMaterial != null)
 		{
 			UnityEngine.Object.Destroy(_instancedSwatchMaterial);

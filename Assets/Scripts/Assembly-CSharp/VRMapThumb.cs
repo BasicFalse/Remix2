@@ -1,6 +1,7 @@
 using System;
 using GorillaRigging;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 
 [Serializable]
@@ -36,6 +37,7 @@ public class VRMapThumb : VRMap
 	public VRMapThumb(VRMapThumb thumb)
 	{
 		vrTargetNode = thumb.vrTargetNode;
+		isLeft = thumb.isLeft;
 		inputAxis = thumb.inputAxis;
 		fingerBone1 = thumb.fingerBone1;
 		fingerBone2 = thumb.fingerBone2;
@@ -53,33 +55,27 @@ public class VRMapThumb : VRMap
 
 	public override void MapMyFinger(float lerpValue)
 	{
-		InputDevice deviceAtXRNode = InputDevices.GetDeviceAtXRNode(vrTargetNode);
 		calcT = 0f;
-		deviceAtXRNode.TryGetFeatureValue(CommonUsages.primaryButton, out primaryButtonPress);
-		deviceAtXRNode.TryGetFeatureValue(CommonUsages.primaryTouch, out primaryButtonTouch);
-		deviceAtXRNode.TryGetFeatureValue(CommonUsages.secondaryButton, out secondaryButtonPress);
-		deviceAtXRNode.TryGetFeatureValue(CommonUsages.secondaryTouch, out secondaryButtonTouch);
-		if (primaryButtonPress || secondaryButtonPress)
-		{
-			calcT = 1f;
-		}
-		else if (primaryButtonTouch || secondaryButtonTouch)
-		{
-			calcT = 0.1f;
-		}
 
-//#if UNITY_EDITOR || !UNITY_ANDROID
-//
-//		if(button.GetState(hand))
-//		{
-//			calcT = 1f;
-//		}
-//		else if(button.GetStateDown(hand))
-//		{
-//			calcT = 0.1f;
-//		}
-//		
-//#endif
+		if(Application.platform == RuntimePlatform.Android){
+			UnityEngine.XR.InputDevice deviceAtXRNode = InputDevices.GetDeviceAtXRNode(vrTargetNode);
+			deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out primaryButtonPress);
+			deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryTouch, out primaryButtonTouch);
+			deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryButton, out secondaryButtonPress);
+			deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.secondaryTouch, out secondaryButtonTouch);
+			if (primaryButtonPress || secondaryButtonPress)
+			{
+				calcT = 1f;
+			}
+			else if (primaryButtonTouch || secondaryButtonTouch)
+			{
+				calcT = 0.1f;
+			}
+		}
+		else
+		{
+			
+		}
 
 		LerpFinger(lerpValue);
 	}

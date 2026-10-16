@@ -15,8 +15,22 @@ namespace RockyTunnel {
                 Debug.LogError("There's no RTM on this trigger" + gameObject);
             }
 
-            TryGetComponent(out MeshRenderer mr);
-            if (mr != null && !RTM.renderTriggers) { mr.enabled = false; }
+            Collider coll = GetComponent<Collider>();
+            TryGetComponent(out MeshRenderer mr1);
+            if (mr1 != null && !RTM.renderTriggers) { mr1.enabled = false; }
+            
+            
+            GameObject visible = new();
+            visible.transform.parent = gameObject.transform;
+            MeshFilter mf = visible.AddComponent<MeshFilter>();
+            mf.sharedMesh = GetComponent<MeshFilter>().sharedMesh;
+            MeshRenderer mr = visible.AddComponent<MeshRenderer>();
+            mr.material = MapGeoController.instance.TriggerMaterial;
+            visible.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            visible.transform.localScale = new Vector3(1,1,1);
+            visible.layer = LayerMask.NameToLayer("DEV");
+            visible.name = gameObject.name + ":VISUAL";
+            coll.isTrigger = true;
         }
 
         //[ContextMenu("OnTriggerEnter")]

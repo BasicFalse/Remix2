@@ -1,11 +1,16 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR;
 
 [Serializable]
 public class VRMap
 {
 	public XRNode vrTargetNode;
+
+	public InputActionProperty input;
+
+	public bool isLeft;
 
 	//public Valve.VR.InteractionSystem.Hand SteamHand;
 
@@ -36,9 +41,9 @@ public class VRMap
 	public void MapMine(float ratio, Transform playerOffsetTransform = null)
 	{
 #if UNITY_EDITOR || !UNITY_ANDROID
-		InputDevice deviceAtXRNode = InputDevices.GetDeviceAtXRNode(vrTargetNode);
-		deviceAtXRNode.TryGetFeatureValue(CommonUsages.deviceRotation, out var value);
-		deviceAtXRNode.TryGetFeatureValue(CommonUsages.devicePosition, out var value2);
+		UnityEngine.XR.InputDevice deviceAtXRNode = InputDevices.GetDeviceAtXRNode(vrTargetNode);
+		deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out var value);
+		deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.devicePosition, out var value2);
 		rigTarget.rotation = value * Quaternion.Euler(trackingRotationOffset);
 		if (playerOffsetTransform != null)
 		{
@@ -67,9 +72,9 @@ public class VRMap
 			}
         }
 #else
-		InputDevice deviceAtXRNode = InputDevices.GetDeviceAtXRNode(vrTargetNode);
-		deviceAtXRNode.TryGetFeatureValue(CommonUsages.deviceRotation, out var value);
-		deviceAtXRNode.TryGetFeatureValue(CommonUsages.devicePosition, out var value2);
+		UnityEngine.XR.InputDevice deviceAtXRNode = InputDevices.GetDeviceAtXRNode(vrTargetNode);
+		deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out var value);
+		deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.devicePosition, out var value2);
 		rigTarget.rotation = value * Quaternion.Euler(trackingRotationOffset);
 		if (playerOffsetTransform != null)
 		{

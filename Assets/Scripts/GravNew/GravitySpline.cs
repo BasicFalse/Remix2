@@ -6,7 +6,7 @@ namespace GravNew{
     public class GravitySpline : GravitySectorController
     {
         /// <summary>
-        /// Useful for scene controlled gravity (if that makes sence). If null, the objectPos will be used instead.
+        /// Useful for scene controlled gravity (if that makes sense). If null, the objectPos will be used instead.
         /// </summary>
         public Transform Target;
 
