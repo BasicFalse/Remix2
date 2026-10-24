@@ -19,8 +19,6 @@ public class GorillaScoreBoard : MonoBehaviourPunCallbacks, IInRoomCallbacks, IO
 
 	public int lineHeight;
 
-	public PhotonRoomManagerMain gameManager;
-
 	public bool includeMMR;
 
 	public List<GorillaPlayerScoreboardLine> lines;
@@ -32,8 +30,9 @@ public class GorillaScoreBoard : MonoBehaviourPunCallbacks, IInRoomCallbacks, IO
 	public void Awake()
 	{
 		PhotonNetwork.AddCallbackTarget(this);
-		if (PhotonNetwork.InRoom && PhotonRoomManagerMain.instance != null)
+		if (PhotonNetwork.InRoom)
 		{
+			Debug.Log("Weareinaroomwitharoommanagerinstanceolkorrect");
 			boardText.text = GetBeginningString();
 		}
 	}
@@ -79,6 +78,13 @@ public class GorillaScoreBoard : MonoBehaviourPunCallbacks, IInRoomCallbacks, IO
 			}
 			if (!flag)
 			{
+				CreateNewPlayerLine(player, Rig);
+			}
+		}
+	}
+
+		public void CreateNewPlayerLine(Player player, RigController rig)
+		{
 				GameObject gameObject = UnityEngine.Object.Instantiate(scoreBoardLinePrefab, base.transform);
 				GorillaPlayerScoreboardLine lineComponent = gameObject.GetComponent<GorillaPlayerScoreboardLine>();
 				lines.Add(lineComponent);
@@ -88,13 +94,46 @@ public class GorillaScoreBoard : MonoBehaviourPunCallbacks, IInRoomCallbacks, IO
 				}
 				lineComponent.playerActorNumber = player.ActorNumber;
 				lineComponent.linePlayer = player;
-				lineComponent.playerVRRig = Rig;
+				lineComponent.playerVRRig = rig;
 				lineComponent.playerNameValue = player.NickName;
 				lineComponent.InitializeLine();
 				RedrawPlayerLines();
-			}
 		}
-	}
+
+		public void CreateNewPlayerLine(RigController rig)
+		{
+			Player solvedPlayer = GetPlayerForRigControllerExternal(rig);
+			if(solvedPlayer == null)
+			{
+				Debug.Log("Cannot find player for RigController! Escalating!", rig);
+				PhotonRoomManagerMain.instance.DealWithNullPlayerRig(rig);
+				return;
+			}
+			GameObject gameObject = UnityEngine.Object.Instantiate(scoreBoardLinePrefab, base.transform);
+			GorillaPlayerScoreboardLine lineComponent = gameObject.GetComponent<GorillaPlayerScoreboardLine>();
+			lines.Add(lineComponent);
+			if (includeMMR)
+			{
+				lineComponent.playerMMR.gameObject.SetActive(value: true);
+			}
+			lineComponent.playerActorNumber = solvedPlayer.ActorNumber;
+			lineComponent.linePlayer = solvedPlayer;
+			lineComponent.playerVRRig = rig;
+			lineComponent.playerNameValue = solvedPlayer.NickName;
+			lineComponent.InitializeLine();
+			RedrawPlayerLines();
+		}
+
+		public Player GetPlayerForRigControllerExternal(RigController rig)
+		{
+			if(GorillaComputer.instance.isInRoom)
+				for(int i = 0; i < PhotonRoomManagerMain.instance.currentPlayerArray.Length; i++)
+				{
+					if(PhotonRoomManagerMain.instance.FindVRRigControllerForPlayer(PhotonRoomManagerMain.instance.currentPlayerArray[i]) == rig)
+						return PhotonRoomManagerMain.instance.currentPlayerArray[i];
+				}
+			return null;
+		}
 
 	public override void OnPlayerLeftRoom(Player otherPlayer)
 	{
@@ -131,7 +170,7 @@ public class GorillaScoreBoard : MonoBehaviourPunCallbacks, IInRoomCallbacks, IO
 		{
 			return Rig.photonView.Owner;
 		}
-		return null;
+		return GetPlayerForRigControllerExternal(Rig);
 	}
 
 	void IOnEventCallback.OnEvent(EventData photonEvent)

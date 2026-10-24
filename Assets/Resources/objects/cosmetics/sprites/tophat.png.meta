@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 4f687f079979328448d46c3e7bd81d54
-timeCreated: 1790965855
+guid: 1767c354224abf14ebe8ec2ede1f3faa
+timeCreated: 1679158414
 licenseType: Free
 TextureImporter:
-  serializedVersion: 13
+  serializedVersion: 11
   internalIDToNameTable: []
   externalObjects: {}
   mipmaps:
@@ -22,17 +22,14 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
-  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 45
+  textureFormat: 10
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
@@ -59,47 +56,37 @@ TextureImporter:
   textureType: 0
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 0
-  flipbookColumns: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
   applyGammaDecoding: 0
-  swizzle: 50462976
-  cookieLightType: 0
   platformSettings:
-  - serializedVersion: 4
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
     outline: []
-    customData:
     physicsShape: []
     bones: []
     spriteID:
     internalID: 0
     vertices: []
-    indices:
+    indices: []
     edges: []
     weights: []
     secondaryTextures: []
-    spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
-  mipmapLimitGroupName:
+  spritePackingTag:
   output:
     textureImportInstructions:
       compressedFormat: 0
@@ -107,14 +94,11 @@ TextureImporter:
       desiredFormat: 0
       usageMode: 0
       colorSpace: 0
+      androidETC2FallbackFormat: 0
       width: 0
       height: 0
-      depth: 0
-      cubeIntermediateSize: 0
-      cubeMode: 0
-      cubeLayout: 0
       compressionQuality: 0
-      vtOnly: 0
+      androidETC2FallbackDownscale: 0
     sourceTextureInformation:
       width: 0
       height: 0
@@ -122,6 +106,7 @@ TextureImporter:
       sourceWasHDR: 0
     importInspectorWarnings:
   pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData:
   assetBundleName:
   assetBundleVariant:

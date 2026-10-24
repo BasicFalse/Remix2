@@ -12,7 +12,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace GorillaRigging{
-public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMagicCallback
+public class RigController : MonoBehaviourPunCallbacks, IPunObservable, IPunInstantiateMagicCallback
 {
     public enum RigType
     {
@@ -304,9 +304,9 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
             headLink.SetPosAndRot(OfflineCamera.position, OfflineCamera.rotation);
             headLink.ApplySmooth(1);
 
-            handRight.SetPosAndRot(MidwayHandR.position, MidwayHandR.rotation);
+            handRight.SetPosAndRot(Instance.handRight.Controlling.position, Instance.handRight.Controlling.rotation);
             handRight.ApplySmooth(1);
-            handLeft.SetPosAndRot(MidwayHandL.position, MidwayHandL.rotation);
+            handLeft.SetPosAndRot(Instance.handLeft.Controlling.position, Instance.handLeft.Controlling.rotation);
             handLeft.ApplySmooth(1);
 
             rightIndex.MapMyFinger(lerpValueFingers);
@@ -529,6 +529,10 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
                 Debug.Log("guy who just joined didnt do the tutorial already: " + didTutorial);
                 PhotonRoomManagerMain.instance.NewVRRig(base.photonView.Owner, base.photonView.ViewID, didTutorial);
             }
+            if(GorillaParent.instance != null && !GorillaParent.instance.vrrigs.Contains(this))
+                {
+                    GorillaParent.instance.vrrigs.Add(this);
+                }
             Debug.Log(base.photonView.Owner.UserId, this);
         }
     }
@@ -539,17 +543,16 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
         {
             if (stream.IsWriting)
             {
-                // Send the *current controlling transforms* (authoritative)
                 stream.SendNext(bodyLink.Controlling != null ? bodyLink.Controlling.position : bodyLink.Position);
                 stream.SendNext(bodyLink.Controlling != null ? bodyLink.Controlling.rotation : bodyLink.Rotation);
 
                 stream.SendNext(headLink.Controlling != null ? headLink.Controlling.position : headLink.Position);
                 stream.SendNext(headLink.Controlling != null ? headLink.Controlling.rotation : headLink.Rotation);
 
-                stream.SendNext(handRight.Controlling != null ? handRight.Controlling.position : handRight.Position);
-                stream.SendNext(handRight.Controlling != null ? handRight.Controlling.rotation : handRight.Rotation);
-                stream.SendNext(handLeft.Controlling != null ? handLeft.Controlling.position : handLeft.Position);
-                stream.SendNext(handLeft.Controlling != null ? handLeft.Controlling.rotation : handLeft.Rotation);
+                stream.SendNext(Instance.handRight.Controlling.position);
+                stream.SendNext(Instance.handRight.Controlling.rotation);
+                stream.SendNext(Instance.handLeft.Controlling.position);
+                stream.SendNext(Instance.handLeft.Controlling.rotation);
 
                 stream.SendNext(bodyDownVector.rotation);
 
@@ -601,6 +604,13 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
                 //rightHandItem         = (int)stream.ReceiveNext();
             }
         }
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        if (photonView.Owner == otherPlayer) { 
+            InitiateLocalSelfDestructSequence();
+         }
     }
 
     public void GetUserCosmeticsAllowed()
@@ -749,8 +759,46 @@ public class RigController : MonoBehaviourPun, IPunObservable, IPunInstantiateMa
     }
     public void InitiateLocalSelfDestructSequence()
     {
-        if (base.photonView == null || base.photonView.Owner == null || (base.photonView.Owner != null && PhotonNetwork.CurrentRoom.Players.TryGetValue(base.photonView.Owner.ActorNumber, out Player tempPlayer) && tempPlayer == null))
+        Debug.Log("Debating weather the rig should get deleted", this);
+        if(RigStatus == RigType.Offline || RigStatus == RigType.Extern) {  Debug.Log("Rig not removed, reason = rig is either offline or extern", this);  return;}
+        if(RigStatus == RigType.OurOnline && !GorillaComputer.instance.isInRoom || RigStatus == RigType.Online && !GorillaComputer.instance.isInRoom)
+            {
+                Debug.Log("Rig removed, reason = online rig instanced while offline", this);
+                if(GorillaParent.instance)
+                    if (GorillaParent.instance.vrrigs.Contains(this))
+                    {
+                        GorillaParent.instance.vrrigs.Remove(this);
+                    }
+                UnityEngine.Object.Destroy(base.gameObject);
+            }
+        if(RigStatus == RigType.Online && photonView.Owner == null)
+            {
+                Debug.Log("Rig removed, reason = online rig has no owner", this);
+                if(GorillaParent.instance)
+                    if (GorillaParent.instance.vrrigs.Contains(this))
+                    {
+                        GorillaParent.instance.vrrigs.Remove(this);
+                    }
+                UnityEngine.Object.Destroy(base.gameObject);
+            }
+        if(RigStatus == RigType.Online && PhotonRoomManagerMain.instance.playerVRRigDict.TryGetValue(photonView.CreatorActorNr, out _))
+            {
+                Debug.Log("Rig removed, reason = online rig's player match not found", this);
+                if(GorillaParent.instance)
+                    if (GorillaParent.instance.vrrigs.Contains(this))
+                    {
+                        GorillaParent.instance.vrrigs.Remove(this);
+                    }
+                UnityEngine.Object.Destroy(base.gameObject);
+            }
+        
+        if(GorillaParent.instance)
+            if (GorillaParent.instance.vrrigs.Contains(this))
+            {
+                GorillaParent.instance.vrrigs.Remove(this);
+            }
         UnityEngine.Object.Destroy(base.gameObject);
+        Debug.LogError("Rig removed, reason = stalemate reached. cannot prove or disprove existance. investigate conditions.", this);
     }
     public void CalculateInterest()
     {

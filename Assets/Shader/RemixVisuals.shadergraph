@@ -253,7 +253,12 @@
         "preventRotation": false
     },
     "m_Path": "Shader Graphs",
+    "m_DeprecateSubgraph": false,
+    "m_DeprecateSubgraphMessage": "",
     "m_GraphPrecision": 1,
+    "m_CustomPragmas": [],
+    "m_CustomDefines": [],
+    "m_CustomIncludes": [],
     "m_PreviewMode": 2,
     "m_OutputNode": {
         "m_Id": ""
@@ -328,7 +333,7 @@
             "serializedVersion": "2",
             "x": -1157.0001220703125,
             "y": 465.0000305175781,
-            "width": 208.00006103515626,
+            "width": 208.00006103515625,
             "height": 433.0000915527344
         }
     },
@@ -1117,7 +1122,7 @@
         "m_Position": {
             "serializedVersion": "2",
             "x": -340.0000305175781,
-            "y": 137.00001525878907,
+            "y": 137.00001525878906,
             "width": 69.99996948242188,
             "height": 117.99998474121094
         }
@@ -1485,7 +1490,7 @@
         "b": 1.0,
         "a": 1.0
     },
-    "isMainColor": false,
+    "isMainColor": true,
     "m_ColorMode": 0
 }
 

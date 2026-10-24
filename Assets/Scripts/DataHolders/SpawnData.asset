@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf50812f3eb3f345bb5514b5a72f92e, type: 3}
   m_Name: SpawnData
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
-  SpawnMode: v2.3t
+  SpawnMode: A5
   InitialCheck: 
   ErrorRoom:
     position: {x: 31.352356, y: -0.69280815, z: -204.77231}
@@ -77,4 +77,11 @@ MonoBehaviour:
       eulerAngles: {x: 0, y: 0, z: 0}
       disableFlashlight: 0
       changeMaps: 0
+      maps: []
+  - link: A5
+    sd:
+      position: {x: -102, y: 5, z: -176}
+      eulerAngles: {x: 0, y: 0, z: 0}
+      disableFlashlight: 0
+      changeMaps: 1
       maps: []

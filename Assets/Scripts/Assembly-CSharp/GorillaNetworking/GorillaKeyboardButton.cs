@@ -8,20 +8,13 @@ namespace GorillaNetworking
 
 		public GorillaComputer computer;
 
-		public float pressTime;
-
 		public bool testClick;
-
-		public bool repeatTestClick;
-
-		public float repeatCooldown = 2f;
-
-		private float lastTestClick;
+		private AudioSource AS;
 
 		private void Start()
 		{
-			pressTime = 0f;
 			computer = GorillaComputer.instance;
+			AS = gameObject.AddComponent<AudioSource>();
 		}
 
 		public new void Update()
@@ -31,25 +24,35 @@ namespace GorillaNetworking
 				testClick = false;
 				computer.PressButton(this);
 			}
-			if (repeatTestClick && lastTestClick + repeatCooldown < Time.time)
-			{
-				lastTestClick = Time.time;
-				testClick = true;
-			}
 		}
 
 		private void OnTriggerEnter(Collider collider)
 		{
-			Debug.Log("collision detected" + collider, collider);
 			if (collider.GetComponentInParent<GorillaTriggerColliderHandIndicator>() != null)
 			{
 				GorillaTriggerColliderHandIndicator component = collider.GetComponent<GorillaTriggerColliderHandIndicator>();
-				Debug.Log("buttan press");
 				computer.PressButton(this);
+				GetComponent<MeshRenderer>().material = computer.pressedMaterial;
+				AS.PlayOneShot(computer.buttonClick);
 				if (component != null)
 				{
 					PlayerBase.i.GorillaVibration.StartVibration(component.isLeftHand, GorillaVibration.tapHapticStrength / 2f, GorillaVibration.tapHapticDuration);
 				}
+			}
+		}
+
+		private void OnTriggerExit(Collider collider)
+		{
+			if (collider.GetComponentInParent<GorillaTriggerColliderHandIndicator>() != null)
+			{
+				GorillaTriggerColliderHandIndicator component = collider.GetComponent<GorillaTriggerColliderHandIndicator>();
+				GetComponent<MeshRenderer>().material = computer.unpressedMaterial;
+				AS.PlayOneShot(computer.buttonClack);
+				if (component != null)
+				{
+					PlayerBase.i.GorillaVibration.StartVibration(component.isLeftHand, GorillaVibration.tapHapticStrength / 2f, GorillaVibration.tapHapticDuration);
+				}
+
 			}
 		}
 	}

@@ -41,6 +41,7 @@ namespace GravNew
 #if UNITY_EDITOR
         public void OnDrawGizmos()
         {
+            if(!TubeCenter) return;
             Vector3 rawDiff = TubeCenter.position - cache;
             if(TubeEnd == null)
             {

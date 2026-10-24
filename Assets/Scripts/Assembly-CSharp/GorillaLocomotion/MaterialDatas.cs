@@ -26,4 +26,6 @@ public class MaterialDatas : ScriptableObject
             public bool overrideSlidePercent;
 
             public float slidePercent;
+            public float restitution;
+            public float bounce;
         }

@@ -93,8 +93,8 @@ namespace GorillaRigging{
         {
             Vector3 before = smoothPos;
 
-            smoothPos = Vector3.Lerp(smoothPos, Position, lerp);
-            smoothRot = Quaternion.Slerp(smoothRot, Rotation, lerp);
+            smoothPos = Vector3.Lerp(targetPos, Position, lerp);
+            smoothRot = Quaternion.Slerp(targetRot, Rotation, lerp);
 
             lastCorrectionDistance = Vector3.Distance(before, smoothPos);
 

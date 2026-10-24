@@ -18,6 +18,7 @@ namespace GravNew
         public Rigidbody rb;
         public bool reorient;
         public float uprightTorque;
+        public Vector3 CurrentGravityVelocity => Vector3.zero;
 
         public void UpdateAlignment(bool instant = false)
         {
@@ -118,6 +119,22 @@ namespace GravNew
                     }
                     
                 }
+            }
+        }
+        
+        public Vector3 GetCurrentGravity()
+        {
+            if (BestGravity)
+            {
+                return BestGravity.GetGravityVector(PlayerBase.i.transforms.Camera.position);
+            }
+            else if (zeroG)
+            {
+                return Vector3.zero;
+            }
+            else
+            {
+                return Vector3.down * 9.8f;
             }
         }
 

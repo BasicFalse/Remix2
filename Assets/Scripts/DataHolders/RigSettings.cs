@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.XR;
 
 namespace GorillaRigging{
     
@@ -81,6 +82,7 @@ namespace GorillaRigging{
                     defaults.closedAngle2 = new Vector3(1.84899998f,25.9309998f,-66.2250137f);
                     defaults.startingAngle1 = new Vector3(-53.0320015f,-58.0940018f,-21.0550003f);
                     defaults.startingAngle2 = new Vector3(1.84899998f,25.9309998f,-5.95699978f);
+                    defaults.vrTargetNode = XRNode.LeftHand;
                 }
                 else
                 {
@@ -88,6 +90,7 @@ namespace GorillaRigging{
                     defaults.closedAngle2 = new Vector3(-1.03699994f,0.786000013f,96.1500015f);
                     defaults.startingAngle1 = new Vector3(-53.0320015f,-29.5540009f,21.0550003f);
                     defaults.startingAngle2 = new Vector3(1.84899998f,-25.9319992f,5.95699978f);
+                    defaults.vrTargetNode = XRNode.RightHand;
                 }
                 return defaults;
             }
@@ -104,6 +107,7 @@ namespace GorillaRigging{
                     defaults.startingAngle1 = new Vector3(6.77400017f,-80.4649963f,-7.48000002f);
                     defaults.startingAngle2 = new Vector3(0.656000018f,2.54999995f,-2.56500006f);
                     defaults.startingAngle3 = new Vector3(0.653999984f,13.8559999f,-13.9029999f);
+                    defaults.vrTargetNode = XRNode.LeftHand;
                 }
                 else
                 {
@@ -114,6 +118,7 @@ namespace GorillaRigging{
                     defaults.startingAngle1 = new Vector3(6.66400099f,-7.19600105f,7.473001f);
                     defaults.startingAngle2 = new Vector3(0.930000126f,-2.54299998f,2.56699991f);
                     defaults.startingAngle3 = new Vector3(13.2480001f,-83.2730026f,4.40700006f);
+                    defaults.vrTargetNode = XRNode.RightHand;
                 }
                 return defaults;
             }
@@ -130,6 +135,7 @@ namespace GorillaRigging{
                     defaults.startingAngle1 = new Vector3(-15.6029997f,-96.9120026f,-1.15199995f);
                     defaults.startingAngle2 = new Vector3(-0.718999982f,4.55900002f,-4.55600023f);
                     defaults.startingAngle3 = new Vector3(-2.54699993f,12.6190004f,-12.6520004f);
+                    defaults.vrTargetNode = XRNode.LeftHand;
                 }
                 else
                 {
@@ -140,6 +146,7 @@ namespace GorillaRigging{
                     defaults.startingAngle1 = new Vector3(-15.7299995f,96.9100037f,1.14600003f);
                     defaults.startingAngle2 = new Vector3(-0.439999998f,-4.54699993f,4.54799986f);
                     defaults.startingAngle3 = new Vector3(-2.69499993f,-12.6199999f,12.6890001f);
+                    defaults.vrTargetNode = XRNode.RightHand;
                 }
                 return defaults;
             }

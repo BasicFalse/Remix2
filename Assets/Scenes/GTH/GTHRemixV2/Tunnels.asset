@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f75866b6af95f604dbe3c4f75ba15ca5, type: 3}
   m_Name: Tunnels
   m_EditorClassIdentifier: com.z3y.glim.runtime::Glim.GlimLightmapGroup
-  resolution: 2048
+  resolution: 4096
   packingType: 1
   holeFilling: 0
   scaleExponent: 0.8
-  packingIterations: 5
-  lightmapUVHash: 0
+  packingIterations: 30
+  lightmapUVHash: 3329758070
   dilate: 1
   denoise: 1
   fixSeams: 1

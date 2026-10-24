@@ -70,6 +70,10 @@ public class MapGeoController : MonoBehaviour
         {
             Destroy(base.gameObject);
         }
+        
+#if !UNITY_EDITOR
+        freeze = false;
+#endif
 
         currentMaps.Clear();
 

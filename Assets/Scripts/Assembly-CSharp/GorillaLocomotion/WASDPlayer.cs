@@ -14,6 +14,7 @@ public class WASDPlayer : MonoBehaviour
 
     private Rigidbody playerRigidbody;
     private Vector3 rotationVector = Vector3.zero;
+    private bool didTryConnect = false;
 
     void Start()
     {
@@ -22,6 +23,12 @@ public class WASDPlayer : MonoBehaviour
 
     void Update()
     {
+        if (!GorillaComputer.instance.isInRoom && !didTryConnect && PhotonNetworkController.instance.currentStateVisible == PhotonNetworkController.ConnectionState.ConnectedAndWaiting)
+        {
+            PhotonNetworkController.instance.AttemptToJoinSpecificRoom("RMXGAMMA");
+            didTryConnect = true;
+        }
+
         if (Application.platform != RuntimePlatform.Android)
         {
 

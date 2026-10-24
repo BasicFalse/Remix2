@@ -21,21 +21,11 @@ public class PhotonRoomManagerMain : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
 	public Room currentRoom;
 
-	public object obj;
-
 	public const byte ReportAssault = 8;
 
 	public float stepVolumeMax = 0.2f;
 
 	public float stepVolumeMin = 0.05f;
-
-	public float fastJumpLimit;
-
-	public float fastJumpMultiplier;
-
-	public float slowJumpLimit;
-
-	public float slowJumpMultiplier;
 
 	public bool sendReport;
 
@@ -412,6 +402,14 @@ public class PhotonRoomManagerMain : MonoBehaviourPunCallbacks, IInRoomCallbacks
 		return null;
 	}
 
+	public void DealWithNullPlayerRig(RigController rig)
+	{
+		if(rig == null) return;
+		Debug.Log("Dealing with null RigController.", rig);
+		if(!GorillaComputer.instance.isInRoom) rig.InitiateLocalSelfDestructSequence();
+		if(rig.photonView.Owner == null && rig.RigStatus != RigController.RigType.OurOnline) rig.InitiateLocalSelfDestructSequence();
+	}
+
 	[PunRPC]
 	public virtual void ReportTagRPC(Photon.Realtime.Player taggingPlayer, PhotonMessageInfo info)
 	{
@@ -441,7 +439,9 @@ public class PhotonRoomManagerMain : MonoBehaviourPunCallbacks, IInRoomCallbacks
 	public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
 	{
 		base.OnPlayerLeftRoom(otherPlayer);
-		rigs.Remove(playerVRRigDict[otherPlayer.ActorNumber]);
+		if(rigs.Contains(playerVRRigDict[otherPlayer.ActorNumber])){
+			rigs.Remove(playerVRRigDict[otherPlayer.ActorNumber]);}
+		playerVRRigDict[otherPlayer.ActorNumber].InitiateLocalSelfDestructSequence();
 		playerVRRigDict.Remove(otherPlayer.ActorNumber);
 		playerCosmeticsLookup.Remove(otherPlayer.UserId);
 		currentPlayerArray = PhotonNetwork.PlayerList;

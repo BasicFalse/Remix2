@@ -88,6 +88,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &6981420328576546326
 MeshFilter:
@@ -219,6 +220,8 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
+  m_AutoFindParentInteractableInHierarchy: 0
+  m_ParentInteractableObject: {fileID: 0}
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 1
@@ -265,6 +268,7 @@ MonoBehaviour:
   m_ThrowVelocityScale: 1.5
   m_ThrowAngularVelocityScale: 1
   m_ForceGravityOnDetach: 0
+  m_UnparentTransformOnGrab: 1
   m_RetainTransformParent: 1
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
@@ -288,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MeshFormatVersion: 2
   m_Faces:
-  - m_Indexes: 000000000100000002000000
+  - m_Indexes: 000000000100000002000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -305,7 +309,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 060000000700000008000000
+  - m_Indexes: 060000000700000008000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -322,7 +326,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 090000000a0000000b000000
+  - m_Indexes: 090000000a0000000b000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -339,7 +343,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 28000000290000002a000000
+  - m_Indexes: 28000000290000002a000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -356,7 +360,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 03000000040000000500000005000000040000002b000000
+  - m_Indexes: 03000000040000000500000005000000040000002b000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -373,7 +377,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 0c0000000d0000000e0000000d0000000f0000000e000000
+  - m_Indexes: 0c0000000d0000000e0000000d0000000f0000000e000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -390,7 +394,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 100000001100000012000000110000001300000012000000
+  - m_Indexes: 100000001100000012000000110000001300000012000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -407,7 +411,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 140000001500000016000000150000001700000016000000
+  - m_Indexes: 140000001500000016000000150000001700000016000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -424,7 +428,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 18000000190000001a000000190000001b0000001a000000
+  - m_Indexes: 18000000190000001a000000190000001b0000001a000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -441,7 +445,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 1c0000001d0000001e0000001d0000001f0000001e000000
+  - m_Indexes: 1c0000001d0000001e0000001d0000001f0000001e000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -458,7 +462,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 200000002100000022000000210000002300000022000000
+  - m_Indexes: 200000002100000022000000210000002300000022000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -475,7 +479,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 240000002500000026000000270000002500000024000000
+  - m_Indexes: 240000002500000026000000270000002500000024000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -492,7 +496,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 2c0000002d0000002e0000002e0000002d0000002f000000
+  - m_Indexes: 2c0000002d0000002e0000002e0000002d0000002f000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -509,7 +513,7 @@ MonoBehaviour:
     m_ManualUV: 1
     elementGroup: -1
     m_TextureGroup: -1
-  - m_Indexes: 300000003100000032000000320000003100000033000000
+  - m_Indexes: 300000003100000032000000320000003100000033000000i
     m_SmoothingGroup: 0
     m_Uv:
       m_UseWorldSpace: 0
@@ -527,20 +531,20 @@ MonoBehaviour:
     elementGroup: -1
     m_TextureGroup: -1
   m_SharedVertices:
-  - m_Vertices: 000000000e0000001000000026000000
-  - m_Vertices: 01000000040000002500000029000000
-  - m_Vertices: 02000000030000000c00000022000000
-  - m_Vertices: 050000001e00000020000000
-  - m_Vertices: 0600000013000000150000002f000000
-  - m_Vertices: 070000000a0000002d00000031000000
-  - m_Vertices: 08000000170000001900000030000000
-  - m_Vertices: 090000001f0000002100000033000000
-  - m_Vertices: 0b0000000d000000230000002c000000
-  - m_Vertices: 0f000000110000002e000000
-  - m_Vertices: 120000001400000024000000
-  - m_Vertices: 1600000018000000270000002a000000
-  - m_Vertices: 1a0000001c000000280000002b000000
-  - m_Vertices: 1b0000001d00000032000000
+  - m_Vertices: 000000000e0000001000000026000000i
+  - m_Vertices: 01000000040000002500000029000000i
+  - m_Vertices: 02000000030000000c00000022000000i
+  - m_Vertices: 050000001e00000020000000i
+  - m_Vertices: 0600000013000000150000002f000000i
+  - m_Vertices: 070000000a0000002d00000031000000i
+  - m_Vertices: 08000000170000001900000030000000i
+  - m_Vertices: 090000001f0000002100000033000000i
+  - m_Vertices: 0b0000000d000000230000002c000000i
+  - m_Vertices: 0f000000110000002e000000i
+  - m_Vertices: 120000001400000024000000i
+  - m_Vertices: 1600000018000000270000002a000000i
+  - m_Vertices: 1a0000001c000000280000002b000000i
+  - m_Vertices: 1b0000001d00000032000000i
   m_SharedTextures: []
   m_Positions:
   - {x: 0.15000153, y: 0.049999237, z: 0.086624146}

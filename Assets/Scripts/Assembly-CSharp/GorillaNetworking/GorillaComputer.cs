@@ -136,7 +136,7 @@ namespace GorillaNetworking
         public bool showNametags;
         public bool roomFull;    
         public bool debug;
-        public bool isInRoom;
+        public bool isInRoom => PhotonNetwork.InRoom || PhotonNetwork.InLobby;
         public bool isConnectedToMaster;
         public bool isChangingMods;
         public bool canShowFullMSG;
@@ -145,6 +145,9 @@ namespace GorillaNetworking
         public bool showDeveloperVisuals;
 
         private bool fetchedMOTD = false;
+
+        public AudioClip buttonClick;
+        public AudioClip buttonClack;
 
         public Camera playerCam => PlayerBase.i.resources.playerCam;
 
@@ -245,16 +248,6 @@ namespace GorillaNetworking
         private void Update()
         {
             PlayerExistanceCheck();
-            if(!PhotonNetwork.InLobby && !PhotonNetwork.InRoom)
-            {
-                //currentRoomMod = currentGameMod;
-                isInRoom = false;
-            }
-            else
-            {
-                //currentRoomMod1 = GorillaTagManager.instance.roomMod;
-                isInRoom = true;
-            }
             if (isConnectedToMaster && Time.time > lastUpdateTime + updateCooldown)
             {
                 lastUpdateTime = Time.time;
@@ -314,18 +307,6 @@ namespace GorillaNetworking
                 case ComputerState.Credits:
                     ProcessCreditsState(buttonPressed);
                     break;
-            }
-            buttonPressed.GetComponent<MeshRenderer>().material = pressedMaterial;
-            buttonPressed.pressTime = Time.time;
-            StartCoroutine(ButtonColorUpdate(buttonPressed));
-        }
-        private IEnumerator ButtonColorUpdate(GorillaKeyboardButton button)
-        {
-            yield return new WaitForSeconds(buttonFadeTime);
-            if (button.pressTime != 0f && Time.time > buttonFadeTime + button.pressTime)
-            {
-                button.GetComponent<MeshRenderer>().material = unpressedMaterial;
-                button.pressTime = 0f;
             }
         }
 

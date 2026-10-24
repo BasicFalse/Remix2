@@ -8,8 +8,6 @@ public class VRMap
 {
 	public XRNode vrTargetNode;
 
-	public InputActionProperty input;
-
 	public bool isLeft;
 
 	//public Valve.VR.InteractionSystem.Hand SteamHand;
@@ -22,13 +20,9 @@ public class VRMap
 
 	public Vector3 trackingRotationOffset;
 
-	public Transform headTransform;
-
 	public Vector3 syncPos;
 
 	public Quaternion syncRotation;
-
-	public bool syncOverrideRotation;
 
 	public float calcT;
 
@@ -40,7 +34,6 @@ public class VRMap
 
 	public void MapMine(float ratio, Transform playerOffsetTransform = null)
 	{
-#if UNITY_EDITOR || !UNITY_ANDROID
 		UnityEngine.XR.InputDevice deviceAtXRNode = InputDevices.GetDeviceAtXRNode(vrTargetNode);
 		deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out var value);
 		deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.devicePosition, out var value2);
@@ -71,38 +64,6 @@ public class VRMap
 				rigTarget.RotateAround(new Vector3(0,0,0), Vector3.up, 0);
 			}
         }
-#else
-		UnityEngine.XR.InputDevice deviceAtXRNode = InputDevices.GetDeviceAtXRNode(vrTargetNode);
-		deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceRotation, out var value);
-		deviceAtXRNode.TryGetFeatureValue(UnityEngine.XR.CommonUsages.devicePosition, out var value2);
-		rigTarget.rotation = value * Quaternion.Euler(trackingRotationOffset);
-		if (playerOffsetTransform != null)
-		{
-			if (overrideTarget != null)
-			{
-				rigTarget.RotateAround(overrideTarget.position, Vector3.up, playerOffsetTransform.eulerAngles.y);
-				rigTarget.position = overrideTarget.position + rigTarget.rotation * trackingPositionOffset;
-			}
-			else
-			{
-				rigTarget.position = value2 + rigTarget.rotation * trackingPositionOffset + playerOffsetTransform.position;
-				rigTarget.RotateAround(playerOffsetTransform.position, Vector3.up, playerOffsetTransform.eulerAngles.y);
-			}
-		}
-        else
-        {
-            if (overrideTarget != null)
-			{
-				rigTarget.RotateAround(overrideTarget.position, Vector3.up, 0);
-				rigTarget.position = overrideTarget.position + rigTarget.rotation * trackingPositionOffset;
-			}
-			else
-			{
-				rigTarget.position = value2 + rigTarget.rotation * trackingPositionOffset;
-				rigTarget.RotateAround(new Vector3(0,0,0), Vector3.up, 0);
-			}
-        }
-#endif
 	}
 
 	public virtual void MapOtherFinger(float handSync, float lerpValue)

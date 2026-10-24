@@ -6,9 +6,12 @@ public class PlayerBase : MonoBehaviour
     public static PlayerBase @i;
     public PlayerType currentPlayerType;
 
-    public PlayerTeleport RTeleport;
-    public PlayerJoystick RJoystick;
-    public PlayerPhysical RPhysical;
+    public PlayerTeleport RTeleport => PTeleport as PlayerTeleport;
+    public PlayerJoystick RJoystick => PJoystick as PlayerJoystick;
+    public PlayerPhysical RPhysical => PPhysical as PlayerPhysical;
+    public PlayerMovementStyle PTeleport;
+    public PlayerMovementStyle PJoystick;
+    public PlayerMovementStyle PPhysical;
     public GorillaVibration GorillaVibration;
     public NormalisedGravity gravity;
 
@@ -51,13 +54,13 @@ public class PlayerBase : MonoBehaviour
     {
         switch (currentPlayerType){
             case PlayerType.Teleport:
-                RTeleport.UpdatePlayer();
+                PTeleport.UpdatePlayer();
             break;
             case PlayerType.Joystick:
-                RJoystick.UpdatePlayer();
+                PJoystick.UpdatePlayer();
             break;
             case PlayerType.Physical:
-                RPhysical.UpdatePlayer();
+                PPhysical.UpdatePlayer();
             break;
         }
     }

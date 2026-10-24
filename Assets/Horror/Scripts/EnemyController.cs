@@ -107,7 +107,7 @@ public class EnemyController : MonsterBase
         if(init && resetPosition){transform.SetPositionAndRotation(initialPosition, Quaternion.identity);}
     }
 
-    void MoveAndRotateToward(Vector3 destination)
+    protected virtual void MoveAndRotateToward(Vector3 destination)
     {
         Vector3 direction = destination - transform.position;
 

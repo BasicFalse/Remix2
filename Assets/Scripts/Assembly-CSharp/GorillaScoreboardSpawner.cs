@@ -28,6 +28,7 @@ public class GorillaScoreboardSpawner : MonoBehaviourPunCallbacks
 			notInRoomText.SetActive(value: false);
 			GameObject gameObject = Object.Instantiate(scoreboardPrefab, ScoreAnchor);
 			currentScoreboard = gameObject.GetComponent<GorillaScoreBoard>();
+			currentScoreboard.Awake();
 			//gameObject.transform.rotation = base.transform.rotation;
 		}
 	}
@@ -53,6 +54,20 @@ public class GorillaScoreboardSpawner : MonoBehaviourPunCallbacks
 		if (currentScoreboard.boardText.enabled != activeSelf)
 		{
 			currentScoreboard.boardText.enabled = activeSelf;
+		}
+		for(int i = 0; i < GorillaParent.instance.vrrigs.Count; i++)
+		{
+			bool accountedFor = false;
+			for(int j = 0; j < currentScoreboard.lines.Count; j++)
+			{
+				if(currentScoreboard.lines[j].linePlayer != null)
+					if(PhotonRoomManagerMain.instance.FindVRRigControllerForPlayer(currentScoreboard.lines[j].linePlayer) == GorillaParent.instance.vrrigs[i])
+						accountedFor = true;
+			}
+			if (!accountedFor)
+			{
+				currentScoreboard.CreateNewPlayerLine(GorillaParent.instance.vrrigs[i]);
+			}
 		}
 	}
 

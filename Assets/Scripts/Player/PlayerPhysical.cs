@@ -341,7 +341,7 @@ public class PlayerPhysical : PlayerMovementStyle
         {
             if(!LHGC.climbing && !RHGC.climbing)
             {
-                playerRigidBody.MovePosition(playerRigidBody.position + rigidBodyMovement);
+                playerRigidBody.transform.position = playerRigidBody.position + rigidBodyMovement;
             }
         }
 

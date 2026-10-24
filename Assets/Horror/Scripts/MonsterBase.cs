@@ -204,17 +204,17 @@ public class MonsterBase : MonoBehaviourPunCallbacks
             return MiscGrabs.grab.GetPlayerPosition();
 
         float closestDistance = Vector3.Distance(transform.position, MiscGrabs.grab.GetPlayerPosition());
-        Transform closest = null;
+        Transform closest = MiscGrabs.grab.PlayerCameras[0];
 
-        foreach (Transform p in MiscGrabs.grab.PlayerCameras)
+        for(int i = 0; i < MiscGrabs.grab.PlayerCameras.Count; i++)
         {
-            if (p == null) break;
+            if (MiscGrabs.grab.PlayerCameras[i] == null) continue;
 
-            float distance = Vector3.Distance(transform.position, p.position);
+            float distance = Vector3.Distance(transform.position, MiscGrabs.grab.PlayerCameras[i].position);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
-                closest = p;
+                closest = MiscGrabs.grab.PlayerCameras[i];
             }
         }
 
