@@ -15,6 +15,7 @@ namespace GorillaNetworking
 		{
 			computer = GorillaComputer.instance;
 			AS = gameObject.AddComponent<AudioSource>();
+			AS.volume = 0.3f;
 		}
 
 		public new void Update()

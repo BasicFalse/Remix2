@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using ExitGames.Client.Photon.StructWrapping;
 using GorillaModManager;
 using Photon.Pun;
+using RemixLogging;
 using RemixNetworking;
 using UFunction;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace GorillaNetworking
 {
     public class GorillaComputer : MonoBehaviourPunCallbacks
     {
-        public enum ComputerState{Startup = 0,Color = 1,Name = 2,Turn = 3,Room = 4,Config = 6,Links = 8,Credits = 10}
+        public enum ComputerState{Startup = 0,Color = 1,Name = 2,Turn = 3,Room = 4,Config = 6,Links = 8,Credits = 10,ERRORVIEW = 12}
         
         public enum ConectivityState{Startup, Conneted, Online, Offline, ConnectonError, Banned, PlayfabError}
 
@@ -48,6 +49,7 @@ namespace GorillaNetworking
         public int cnfgLSelect;
         public int MirrorQualityLevel;
         public int smoothFlashlightMotion;
+        public int cnfgSelectedErrorLog;
 
         public float redValue;
         public float redText;
@@ -87,7 +89,10 @@ namespace GorillaNetworking
         public readonly string[][] cnfgOptions = new string[][] {
         new string[]{
             "SHOW CAMERA OVERLAY: ",
-            "SHOW DEVELOPER VISUALS: "
+            "SHOW DEVELOPER VISUALS: ",
+            "SHOW DEBUG OVERLAY: ",
+            "DISPLAY ERROR LOG",
+            "SCROLLING ERROR LOG: "
         },
         new string[]{
             "DISABLE PARTICLES: ",
@@ -141,8 +146,8 @@ namespace GorillaNetworking
         public bool isChangingMods;
         public bool canShowFullMSG;
         public bool showCnfgInfo;
-        public bool showCameraOverlay;
-        public bool showDeveloperVisuals;
+        public bool showCnfgErrorDetail;
+        public bool errorViewScroll;
 
         private bool fetchedMOTD = false;
 
@@ -196,6 +201,8 @@ namespace GorillaNetworking
 
         public List<RegMapSegment> RegisteredMaps;
 
+        public List<LogDisplay> DebugLogs = new();
+
         private void Awake()
         {
             if (instance == null)
@@ -207,6 +214,7 @@ namespace GorillaNetworking
                 Destroy(base.gameObject);
             }
             Startup.Update();
+            Application.logMessageReceived += Log;
         }
         private void Start()
         {
@@ -281,6 +289,43 @@ namespace GorillaNetworking
 
         public void PressButton(GorillaKeyboardButton buttonPressed)
         {
+            if(buttonPressed.characterString == "up")
+            {
+                currentState = currentState switch{
+                    ComputerState.Startup   => ComputerState.Room,
+                    ComputerState.Room      => ComputerState.Credits,
+                    ComputerState.Name      => ComputerState.Room,
+                    ComputerState.Color     => ComputerState.Name,
+                    ComputerState.Turn      => ComputerState.Color,
+                    ComputerState.Config    => ComputerState.Turn,
+                    ComputerState.Links     => ComputerState.Config,
+                    ComputerState.Credits   => ComputerState.Links,
+                    ComputerState.ERRORVIEW => ComputerState.Config,
+                    _                       => ComputerState.Room
+                };
+                ResetPageCaches();
+                UpdateScreen();
+                return;
+            }
+            else if(buttonPressed.characterString == "down")
+            {
+                currentState = currentState switch{
+                    ComputerState.Startup   => ComputerState.Room,
+                    ComputerState.Room      => ComputerState.Name,
+                    ComputerState.Name      => ComputerState.Color,
+                    ComputerState.Color     => ComputerState.Turn,
+                    ComputerState.Turn      => ComputerState.Config,
+                    ComputerState.Config    => ComputerState.Links,
+                    ComputerState.Links     => ComputerState.Credits,
+                    ComputerState.Credits   => ComputerState.Room,
+                    ComputerState.ERRORVIEW => ComputerState.Config,
+                    _                       => ComputerState.Room
+                };
+                ResetPageCaches();
+                UpdateScreen();
+                return;
+            }
+
             switch (currentState)
             {
                 case ComputerState.Startup:
@@ -307,7 +352,17 @@ namespace GorillaNetworking
                 case ComputerState.Credits:
                     ProcessCreditsState(buttonPressed);
                     break;
+                case ComputerState.ERRORVIEW:
+                    ProcessErrorViewState(buttonPressed);
+                    break;
             }
+
+            UpdateScreen();
+        }
+
+        private void ResetPageCaches()
+        {
+            isChangingMods = false;
         }
 
 
@@ -429,17 +484,9 @@ namespace GorillaNetworking
             showNametags = PlayerPrefs.GetString("showNametags", "FALSE") == "TRUE";
             savedWantedSpawn = PlayerPrefs.GetString("DesiredSpawn", "NULL");
             smoothFlashlightMotion = PlayerPrefs.GetInt("SmoothFlashlight", 10);
-            showCameraOverlay = PlayerPrefs.GetString("ShowCameraOverlay", "TRUE") == "TRUE";
-            showDeveloperVisuals = PlayerPrefs.GetString("showDeveloperVisuals", "FALSE") == "TRUE";
             flashlightSmoothingControl.SetSmoothing(smoothFlashlightMotion);
             nametagManager.visible = showNametags;
             lightCuller.Initialize(LightCullDistance);
-            if(OverlayBuilder.instance)
-                OverlayBuilder.instance.MainCanvas.SetActive(showCameraOverlay);
-            if(showDeveloperVisuals){playerCam.cullingMask |= 1 << LayerMask.NameToLayer("DEV");}
-            else{playerCam.cullingMask &= ~(1 << LayerMask.NameToLayer("DEV"));}
-            if(OverlayBuilder.instance)
-                OverlayBuilder.instance.DebugCanvas.SetActive(showDeveloperVisuals);
             foreach (MirrorInstance mi in mirrorInstances)
             {
                 mi.UpdateMirror(MirrorQualityLevel);
@@ -497,9 +544,7 @@ namespace GorillaNetworking
 
         private void ProcessStartupState(GorillaKeyboardButton buttonPressed)
         {
-            _ = buttonPressed.characterString;
             SwitchToRoomState();
-            UpdateScreen();
         }
         private void ProcessColorState(GorillaKeyboardButton buttonPressed)
         {
@@ -555,12 +600,6 @@ namespace GorillaNetworking
             {
                 switch (buttonPressed.characterString)
                 {
-                    case "up":
-                        SwitchToNameState();
-                        break;
-                    case "down":
-                        SwitchToTurnState();
-                        break;
                     case "option1":
                         colorCursorLine = 0;
                         break;
@@ -572,18 +611,11 @@ namespace GorillaNetworking
                         break;
                 }
             }
-            UpdateScreen();
         }
         public void ProcessNameState(GorillaKeyboardButton buttonPressed)
         {
             switch (buttonPressed.characterString)
             {
-                case "up":
-                    SwitchToRoomState();
-                    break;
-                case "down":
-                    SwitchToColorState();
-                    break;
                 case "enter":
                     if (currentName != savedName)
                     {
@@ -619,22 +651,11 @@ namespace GorillaNetworking
                     }
                     break;
             }
-            UpdateScreen();
         }
         private void ProcessRoomState(GorillaKeyboardButton buttonPressed)
         {
             switch (buttonPressed.characterString)
             {
-                case "up":
-                    isChangingMods = false;
-                    SwitchToCreditsState();
-                    break;
-
-                case "down":
-                    isChangingMods = false;
-                    SwitchToNameState();
-                    break;
-
                 case "enter":
                     if (roomToJoin != "")
                     {
@@ -682,7 +703,6 @@ namespace GorillaNetworking
                     }
                     break;
             }
-            UpdateScreen();
         }
         private void ProcessTurnState(GorillaKeyboardButton buttonPressed)
         {
@@ -696,12 +716,6 @@ namespace GorillaNetworking
             {
                 switch (buttonPressed.characterString)
                 {
-                    case "up":
-                        SwitchToColorState();
-                        break;
-                    case "down":
-                        SwitchToConfigState();
-                        break;
                     case "option1":
                         turnType = "SNAP";
                         PlayerPrefs.SetString("Turning", turnType);
@@ -725,21 +739,12 @@ namespace GorillaNetworking
                         break;
                 }
             }
-            UpdateScreen();
         }
         private void ProcessConfigState(GorillaKeyboardButton buttonPressed)
         {
             
             switch (buttonPressed.characterString)
             {
-                case "up":
-                    showCnfgInfo = false;
-                    SwitchToTurnState();
-                    break;
-                case "down":
-                    showCnfgInfo = false;
-                    SwitchToLinksState();
-                    break;
                 case "option1":
                     showCnfgInfo = false;
                     if(cnfgLSelect == 0)
@@ -758,18 +763,22 @@ namespace GorillaNetworking
                             switch (cnfgLSelect)
                             {
                                 case 0:
-                                    showCameraOverlay = !showCameraOverlay;
-                                    PlayerPrefs.SetString("ShowCameraOverlay", showCameraOverlay ? "TRUE" : "FALSE");
                                     if(OverlayBuilder.instance)
-                                        OverlayBuilder.instance.MainCanvas.SetActive(showCameraOverlay);
+                                        OverlayBuilder.instance.MainCanvas.SetActive(!OverlayBuilder.instance.MainCanvas.activeSelf);
                                     break;
                                 case 1:
-                                    showDeveloperVisuals = !showDeveloperVisuals;
-                                    PlayerPrefs.SetString("showDeveloperVisuals", showDeveloperVisuals ? "TRUE" : "FALSE");
-                                    if(showDeveloperVisuals){playerCam.cullingMask |= 1 << LayerMask.NameToLayer("DEV");}
+                                    if((playerCam.cullingMask & (1 << LayerMask.NameToLayer("DEV"))) == 0){playerCam.cullingMask |= 1 << LayerMask.NameToLayer("DEV");}
                                     else{playerCam.cullingMask &= ~(1 << LayerMask.NameToLayer("DEV"));}
+                                    break;
+                                case 2:
                                     if(OverlayBuilder.instance)
-                                        OverlayBuilder.instance.DebugCanvas.SetActive(showDeveloperVisuals);
+                                        OverlayBuilder.instance.DebugCanvas.SetActive(!OverlayBuilder.instance.DebugCanvas.activeSelf);
+                                    break;
+                                case 3:
+                                    currentState = ComputerState.ERRORVIEW;
+                                    break;
+                                case 4:
+                                    errorViewScroll = !errorViewScroll;
                                     break;
                             }
                             break;
@@ -903,18 +912,11 @@ namespace GorillaNetworking
                     break;
             }
             PlayerPrefs.Save();
-            UpdateScreen();
         }
         private void ProcessLinksState(GorillaKeyboardButton buttonPressed)
         {
             switch (buttonPressed.characterString)
             {
-                case "up":
-                    SwitchToConfigState();
-                    break;
-                case "down":
-                    SwitchToCreditsState();
-                    break;
                 case "D":
                     Application.OpenURL(urls[0]);
                     break;
@@ -931,23 +933,39 @@ namespace GorillaNetworking
                     Application.OpenURL(urls[4]);
                     break;
             }
-            UpdateScreen();
         }
-
         private void ProcessCreditsState(GorillaKeyboardButton buttonPressed)
+        {
+        }
+        private void ProcessErrorViewState(GorillaKeyboardButton buttonPressed)
         {
             switch (buttonPressed.characterString)
             {
-                case "up":
-                    SwitchToLinksState();
+                case "option1":
+                    showCnfgErrorDetail = false;
+                    cnfgSelectedErrorLog--;
+                    if(cnfgSelectedErrorLog < 0) cnfgSelectedErrorLog = DebugLogs.Count-1;
                     break;
-                case "down":
-                    SwitchToRoomState();
+                case "option2":
+                    showCnfgErrorDetail = !showCnfgErrorDetail;
+                    break;
+                case "option3":
+                    showCnfgErrorDetail = false;
+                    cnfgSelectedErrorLog++;
+                    if(cnfgSelectedErrorLog > DebugLogs.Count-1) cnfgSelectedErrorLog = 0;
+                    break;
+                case "enter":
+                    showCnfgErrorDetail = !showCnfgErrorDetail;
+                    break;
+                case "C":
+                    cnfgSelectedErrorLog = 0;
+                    DebugLogs.Clear();
+                    break;
+                case "delete":
+                    currentState = ComputerState.Config;
                     break;
             }
-            UpdateScreen();
         }
-
 
         private void UpdateScreen()
         {
@@ -1090,6 +1108,9 @@ namespace GorillaNetworking
                     case ComputerState.Links:
                         dataText = " D: OFFICIAL GTH REMIX DISCORD\n A: GTH REMIX APPLAB\n F: ARCHIVE DISCORD\n I: REMIX ITCH PAGE\n G: REMIX RESOURCES";
                         break;
+                    case ComputerState.ERRORVIEW:
+                        dataText = !showCnfgErrorDetail ? GetErrorViewDisplay() : $"[{cnfgSelectedErrorLog+1}]" + " " + DebugLogs[cnfgSelectedErrorLog].stack;
+                        break;
                 }
                 foreach (Text t in screenTexts)
                 {
@@ -1174,10 +1195,19 @@ namespace GorillaNetworking
                     switch (Option)
                     {
                         case 0:
-                            returnString = showCameraOverlay ? "TRUE" : "FALSE";
+                            returnString = OverlayBuilder.instance.MainCanvas.activeSelf ? "TRUE" : "FALSE";
                             break;
                         case 1:
-                            returnString = showDeveloperVisuals ? "TRUE" : "FALSE";
+                            returnString = (playerCam.cullingMask & (1 << LayerMask.NameToLayer("DEV"))) != 0 ? "TRUE" : "FALSE";
+                            break;
+                        case 2:
+                            returnString = OverlayBuilder.instance.DebugCanvas.activeSelf ? "TRUE" : "FALSE";
+                            break;
+                        case 3:
+                            returnString = "";
+                            break;
+                        case 4:
+                            returnString = errorViewScroll ? "TRUE" : "FALSE";
                             break;
                     }
                     break;
@@ -1221,6 +1251,49 @@ namespace GorillaNetworking
             }
             return returnString;
         }
+        public string GetErrorViewDisplay()
+        {
+            string conjoin = "";
+            if(errorViewScroll){
+                if(cnfgSelectedErrorLog + 5 > DebugLogs.Count - 1)
+                {
+                    if(DebugLogs.Count-5 < 1)
+                        for(int i = 0; i < DebugLogs.Count; i++)
+                        {
+                            if(i == cnfgSelectedErrorLog) conjoin += $"[{cnfgSelectedErrorLog+1}/{DebugLogs.Count}]" + "->";
+                            conjoin += GetColoredLogContent(DebugLogs[i]) + "\n";
+                        }
+                    else if(DebugLogs.Count != 0)
+                        for(int i = DebugLogs.Count-5; i < DebugLogs.Count; i++)
+                        {
+                            if(i == cnfgSelectedErrorLog) conjoin += $"[{cnfgSelectedErrorLog+1}/{DebugLogs.Count}]" + "->";
+                            conjoin += GetColoredLogContent(DebugLogs[i]) + "\n";
+                        }
+                    else
+                        return "NO LOGS TO PRESENT";
+                }
+                else
+                {
+                    conjoin += $"[{cnfgSelectedErrorLog+1}/{DebugLogs.Count}]" + "->";
+                    for(int i = cnfgSelectedErrorLog; i < cnfgSelectedErrorLog+5; i++)
+                    {
+                        conjoin += GetColoredLogContent(DebugLogs[i]) + "\n";
+                    }
+                }
+            }
+            else
+            {
+                if(DebugLogs.Count != 0)
+                    conjoin = $"[{cnfgSelectedErrorLog+1}/{DebugLogs.Count}]" + "-> " + GetColoredLogContent(DebugLogs[cnfgSelectedErrorLog]);
+                else
+                    return "NO LOGS TO PRESENT";
+            }
+            return conjoin;
+        }
+        private string GetColoredLogContent(LogDisplay ld)
+        {
+            return LoggingConversion.IntToRichStringColor(ld.severity) + ld.content + "</color>"; 
+        }
 
         private bool CheckAutoBanList(string nameToCheck)
         {
@@ -1254,12 +1327,11 @@ namespace GorillaNetworking
             }
             return true;
         }
-
         private void BanMe(int hours, string nameToCheck)
         {
             Application.Quit();
+            Startup.CallIt();
         }
-
         public void GeneralFailureMessage(string failMessage)
         {
             conectivityState = ConectivityState.Banned;
@@ -1276,7 +1348,6 @@ namespace GorillaNetworking
             networkController.WrongVersion();
             UpdateScreen();
         }
-
         public void RefreshRigColor()
         {
             if(MiscGrabs.grab.DoesPlayerExist())
@@ -1284,18 +1355,15 @@ namespace GorillaNetworking
                 PlayerBase.i.GorillaVibration.UpdateColor(redValue, greenValue, blueValue);
             }
         }
-
         public void UpdateConectivityStatus(ConectivityState State)
         {
             conectivityState = State;
             UpdateScreen();
         }
-
         private void SetWantedSpawn(TerminalInstance t)
         {
             networkController.SetPlayerPosition(t.Spwn.position);
         }
-
         public void OnModeSelectButtonPress(string gameMode)
         {
             currentGameMode = gameMode;
@@ -1308,7 +1376,6 @@ namespace GorillaNetworking
                 modeSelectButton.buttonRenderer.material = (currentGameMode == modeSelectButton.gameMode) ? modeSelectButton.pressedMaterial : modeSelectButton.unpressedMaterial;
             }
         }
-
         public string GetRoomModString()
         {
             return roomModSelect switch
@@ -1316,10 +1383,9 @@ namespace GorillaNetworking
                 0 => "NORM",
                 1 => "NIGHTMARE",
                 2 => "SAFE",
-                _ => "NORM",
+                _ => "ERROR",
             };
         }
-
         public void SetGameModInt(int rm)
         {
             switch (rm)
@@ -1334,6 +1400,18 @@ namespace GorillaNetworking
                     currentGameMod = "2: SAFE (TIMED)";
                     break;
             }
+        }
+
+        public void Log(string logString, string stackTrace, LogType type)
+        {
+            LogDisplay nld = new() { content = logString, stack = stackTrace, lifetime = 0f, severity = LoggingConversion.LogTypeToInt(type) };
+
+            DebugLogs.Add(nld);
+        }
+
+        public void OnDestroy()
+        {
+            Application.logMessageReceived -= Log;
         }
 
         /*public void AddTerminal(Text Data, Text FuncSelect, Image image = null)

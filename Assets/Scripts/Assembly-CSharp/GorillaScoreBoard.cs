@@ -32,7 +32,7 @@ public class GorillaScoreBoard : MonoBehaviourPunCallbacks, IInRoomCallbacks, IO
 		PhotonNetwork.AddCallbackTarget(this);
 		if (PhotonNetwork.InRoom)
 		{
-			Debug.Log("Weareinaroomwitharoommanagerinstanceolkorrect");
+			//Debug.Log("Weareinaroomwitharoommanagerinstanceolkorrect");
 			boardText.text = GetBeginningString();
 		}
 	}

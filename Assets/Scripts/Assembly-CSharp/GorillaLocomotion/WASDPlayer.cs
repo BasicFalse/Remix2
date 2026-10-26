@@ -23,12 +23,12 @@ public class WASDPlayer : MonoBehaviour
 
     void Update()
     {
-        if (!GorillaComputer.instance.isInRoom && !didTryConnect && PhotonNetworkController.instance.currentStateVisible == PhotonNetworkController.ConnectionState.ConnectedAndWaiting)
-        {
-            PhotonNetworkController.instance.AttemptToJoinSpecificRoom("RMXGAMMA");
-            didTryConnect = true;
-        }
-
+        //if (!GorillaComputer.instance.isInRoom && !didTryConnect && PhotonNetworkController.instance.currentStateVisible == PhotonNetworkController.ConnectionState.ConnectedAndWaiting)
+        //{
+        //    PhotonNetworkController.instance.AttemptToJoinSpecificRoom("RMXGAMMA");
+        //    didTryConnect = true;
+        //}
+/*
         if (Application.platform != RuntimePlatform.Android)
         {
 
@@ -97,6 +97,8 @@ public class WASDPlayer : MonoBehaviour
                 PhotonNetworkController.instance.AttemptToJoinSpecificRoom(devRoom);
             }
         }
+
+*/
     }
 }
 #endif

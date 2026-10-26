@@ -33,8 +33,8 @@ public class OverlayBuilder : MonoBehaviour
         versionCache = MiscGrabs.grab.Version.strung;
         nameCache = PlayerPrefs.GetString("playerName", "gorilla");
 
-        MainCanvas.SetActive(GorillaComputer.instance.showCameraOverlay);
-        DebugCanvas.SetActive(GorillaComputer.instance.showDeveloperVisuals);
+        MainCanvas.SetActive(true);
+        DebugCanvas.SetActive(false);
 
         switch (nameCache)
         {

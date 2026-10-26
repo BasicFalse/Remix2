@@ -212,7 +212,7 @@ public class CosmeticsController : MonoBehaviour
 
     public void UpdateWardrobeColorSliders(float redVal, float greenVal, float blueVal)
     {
-        Debug.Log("COSMETICS CONTROLLER : SETTING ALL WARDROBE COLOR SLIDERS AS; " + redVal + ", " + greenVal + ", " + blueVal);
+        //Debug.Log("COSMETICS CONTROLLER : SETTING ALL WARDROBE COLOR SLIDERS AS; " + redVal + ", " + greenVal + ", " + blueVal);
         foreach (Wardrobe wd in wardrobes)
         {
             if (wd.IsType<SatelliteWardrobeController>())

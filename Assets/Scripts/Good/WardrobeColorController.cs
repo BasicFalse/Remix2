@@ -12,6 +12,7 @@ namespace GorillaNetworking
         public bool canChangeColor = false;
         public bool canHaveColorSet = false;
         public bool initialized;
+        public bool locked;
 
         public AudioClip sliderPop;
         public AudioSource redSource;
@@ -38,13 +39,17 @@ namespace GorillaNetworking
 
         public void SetSliderValues(float RedColor, float GreenColor, float BlueColor)
         {
-            Debug.Log("WARDROBE COLOR CONTROLLER : RECEVED COLORS AS ; " + RedColor + ", " + GreenColor + ", " + BlueColor);
+            if(locked) return;
+            //Debug.Log("WARDROBE COLOR CONTROLLER : RECEVED COLORS AS ; " + RedColor + ", " + GreenColor + ", " + BlueColor);
             if (canHaveColorSet)
             {
-                Debug.Log("WARDROBE COLOR CONTROLLER : SETTING COLORS AS ; " + RedColor + ", " + GreenColor + ", " + BlueColor);
+                //Debug.Log("WARDROBE COLOR CONTROLLER : SETTING COLORS AS ; " + RedColor + ", " + GreenColor + ", " + BlueColor);
                 redSlider.SetValue(RedColor);
                 greenSlider.SetValue(GreenColor);
                 blueSlider.SetValue(BlueColor);
+                rS = RedColor;
+                bS = BlueColor;
+                gS = GreenColor;
             }
             canChangeColor = true;
             canHaveColorSet = true;
@@ -81,7 +86,9 @@ namespace GorillaNetworking
                     rS = r; gS = g; bS = b;
                     Debug.Log("WARDROBE COLOR CONTROLLER : SETTING COLORS AS ; " + r + ", " + g + ", " + b);
                     canHaveColorSet = false;
+                    locked = true;
                     GorillaComputer.instance.SetColors(rS, gS, bS);
+                    locked = false;
 
                     if (rid)
                         redSource.PlayOneShot(sliderPop);
