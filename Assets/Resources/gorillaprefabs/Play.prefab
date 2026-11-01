@@ -632,9 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c48b167aad997448b522765752fb18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GorillaClimb
-  player: {fileID: 3891069112503425292}
-  locomotion: {fileID: 0}
-  vibration: {fileID: 8734295437315762709}
+  locomotion: {fileID: 6551919613928672267}
   climbingRange: 0.07
   ClimbType: 1
   climbableLayer:
@@ -645,7 +643,6 @@ MonoBehaviour:
   defaultLetGoSound: {fileID: 0}
   hand: 1
   climbing: 0
-  lastHitRb: {fileID: 0}
   maxAnglePerFrameDeg: 60
   maxObjLinearSpeed: 40
   maxObjAngularSpeedDeg: 2000
@@ -821,7 +818,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.12
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -865,7 +862,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2354,9 +2351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c48b167aad997448b522765752fb18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GorillaClimb
-  player: {fileID: 3891069112503425292}
-  locomotion: {fileID: 0}
-  vibration: {fileID: 8734295437315762709}
+  locomotion: {fileID: 6551919613928672267}
   climbingRange: 0.07
   ClimbType: 1
   climbableLayer:
@@ -2367,7 +2362,6 @@ MonoBehaviour:
   defaultLetGoSound: {fileID: 0}
   hand: 0
   climbing: 0
-  lastHitRb: {fileID: 0}
   maxAnglePerFrameDeg: 60
   maxObjLinearSpeed: 40
   maxObjAngularSpeedDeg: 2000
@@ -2543,7 +2537,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.12
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2587,7 +2581,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0

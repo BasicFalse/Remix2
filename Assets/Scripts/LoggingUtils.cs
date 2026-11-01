@@ -11,6 +11,17 @@ namespace RemixLogging{
         public int severity;
     };
 
+    public static class LoggingStatics
+    {
+        public static readonly string[] noLogers = new string[]
+        {
+            "Audio source failed to initialize audio spatializer. An audio spatializer is specified in the audio project settings, but the associated plugin was not found or initialized properly. Please make sure that the selected spatializer is compatible with the target.",
+            "dll file in: Not a directory",
+            "movement check failed! we had to use the backup raycast. investigate the conditions that caused this to happen",
+            "Look rotation viewing vector is zero"
+        };
+    }
+
     public static class LoggingConversion{
         public static int LogTypeToInt(LogType lt)
         {

@@ -8,9 +8,7 @@ using SplineTools;
 namespace GorillaLocomotion{
 public class GorillaClimb : MonoBehaviour
 {
-    public Rigidbody player;
     public PlayerBase locomotion;
-    public GorillaVibration vibration;
     public float climbingRange;
     public int ClimbType = 1;
     public LayerMask climbableLayer;
@@ -23,8 +21,6 @@ public class GorillaClimb : MonoBehaviour
     private bool gripHeld;
     private bool pendingGrab;
 
-    public Rigidbody lastHitRb;
-
     private Vector3 lastHandPos;
     private Vector3 handVelocity;
 
@@ -36,7 +32,7 @@ public class GorillaClimb : MonoBehaviour
 
     private Transform grabbedObject;
     private Zipline grabbedZipline;
-    private ClimbableData GatheredData;
+    private ClimbableData GatheredData = new();
     private Vector3 lastObjPos;
     private Quaternion lastObjRot;
     private Quaternion lastObjRotation;
@@ -167,9 +163,7 @@ public class GorillaClimb : MonoBehaviour
                 if (rawHandVel.magnitude * locomotion.getSizeRatio > maxReleaseSpeed * 3f)
                     rawHandVel = rawHandVel.normalized * maxReleaseSpeed * 3f * locomotion.getSizeRatio;
                 handVelocity = rawHandVel;
-                
-    
-                // 4) update lastHandPos
+                locomotion.resources.RB.linearVelocity = Vector3.zero;
                 lastHandPos = transform.position;
             }
 
@@ -191,7 +185,7 @@ public class GorillaClimb : MonoBehaviour
                 if (rawHandVel.magnitude * locomotion.getSizeRatio > maxReleaseSpeed * 3f)
                     rawHandVel = rawHandVel.normalized * maxReleaseSpeed * 3f * locomotion.getSizeRatio;
                 handVelocity = rawHandVel;
-
+                locomotion.resources.RB.linearVelocity = Vector3.zero;
                 lastHandPos = transform.position;
             }
         }
@@ -216,7 +210,6 @@ public class GorillaClimb : MonoBehaviour
     private void StartClimb()
     {
         climbing = true;
-        player.isKinematic = true;
         locomotion.RPhysical.currentVelocity = Vector3.zero;
 
         lastHandPos = transform.position;
@@ -227,8 +220,7 @@ public class GorillaClimb : MonoBehaviour
         {
 
             //ClimbType Evaluation
-            grabbedObject.TryGetComponent(out ClimbableData component);
-            if (component)
+            if (grabbedObject.TryGetComponent(out ClimbableData component))
             {
                 GatheredData = component;
                 ClimbType = component.ClimbableType;
@@ -265,7 +257,7 @@ public class GorillaClimb : MonoBehaviour
             {
                 grabbedZipline = component.ZLSc;
                 grabbedZipline.SetToClosestPoint(transform.position);
-                grabbedZipline.SetVelocityFromRigidbody(player);
+                grabbedZipline.SetVelocityFromRigidbody(locomotion.resources.RB);
             }
         }
 
@@ -294,7 +286,6 @@ public class GorillaClimb : MonoBehaviour
     private void EndClimb()
     {
         climbing = false;
-        player.isKinematic = false;
         Vector3 releaseVel = new();
         if(ClimbType == 1)
         {
@@ -318,7 +309,7 @@ public class GorillaClimb : MonoBehaviour
         
         grabbedZipline = null;
         grabbedObject = null;
-        player.linearVelocity = releaseVel;
+        locomotion.resources.RB.linearVelocity = releaseVel;
 
         if (GatheredData.doletgosound)
         {

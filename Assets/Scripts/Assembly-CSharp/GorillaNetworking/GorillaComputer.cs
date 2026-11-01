@@ -957,11 +957,14 @@ namespace GorillaNetworking
                 case "enter":
                     showCnfgErrorDetail = !showCnfgErrorDetail;
                     break;
+                case "delete":
+                    DebugLogs.RemoveAt(cnfgSelectedErrorLog);
+                    break;
                 case "C":
                     cnfgSelectedErrorLog = 0;
                     DebugLogs.Clear();
                     break;
-                case "delete":
+                case "E":
                     currentState = ComputerState.Config;
                     break;
             }
@@ -1404,6 +1407,14 @@ namespace GorillaNetworking
 
         public void Log(string logString, string stackTrace, LogType type)
         {
+            for (int i = 0; i < LoggingStatics.noLogers.Length; i++)
+            {
+                if(logString == LoggingStatics.noLogers[i])
+                {
+                    return;
+                }
+            }
+
             LogDisplay nld = new() { content = logString, stack = stackTrace, lifetime = 0f, severity = LoggingConversion.LogTypeToInt(type) };
 
             DebugLogs.Add(nld);

@@ -146,6 +146,7 @@ public class RigController : MonoBehaviourPunCallbacks, IPunObservable, IPunInst
             {
                 RigStatus = RigType.OurOnline;
                 thisGuysSkin.enabled = false;
+                playerTextName.enabled = false;
                 OfflineCamera = PlayerBase.@i.transforms.Camera.transform;
                 OfflineBody = PlayerBase.@i.transforms.Body.transform;
                 MidwayHandL = PlayerBase.@i.transforms.LeftController;
@@ -352,7 +353,7 @@ public class RigController : MonoBehaviourPunCallbacks, IPunObservable, IPunInst
                 SetCosmeticsActive();
             }
             flashlight.SetActive(isFlashlightOn);
-            GetComponent<PhotonVoiceView>().SpeakerInUse.enabled = !muted && !mutedTemp;
+            GetComponent<PhotonVoiceView>().SpeakerInUse.enabled = !(muted || mutedTemp);
         }
     }
 
@@ -791,14 +792,20 @@ public class RigController : MonoBehaviourPunCallbacks, IPunObservable, IPunInst
                     }
                 UnityEngine.Object.Destroy(base.gameObject);
             }
-        
-        if(GorillaParent.instance)
-            if (GorillaParent.instance.vrrigs.Contains(this))
+        if(RigStatus == RigType.Online && PhotonNetworkController.instance.currentStateVisible == PhotonNetworkController.ConnectionState.JoiningPublicRoom)
             {
-                GorillaParent.instance.vrrigs.Remove(this);
+                Debug.Log("Rig not removed, reason = rig is an early instance", this);
+                return;
             }
-        UnityEngine.Object.Destroy(base.gameObject);
-        Debug.LogError("Rig removed, reason = stalemate reached. cannot prove or disprove existance. investigate conditions.", this);
+        if(RigStatus == RigType.Online && PhotonNetworkController.instance.currentStateVisible == PhotonNetworkController.ConnectionState.JoiningSpecificRoom)
+            {
+                Debug.Log("Rig not removed, reason = rig is an early instance", this);
+                return;
+            }
+        //if(RigStatus == RigType.Online && PhotonNetworkController.instance.currentStateVisible == PhotonNetworkController.ConnectionState.InPrivateRoom)
+        //if(RigStatus == RigType.Online && PhotonNetworkController.instance.currentStateVisible == PhotonNetworkController.ConnectionState.InPublicRoom)
+        
+        Debug.LogError("Rig not removed, reason = stalemate reached. cannot prove or disprove existance. investigate conditions.", this);
     }
     public void CalculateInterest()
     {

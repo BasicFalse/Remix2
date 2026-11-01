@@ -4,32 +4,39 @@ using UnityEngine;
 namespace RockyTunnel{
     public class RockyTunnelManager : RemixScript
     {
-        public enum Split { A1, A2, A3, A4, A5, A6, B1, D3}
+        public enum Split { A1 = 11, A2 = 12, A3 = 13, A4 = 14, A5 = 15, A6 = 16, B1 = 21, D1 = 41, D2 = 42, D3 = 43 }
+        public enum TunnelDesignation { A = 1, B = 2, C = 3, D = 4 }
 
         [System.Serializable]
-        public class Sector
+        public struct Tunnel
+        {
+            public GameObject Geometry;
+            public TunnelDesignation Designation;
+        }
+
+        [System.Serializable]
+        public struct Sector
         {
             [SerializeField]
             public Split Designation;
-            public List<Split> NextTo;
-            public List<GameObject> Geometry;
+            public Split[] NextTo;
+            public GameObject[] Geometry;
         }
 
         [System.Serializable]
-        public class Link
+        public struct Link
         {
             [SerializeField]
-            public List<GameObject> Geometry;
-            public List<Split> Links;
+            public GameObject[] Geometry;
+            public Split[] Links;
         }
 
-        [SerializeField]
-        public List<Sector> Sectors;
-        public List<Link> Links;
+        public Tunnel[] Tunnels;
+        public Sector[] Sectors;
+        public Link[] Links;
         public List<Split> currentSectors;
 
         public bool renderTriggers;
-        //public List<Sector> lastSectors;
 
         public override void StartExt()
         {
@@ -41,49 +48,79 @@ namespace RockyTunnel{
         {
             UpdateSectors();
             UpdateLinks();
+            UpdateTunnels();
         }
 
         private void UpdateSectors()
         {
-            foreach (Sector s in Sectors)
+            for (int i = 0; i < Sectors.Length; i++)
             {
                 int a = 0;
-                foreach (Split s2 in s.NextTo)
+                for (int j = 0; j < Sectors[i].NextTo.Length; j++)
                 {
-                    if (currentSectors.Contains(s2))
+                    if (currentSectors.Contains(Sectors[i].NextTo[j]))
                     {
                         a++;
                     }
                 }
-                if (currentSectors.Contains(s.Designation) || a > 0)
+                if (currentSectors.Contains(Sectors[i].Designation) || a > 0)
 
-                { foreach (GameObject g in s.Geometry) { g.SetActive(true); } }
+                { for (int k = 0; k < Sectors[i].Geometry.Length; k++) { Sectors[i].Geometry[k].SetActive(true); } }
 
                 else
 
-                { foreach (GameObject g in s.Geometry) { g.SetActive(false); } }
+                { for (int k = 0; k < Sectors[i].Geometry.Length; k++) { Sectors[i].Geometry[k].SetActive(false); } }
             }
         }
 
         private void UpdateLinks()
         {
-            foreach (Link l in Links)
+            for (int i = 0; i < Links.Length; i++)
             {
                 int a = 0;
-                foreach (Split s in l.Links)
+                for (int j = 0; j < Links.Length; j++)
                 {
-                    if (currentSectors.Contains(s))
+                    if (currentSectors.Contains(Links[i].Links[j]))
                     {
                         a++;
                     }
                 }
                 if (a > 0)
                 {
-                    foreach (GameObject g in l.Geometry) { g.SetActive(true); }
+                    for (int k = 0; k < Links[i].Geometry.Length; k++)
+                    {
+                        Links[i].Geometry[k].SetActive(true);
+                    }
                 }
                 else
                 {
-                    foreach (GameObject g in l.Geometry) { g.SetActive(false); }
+                    for (int k = 0; k < Links[i].Geometry.Length; k++)
+                    {
+                        Links[i].Geometry[k].SetActive(false);
+                    }
+                }
+            }
+        }
+
+        private void UpdateTunnels()
+        {
+            for (int i = 0; i < Tunnels.Length; i++)
+            {
+                int a = 0;
+                for (int j = 0; j < Sectors.Length; j++)
+                {
+                    if (currentSectors.Contains(Sectors[j].Designation) && (int)Sectors[j].Designation / 10 == (int)Tunnels[i].Designation)
+                    {
+                        a++;
+                    }
+                }
+                if (a > 0)
+                {
+                    Tunnels[i].Geometry.SetActive(true);
+                }
+                else
+                {
+                    Tunnels[i].Geometry.SetActive(false);
                 }
             }
         }
