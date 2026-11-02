@@ -133,7 +133,9 @@ namespace GorillaNetworking
         private string[] anywhereOneWeek;
         private string[] anywhereTwoWeek;
 
-        public bool tryGetTimeAgain;
+        private static readonly string LinksText = " D: OFFICIAL GTH REMIX DISCORD\n A: GTH REMIX APPLAB\n F: ARCHIVE DISCORD\n I: REMIX ITCH PAGE\n G: REMIX RESOURCES";
+        private static readonly string CreditsText = "CREDITS\n\n GT BY ANOTHER AXIOM\n\n GTH BY LEMMON\n\n REMIX BY LAPS";
+
         public bool canOverrideSpawn;
         public bool disableParticles;
         public bool muteAllDuringEvents;
@@ -1106,10 +1108,10 @@ namespace GorillaNetworking
 
                         break;
                     case ComputerState.Credits:
-                        dataText = "CREDITS\n\n GT BY ANOTHER AXIOM\n\n GTH BY LEMMON\n\n REMIX BY LAPS";
+                        dataText = CreditsText;
                         break;
                     case ComputerState.Links:
-                        dataText = " D: OFFICIAL GTH REMIX DISCORD\n A: GTH REMIX APPLAB\n F: ARCHIVE DISCORD\n I: REMIX ITCH PAGE\n G: REMIX RESOURCES";
+                        dataText = LinksText;
                         break;
                     case ComputerState.ERRORVIEW:
                         dataText = !showCnfgErrorDetail ? GetErrorViewDisplay() : $"[{cnfgSelectedErrorLog+1}]" + " " + DebugLogs[cnfgSelectedErrorLog].stack;

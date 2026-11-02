@@ -2,9 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace RockyTunnel{
-    public class RockyTunnelManager : RemixScript
+    public class 
+    RockyTunnelManager : RemixScript
     {
-        public enum Split { A1 = 11, A2 = 12, A3 = 13, A4 = 14, A5 = 15, A6 = 16, B1 = 21, D1 = 41, D2 = 42, D3 = 43 }
+        public enum Split { A0 = 10, A1 = 11, A2 = 12, A3 = 13, A4 = 14, A5 = 15, A6 = 16, 
+                            B0 = 20, B1 = 21, 
+                            C0 = 30, 
+                            D0 = 40, D1 = 41, D2 = 42, D3 = 43 }
         public enum TunnelDesignation { A = 1, B = 2, C = 3, D = 4 }
 
         [System.Serializable]
@@ -19,7 +23,6 @@ namespace RockyTunnel{
         {
             [SerializeField]
             public Split Designation;
-            public Split[] NextTo;
             public GameObject[] Geometry;
         }
 
@@ -55,15 +58,7 @@ namespace RockyTunnel{
         {
             for (int i = 0; i < Sectors.Length; i++)
             {
-                int a = 0;
-                for (int j = 0; j < Sectors[i].NextTo.Length; j++)
-                {
-                    if (currentSectors.Contains(Sectors[i].NextTo[j]))
-                    {
-                        a++;
-                    }
-                }
-                if (currentSectors.Contains(Sectors[i].Designation) || a > 0)
+                if (currentSectors.Contains(Sectors[i].Designation))
 
                 { for (int k = 0; k < Sectors[i].Geometry.Length; k++) { Sectors[i].Geometry[k].SetActive(true); } }
 
@@ -78,7 +73,7 @@ namespace RockyTunnel{
             for (int i = 0; i < Links.Length; i++)
             {
                 int a = 0;
-                for (int j = 0; j < Links.Length; j++)
+                for (int j = 0; j < Links[i].Links.Length; j++)
                 {
                     if (currentSectors.Contains(Links[i].Links[j]))
                     {
@@ -107,9 +102,9 @@ namespace RockyTunnel{
             for (int i = 0; i < Tunnels.Length; i++)
             {
                 int a = 0;
-                for (int j = 0; j < Sectors.Length; j++)
+                for (int j = 0; j < currentSectors.Count; j++)
                 {
-                    if (currentSectors.Contains(Sectors[j].Designation) && (int)Sectors[j].Designation / 10 == (int)Tunnels[i].Designation)
+                    if ((int)currentSectors[j] / 10 == (int)Tunnels[i].Designation)
                     {
                         a++;
                     }

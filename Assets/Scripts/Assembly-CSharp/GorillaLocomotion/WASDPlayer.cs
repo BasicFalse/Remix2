@@ -28,7 +28,7 @@ public class WASDPlayer : MonoBehaviour
         //    PhotonNetworkController.instance.AttemptToJoinSpecificRoom("RMXGAMMA");
         //    didTryConnect = true;
         //}
-/*
+
         if (Application.platform != RuntimePlatform.Android)
         {
 
@@ -98,7 +98,7 @@ public class WASDPlayer : MonoBehaviour
             }
         }
 
-*/
+
     }
 }
 #endif
