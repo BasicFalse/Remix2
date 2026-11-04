@@ -55,6 +55,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -179,14 +180,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6240188603841626235}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 13
   m_Type: 2
   m_Color: {r: 1, g: 0.023584902, b: 0.023584902, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 1
     m_Resolution: -1
@@ -231,7 +232,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -606,6 +607,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7979071036552713982
 GameObject:
@@ -746,13 +748,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7979071036552731521}
   - component: {fileID: 6299165698720169988}
-  - component: {fileID: 1049584395227623553}
   - component: {fileID: 7979071036552766956}
   - component: {fileID: 7979071036552649827}
   - component: {fileID: 7979071036552650477}
   - component: {fileID: 7979071036552765991}
   - component: {fileID: 7979071036552649483}
   - component: {fileID: 7979071036552649380}
+  - component: {fileID: 2633469200710262202}
   m_Layer: 28
   m_Name: JimmyFull
   m_TagString: Enemy
@@ -789,30 +791,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae9323062e067f49bdd241ac862ff47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addedToMisc: 0
+  init: 0
+  resetPosition: 1
+  initialPosition: {x: 0, y: 0, z: 0}
+  MonLight: {fileID: 3512545002468046693}
   moveSpeed: 7
   chaseRange: 10
   stoppingDistance: 1
   timeToShowGameObject: 2
   rotationSensitivity: 2
-  MonLight: {fileID: 3512545002468046693}
-  targetPlayer: {fileID: 0}
-  initialPosition: {x: 0, y: 0, z: 0}
+  targetPlayer: {x: 0, y: 0, z: 0}
   isCollided: 0
-  addedToMisc: 0
---- !u!114 &1049584395227623553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7979071036552715323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc20699523c8d243b7bd12812c0865a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JST: 2
-  jumpscareDuration: 0
 --- !u!54 &7979071036552766956
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1083,6 +1073,19 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 0
+--- !u!114 &2633469200710262202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979071036552715323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d86b2a710b106f4cbe26da664866039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpscareCaller
+  jumpscareID: Jimmy
 --- !u!1 &7979071036552715472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,7 +1242,7 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 6db8251ede3cfc047b1f7cf5f4ee2f69, type: 2}
   - {fileID: 2100000, guid: cac77bb8e4712cd40adf2d21447b26b0, type: 2}
-  - {fileID: 2100000, guid: bac4a6c2ca0ecaf419be5706d210cd29, type: 2}
+  - {fileID: 2100000, guid: 58cbecad26870774e92a7169f0d1ff51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1261,6 +1264,7 @@ SkinnedMeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0

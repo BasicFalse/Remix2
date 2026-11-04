@@ -500,6 +500,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -545,14 +546,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4496011383421974157}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 13
   m_Type: 2
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 4
   m_Range: 12
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -597,7 +598,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -1257,6 +1258,7 @@ SkinnedMeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 1
@@ -1398,7 +1400,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4713546060943879335}
-  - component: {fileID: 4713546060943933226}
   - component: {fileID: 8476823474169703316}
   - component: {fileID: 4713546060943904482}
   - component: {fileID: 4713546060943931224}
@@ -1409,6 +1410,7 @@ GameObject:
   - component: {fileID: 4713546060943933239}
   - component: {fileID: 4436158301215843693}
   - component: {fileID: 3729424680385404122}
+  - component: {fileID: 6141541340301722675}
   m_Layer: 28
   m_Name: Bimby Full
   m_TagString: Enemy
@@ -1432,20 +1434,6 @@ Transform:
   - {fileID: 4496011383421957283}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4713546060943933226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4713546060943859897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc20699523c8d243b7bd12812c0865a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JST: 5
-  jumpscareDuration: 0
 --- !u!114 &8476823474169703316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1458,16 +1446,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae9323062e067f49bdd241ac862ff47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addedToMisc: 0
+  init: 0
+  resetPosition: 1
+  initialPosition: {x: 0, y: 0, z: 0}
+  MonLight: {fileID: 4496011383422056114}
   moveSpeed: 7
   chaseRange: 15
   stoppingDistance: 1
   timeToShowGameObject: 2
   rotationSensitivity: 2
-  MonLight: {fileID: 4496011383422056114}
-  targetPlayer: {fileID: 0}
-  initialPosition: {x: 0, y: 0, z: 0}
+  targetPlayer: {x: 0, y: 0, z: 0}
   isCollided: 0
-  addedToMisc: 0
 --- !u!54 &4713546060943904482
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1771,9 +1761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cae809bc553864c849aec4f15fa030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listener: {fileID: 0}
-  listenerTag: GorillaPlayer
-  autoAssignListener: 0
   interpolationSpeed: 1
   visualizeRays: 0
   occludingLayers:
@@ -1809,3 +1796,16 @@ AudioLowPassFilter:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6141541340301722675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713546060943859897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d86b2a710b106f4cbe26da664866039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpscareCaller
+  jumpscareID: Bimby
