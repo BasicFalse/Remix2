@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GorillaSurfaceOverride : MonoBehaviour
 {
-	public enum HitType{Set, Crystal, Pumpkin, Soft}
+	public enum HitType{Set, Crystal, Pumpkin, Soft, Wood, Metal, Glass, Slippery}
 	public HitType SoundSet;
 	public int overrideIndex;
 
@@ -25,6 +25,18 @@ public class GorillaSurfaceOverride : MonoBehaviour
 				break;
 			case HitType.Soft:
 				overrideIndex = 5;
+				break;
+			case HitType.Wood:
+				overrideIndex = 9;
+				break;
+			case HitType.Metal:
+				overrideIndex = 26;
+				break;
+			case HitType.Glass:
+				overrideIndex = 71;
+				break;
+			case HitType.Slippery:
+				overrideIndex = 59;
 				break;
 		}
     }

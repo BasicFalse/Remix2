@@ -166,9 +166,9 @@ namespace GorillaNetworking
 			
 			PhotonNetwork.EnableCloseConnection = false;
 
-			PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "93f812c4-699c-4073-8c1e-d7197bac7188";
-			PhotonNetwork.PhotonServerSettings.AppSettings.AppIdVoice = "e24877f7-60cb-41b1-860a-3c6d95fafbf4";
-			PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion = "live1110";
+			PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = ServerSettings.PhotonRealtime;
+			PhotonNetwork.PhotonServerSettings.AppSettings.AppIdVoice = ServerSettings.PhotonVoice;
+			PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion = ServerSettings.PhotonVersion;
 
 			InitiateConnection();
 		}
