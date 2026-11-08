@@ -69,7 +69,8 @@ public class PlayerPhysical : PlayerMovementStyle
     public int rightHandMaterialTouchIndex;
     public GorillaSurfaceOverride rightHandSurfaceOverride;
     private GorillaSurfaceOverride currentOverride;
-    public Rigidbody HitRigidbody;
+    public Rigidbody LeftHandHitRigidbody;
+    public Rigidbody RightHandHitRigidbody;
     private bool leftHandColliding;
     private bool rightHandColliding;
     private bool headColliding;
@@ -239,7 +240,7 @@ public class PlayerPhysical : PlayerMovementStyle
             slideAverage = Vector3.zero;
         }
         distanceTraveled = CurrentLeftHandPosition() - lastLeftHandPosition;
-        if (IterativeCollisionSphereCast(lastLeftHandPosition, minimumRaycastDistance, distanceTraveled, out finalPosition, singleHand: true, out slipPercentage, out tempHitInfo))
+        if (IterativeCollisionSphereCast(lastLeftHandPosition, minimumRaycastDistance, distanceTraveled, out finalPosition, singleHand: true, out slipPercentage, out tempHitInfo, out LeftHandHitRigidbody))
         {
             if (wasLeftHandTouching && slipPercentage <= defaultSlideFactor)
             {
@@ -265,7 +266,7 @@ public class PlayerPhysical : PlayerMovementStyle
             leftHandSurfaceOverride = currentOverride;
         }
         distanceTraveled = CurrentRightHandPosition() - lastRightHandPosition;
-        if (IterativeCollisionSphereCast(lastRightHandPosition, minimumRaycastDistance, distanceTraveled, out finalPosition, singleHand: true, out slipPercentage, out tempHitInfo))
+        if (IterativeCollisionSphereCast(lastRightHandPosition, minimumRaycastDistance, distanceTraveled, out finalPosition, singleHand: true, out slipPercentage, out tempHitInfo, out RightHandHitRigidbody))
         {
             if (wasRightHandTouching && slipPercentage <= defaultSlideFactor)
             {
@@ -291,7 +292,7 @@ public class PlayerPhysical : PlayerMovementStyle
             rightHandSurfaceOverride = currentOverride;
         }
         distanceTraveled = headCollider.transform.position - lastHeadPosition;
-        if (IterativeCollisionSphereCast(lastHeadPosition, headCollider.radius, distanceTraveled, out finalPosition, singleHand: true, out slipPercentage, out tempHitInfo))
+        if (IterativeCollisionSphereCast(lastHeadPosition, headCollider.radius, distanceTraveled, out finalPosition, singleHand: true, out slipPercentage, out tempHitInfo, out _))
         {
             firstIterationHead = finalPosition - headCollider.transform.position;
             headSlipPercentage = slipPercentage;
@@ -304,12 +305,26 @@ public class PlayerPhysical : PlayerMovementStyle
         rigidBodyMovement = Vector3.zero;
         if (leftHandColliding || wasLeftHandTouching)
         {
-            rigidBodyMovement += firstIterationLeftHand;
+            if(LeftHandHitRigidbody){
+                rigidBodyMovement += firstIterationLeftHand/2;
+                LeftHandHitRigidbody.AddForceAtPosition(-firstIterationLeftHand*playerRigidBody.mass/2, CurrentLeftHandPosition(), ForceMode.VelocityChange);
+            }
+            else
+            {
+                rigidBodyMovement += firstIterationLeftHand;
+            }
             touchPoints++;
         }
         if (rightHandColliding || wasRightHandTouching)
         {
-            rigidBodyMovement += firstIterationRightHand;
+            if(RightHandHitRigidbody){
+                rigidBodyMovement += firstIterationRightHand/2;
+                RightHandHitRigidbody.AddForceAtPosition(-firstIterationRightHand*playerRigidBody.mass/2, CurrentRightHandPosition(), ForceMode.VelocityChange);
+            }
+            else
+            {
+                rigidBodyMovement += firstIterationRightHand;
+            }
             touchPoints++;
         }
         if (headColliding || wasHeadTouching)
@@ -324,7 +339,7 @@ public class PlayerPhysical : PlayerMovementStyle
         if(wasLeftHandTouching || wasRightHandTouching || wasHeadTouching || wasBodyTouching || isBodyTouching)
             rigidBodyMovement += moveSpaceDelta;
         
-        if (IterativeCollisionSphereCast(lastHeadPosition, headCollider.radius, headCollider.transform.position + rigidBodyMovement - lastHeadPosition, out finalPosition, singleHand: false, out slipPercentage, out junkHit))
+        if (IterativeCollisionSphereCast(lastHeadPosition, headCollider.radius, headCollider.transform.position + rigidBodyMovement - lastHeadPosition, out finalPosition, singleHand: false, out slipPercentage, out junkHit, out _))
         {
             rigidBodyMovement = finalPosition - headCollider.transform.position;
             headSlipPercentage = slipPercentage;
@@ -350,7 +365,7 @@ public class PlayerPhysical : PlayerMovementStyle
         lastLeftHandPosition += moveSpaceDelta;
         lastRightHandPosition += moveSpaceDelta;
         lastHeadPosition += moveSpaceDelta;
-        if (IterativeCollisionSphereCast(lastLeftHandPosition, minimumRaycastDistance, distanceTraveled, out finalPosition, (!leftHandColliding && !wasLeftHandTouching) || (!rightHandColliding && !wasRightHandTouching), out slipPercentage, out junkHit))
+        if (IterativeCollisionSphereCast(lastLeftHandPosition, minimumRaycastDistance, distanceTraveled, out finalPosition, (!leftHandColliding && !wasLeftHandTouching) || (!rightHandColliding && !wasRightHandTouching), out slipPercentage, out junkHit, out LeftHandHitRigidbody))
         {
             Debug.DrawLine(finalPosition, lastLeftHandPosition, Color.yellow);
             lastLeftHandPosition = finalPosition;
@@ -363,7 +378,7 @@ public class PlayerPhysical : PlayerMovementStyle
             lastLeftHandPosition = CurrentLeftHandPosition();
         }
         distanceTraveled = CurrentRightHandPosition() - lastRightHandPosition;
-        if (IterativeCollisionSphereCast(lastRightHandPosition, minimumRaycastDistance, distanceTraveled, out finalPosition, (!leftHandColliding && !wasLeftHandTouching) || (!rightHandColliding && !wasRightHandTouching), out slipPercentage, out junkHit))
+        if (IterativeCollisionSphereCast(lastRightHandPosition, minimumRaycastDistance, distanceTraveled, out finalPosition, (!leftHandColliding && !wasLeftHandTouching) || (!rightHandColliding && !wasRightHandTouching), out slipPercentage, out junkHit, out RightHandHitRigidbody))
         {
             lastRightHandPosition = finalPosition;
             rightHandColliding = true;
@@ -495,14 +510,14 @@ public class PlayerPhysical : PlayerMovementStyle
         }
     }
 
-    private bool IterativeCollisionSphereCast(Vector3 startPosition, float sphereRadius, Vector3 movementVector, out Vector3 endPosition, bool singleHand, out float slipPercentage, out RaycastHit iterativeHitInfo)
+    private bool IterativeCollisionSphereCast(Vector3 startPosition, float sphereRadius, Vector3 movementVector, out Vector3 endPosition, bool singleHand, out float slipPercentage, out RaycastHit iterativeHitInfo, out Rigidbody HitRigidbody)
     {
         slipPercentage = defaultSlideFactor;
         if (CollisionsSphereCast(startPosition, sphereRadius, movementVector, out endPosition, out tempIterativeHit))
         {
             firstPosition = endPosition;
             iterativeHitInfo = tempIterativeHit;
-            float slidePercentage = GetSlidePercentage(iterativeHitInfo);
+            float slidePercentage = GetSlidePercentage(iterativeHitInfo, out HitRigidbody);
             slipPercentage = (slidePercentage != defaultSlideFactor) ? slidePercentage : ((!singleHand) ? defaultSlideFactor : 0.001f);
             if (Physics.Raycast(startPosition, iterativeHitInfo.point - startPosition, out tempHitInfo, (iterativeHitInfo.point - startPosition).magnitude * 1.05f, locomotionEnabledLayers.value))
             {
@@ -520,10 +535,12 @@ public class PlayerPhysical : PlayerMovementStyle
                 return true;
             }
             endPosition = startPosition + movementVector;
+            HitRigidbody = null;
             return true;
         }
         iterativeHitInfo = tempIterativeHit;
         endPosition = Vector3.zero;
+        HitRigidbody = null;
         return false;
     }
 
@@ -583,7 +600,7 @@ public class PlayerPhysical : PlayerMovementStyle
         return false;
     }
 
-    public float GetSlidePercentage(RaycastHit raycastHit)
+    public float GetSlidePercentage(RaycastHit raycastHit, out Rigidbody HitRigidbody)
     {
         currentOverride = raycastHit.collider.gameObject.GetComponent<GorillaSurfaceOverride>();
         if (raycastHit.collider.gameObject.TryGetComponent(out Rigidbody rb))
